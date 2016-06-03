@@ -5,26 +5,23 @@
  */
 package AllTelas;
 
-import AllClass.Cliente;
 import AllClass.Repositorio.RepositorioCliente;
-import javax.swing.JFrame;
+import AllSuporte.Suporte;
+import AllSuporte.ValidarDados;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Felly
  */
-public class TelaCadastroCliente extends javax.swing.JFrame {
-
-    
+public class TelaCadastroCliente extends javax.swing.JInternalFrame {  
     /**
-     * Creates new form TelaCadastroCliente
+     * Creates new form TelCadastroCliente
      */
     public TelaCadastroCliente() {
+         //Organiza os Componentes no Formulario
         initComponents();
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,31 +32,94 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jNomeCadastroC = new javax.swing.JTextField();
-        jCPF = new javax.swing.JTextField();
-        jTelefone = new javax.swing.JTextField();
+        jEscolhaSexo = new javax.swing.ButtonGroup();
+        jLabel7 = new javax.swing.JLabel();
+        jSexo1C = new javax.swing.JRadioButton();
+        jSexo2C = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
+        jNomeCadastroC = new javax.swing.JTextField();
+        jCPF = new javax.swing.JFormattedTextField();
         jLabel2 = new javax.swing.JLabel();
+        jTelefone = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
         jCadastrarC = new javax.swing.JButton();
         jCancelar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setClosable(true);
+        setMaximizable(true);
         setTitle("Cadastrando Cliente");
-        setMinimumSize(new java.awt.Dimension(800, 600));
-        setPreferredSize(new java.awt.Dimension(800, 600));
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosed(java.awt.event.WindowEvent evt) {
-                formWindowClosed(evt);
+        setToolTipText("");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMaximumSize(new java.awt.Dimension(1024, 768));
+        setMinimumSize(new java.awt.Dimension(900, 600));
+        setName(""); // NOI18N
+        setPreferredSize(new java.awt.Dimension(900, 600));
+        setVisible(false);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
             }
         });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setText("Sexo:");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, -1, -1));
+
+        jEscolhaSexo.add(jSexo1C);
+        jSexo1C.setText("Homem");
+        jSexo1C.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jSexo1CActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jSexo1C, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, -1, -1));
+
+        jEscolhaSexo.add(jSexo2C);
+        jSexo2C.setText("Mulher");
+        getContentPane().add(jSexo2C, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, -1, -1));
 
         jLabel1.setText("Nome:");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, -1, -1));
+
+        jNomeCadastroC.setToolTipText("Cliente Ex: \"Édypo Fellype Silva\"...");
+        getContentPane().add(jNomeCadastroC, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 262, -1));
+
+        try {
+            jCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jCPF.setToolTipText("CPF Ex: \"000.000.000-00\"...");
+        getContentPane().add(jCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, 160, -1));
 
         jLabel2.setText("CPF:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, -1, -1));
+
+        try {
+            jTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jTelefone.setToolTipText("Telefone Ex: \"(81)3333-3333\"...");
+        getContentPane().add(jTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, 163, -1));
 
         jLabel3.setText("Telefone:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 270, -1, -1));
 
         jCadastrarC.setText("Cadastrar");
         jCadastrarC.addActionListener(new java.awt.event.ActionListener() {
@@ -67,6 +127,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                 jCadastrarCActionPerformed(evt);
             }
         });
+        getContentPane().add(jCadastrarC, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, 125, -1));
 
         jCancelar.setText("Cancelar");
         jCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -74,164 +135,113 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                 jCancelarActionPerformed(evt);
             }
         });
+        getContentPane().add(jCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 380, 125, -1));
 
         jLabel5.setFont(new java.awt.Font("Stencil Std", 1, 60)); // NOI18N
         jLabel5.setText("CADASTRO CLIENTE");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 75, 629, 49));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(250, 250, 250)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 629, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(470, 470, 470)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addComponent(jLabel2))
-                            .addComponent(jLabel3))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jNomeCadastroC, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(54, 54, 54)
-                                .addComponent(jCadastrarC, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(jCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(67, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(113, 113, 113)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel1)
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel2)
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jNomeCadastroC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(70, 70, 70)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCadastrarC)
-                            .addComponent(jCancelar))))
-                .addContainerGap(185, Short.MAX_VALUE))
-        );
+        jDesktopPane1.setPreferredSize(new java.awt.Dimension(900, 600));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Felly\\Desktop\\Programas Java\\PetshopSmart\\IMG\\TelaCadastro.png")); // NOI18N
+        jDesktopPane1.add(jLabel4);
+        jLabel4.setBounds(0, 0, 900, 600);
+
+        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCancelarActionPerformed
-        this.dispose(); 
+    private void jSexo1CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSexo1CActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCancelarActionPerformed
+    }//GEN-LAST:event_jSexo1CActionPerformed
 
     private void jCadastrarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastrarCActionPerformed
+
+        String nome ="";
+        String cpf;
+        String telefone;
+        String sexoC="";
+        String cErros="!-Preenchimento Incorreto-!\n";
+        boolean testCadastro = true;
+
         
-        String nome = "";
-        String cpf = "";
-        String telefone = "";
-        boolean testCadastro = false;
-        
-        try {
-        nome = jNomeCadastroC.getText();
-        double testcpf = Integer.parseInt(jCPF.getText());
-        testCadastro = true;
-        } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "CPF Incorreto!!!");
-        testCadastro = false;
-        }
-        
-        try {
-            double testcpf = Integer.parseInt(jCPF.getText());
-            double testtel = Integer.parseInt(jTelefone.getText());
-            testCadastro = true;
-        } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Telefone Incorreto!!!");
-        testCadastro = false;
-        }
-        if ("".equals(nome)){
-            testCadastro = false;
-            JOptionPane.showMessageDialog(null, "Nome Incorreto!!!");
-        } 
-        
-        if (testCadastro){
         cpf = jCPF.getText();
-        telefone = jTelefone.getText();
-        RepositorioCliente.SetCadastroCliente(nome, cpf, telefone);
+        if (!AllSuporte.ValidarDados.validarCpf(cpf)){
+            testCadastro = false;
+            cErros += "* CPF\n";
+            jCPF.setText("");
         }
         
+        if (RepositorioCliente.setValidarCPF(jCPF.getText())){
+            cErros += "* CPF Existente\n";
+            testCadastro = false;
+        }
+
+
+        if ("".equals(jNomeCadastroC.getText())){
+            cErros += "* Nome\n";
+            testCadastro = false;
+        }
+        
+        telefone = jTelefone.getText();
+        if (!ValidarDados.validarTelefone(telefone)){
+            cErros += "* Telefone\n"; 
+            testCadastro = false;
+        }
+        
+        if (jSexo1C.isSelected()== true ){
+            sexoC = jSexo1C.getText();
+        }
+        if (jSexo2C.isSelected()== true ){
+            sexoC = jSexo2C.getText();
+        }
+
+        if ("".equals(sexoC)){
+            testCadastro = false;
+            cErros += "* Selecione o Sexo\n"; 
+        }
+
+        if (testCadastro){
+            nome = jNomeCadastroC.getText();
+            if (RepositorioCliente.setCadastroCliente(nome, cpf, telefone, sexoC)){
+                this.dispose();
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,cErros);
+        }
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jCadastrarCActionPerformed
 
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-
-        new TelaMenu().setVisible(true);
+    private void jCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCancelarActionPerformed
+        this.dispose();
         // TODO add your handling code here:
-    }//GEN-LAST:event_formWindowClosed
+    }//GEN-LAST:event_jCancelarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+        Suporte.setMudarStatus(false);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formInternalFrameClosed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaCadastroCliente().setVisible(true);
-            }
-        });
-    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField jCPF;
+    private javax.swing.JFormattedTextField jCPF;
     private javax.swing.JButton jCadastrarC;
     private javax.swing.JButton jCancelar;
+    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.ButtonGroup jEscolhaSexo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField jNomeCadastroC;
-    private javax.swing.JTextField jTelefone;
+    private javax.swing.JRadioButton jSexo1C;
+    private javax.swing.JRadioButton jSexo2C;
+    private javax.swing.JFormattedTextField jTelefone;
     // End of variables declaration//GEN-END:variables
+
 }

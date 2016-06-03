@@ -5,7 +5,6 @@
  */
 package AllClass;
 
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,56 +12,85 @@ import javax.swing.JOptionPane;
  */
 public class Animal {
     
-        String NomeA;
-        int Idade;
-        String Cor;
-        String Raca;
-        String Sexo;
-        int CodigoA;
-        int cpf;
+        String a_NomeA;
+        int a_Idade;
+        String a_Cor;
+        String a_Raca;
+        String a_Sexo;
+        int a_CodigoA;
+        String a_cpf;
 
 
-        public Animal (String nome, String idade, String cor, String raca, String sexo, int cpf)
+        public Animal (String nome, String idade, String cor, String raca, String sexo, String cpf, String codigo)
         {
-            this.NomeA = nome;
-            this.Idade = Integer.parseInt(idade);
-            this.Cor = cor;
-            this.Raca = raca;
-            this.Sexo = sexo;
-            this.cpf = cpf;
-            JOptionPane.showMessageDialog(null,"Nome: " + this.NomeA + "\nIdade: " + this.Idade + "\nCor: " + this.Cor + "\nRaça: " + this.Raca + "\nSexo: " + this.Sexo + "\nCPF: " + this.cpf);
-        //test
+            this.a_NomeA = nome;
+            this.a_Idade = Integer.parseInt(idade);
+            this.a_Cor = cor;
+            this.a_Raca = raca;
+            this.a_Sexo = sexo;
+            this.a_cpf = cpf;
+            this.a_CodigoA = Integer.parseInt(codigo);
+       
         }
         
         public Animal(){
         }
   
         public String getNomeA (){
-            return NomeA;
+            return a_NomeA;
         }
         
         public int getIdade(){
-            return Idade;
+            return a_Idade;
         }
         
         public String getCor(){
-            return Cor;
+            return a_Cor;
         }
         
         public String getRaca(){
-            return Raca;
+            return a_Raca;
         }
         
         public String getSexo(){
-            return Sexo;
+            return a_Sexo;
         }
         
         public int getCodigoA(){
-            return CodigoA;
+            return a_CodigoA;
         }
     
-        public double getCpf(){
-            return cpf;
+        public void setCodigoA(int edit_codigo){
+            this.a_CodigoA = edit_codigo;
         }
+        
+        public String getCpf(){
+            return a_cpf;
+        }
+        
+        public void setNome(String edit_nome){
+            this.a_NomeA = edit_nome;
+        }
+        
+        public void setIdade(int edit_idade){
+            this.a_Idade = edit_idade;
+        }
+        
+        public void setCor(String edit_cor){
+            this.a_Cor = edit_cor;
+        }
+        
+        public void setRaca(String edit_Raca){
+            this.a_Raca = edit_Raca;
+        }
+        
+        public void setSexo(String edit_Sexo){
+            this.a_Sexo = edit_Sexo;
+        }
+        
+        public void setCpf(String edit_Cpf){
+            this.a_cpf = edit_Cpf;
+        }
+        
     
 }

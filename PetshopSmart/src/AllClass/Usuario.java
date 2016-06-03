@@ -5,7 +5,6 @@
  */
 package AllClass;
 
-import AllTelas.TelaLogin;
 import AllTelas.TelaMenu;
 import javax.swing.JOptionPane;
 
@@ -14,26 +13,26 @@ import javax.swing.JOptionPane;
  * @author Felly
  */
 public class Usuario {
-    
+
     String nome = "123";
     String senha = "123";
-    boolean Status;
-    
+    static boolean Status = false;
 
-public void setUsuario(String nome, String Senha, boolean status){
-    
-    if ((this.nome.equals(nome)) && (this.senha.equals(Senha))){
-            JOptionPane.showMessageDialog(null,"Login Efetuado com Sucesso");
-            Status = false;
-            
-            
+    public void setUsuario(String nome, String Senha) {
+
+        if ((this.nome.equals(nome)) && (this.senha.equals(Senha))) {
+            JOptionPane.showMessageDialog(null, "Login Efetuado com Sucesso");
+            Status = true;
             new TelaMenu().setVisible(true);
-            
+        } else {
+            JOptionPane.showMessageDialog(null, "Nome ou senha, incorreto!!! ");
+            Status = false;
         }
-        else {
-          
-           JOptionPane.showMessageDialog(null,"Nome ou senha, incorreto!!! ");
-        }
-    
-}    
+
+    }
+
+    public static boolean getStatus() {
+        return Status;
+    }
+
 }

@@ -5,18 +5,12 @@
             <url>src/AllClass/Usuario.java</url>
             <bookmark id="1">
                 <name/>
-                <line>30</line>
+                <line>25</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Felly/Desktop/Programas%20Java/PetshopSmart/src/AllTelas/TelaLogin.java</file>
-            <file>file:/C:/Users/Felly/Desktop/Programas%20Java/PetshopSmart/src/BancoDeDados/BancoPetshop.java</file>
-            <file>file:/C:/Users/Felly/Desktop/Programas%20Java/PetshopSmart/src/AllClass/Cliente.java</file>
-            <file>file:/C:/Users/Felly/Desktop/Programas%20Java/PetshopSmart/src/AllClass/Repositorio/RepositorioCliente.java</file>
-            <file>file:/C:/Users/Felly/Desktop/Programas%20Java/PetshopSmart/src/AllTelas/TelaCadastroCliente.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

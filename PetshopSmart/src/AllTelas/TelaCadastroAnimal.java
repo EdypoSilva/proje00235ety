@@ -5,18 +5,19 @@
  */
 package AllTelas;
 
-import AllClass.Animal;
-import AllClass.Cliente;
+import AllClass.Repositorio.RepositorioAnimal;
+import AllClass.Repositorio.RepositorioCliente;
+import AllSuporte.Suporte;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Felly
  */
-public class TelaCadastroAnimal extends javax.swing.JFrame {
+public class TelaCadastroAnimal extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form TelaCadastroAnimal
+     * Creates new form TelCadastroAnimal
      */
     public TelaCadastroAnimal() {
         initComponents();
@@ -31,46 +32,56 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jNomeCadastroA = new javax.swing.JTextField();
-        jIdade = new javax.swing.JTextField();
-        jCor = new javax.swing.JTextField();
-        jRaca = new javax.swing.JTextField();
-        jSexo = new javax.swing.JTextField();
-        jCPFDono = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jCadastrarA = new javax.swing.JButton();
+        jGroupSanimal = new javax.swing.ButtonGroup();
         jCancelar = new javax.swing.JButton();
+        jNomeCadastroA = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        jIdade = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        jCor = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        jRaca = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        NomeActive = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jSexo1 = new javax.swing.JRadioButton();
+        jLabel3 = new javax.swing.JLabel();
+        jSexo2 = new javax.swing.JRadioButton();
+        jCadastrarA = new javax.swing.JButton();
+        jConsultCliente = new javax.swing.JButton();
+        jCPFDono = new javax.swing.JFormattedTextField();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jLabel12 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setClosable(true);
+        setMaximizable(true);
         setTitle("Cadastrando Animal");
+        setMaximumSize(new java.awt.Dimension(900, 600));
         setMinimumSize(new java.awt.Dimension(900, 600));
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosed(java.awt.event.WindowEvent evt) {
-                formWindowClosed(evt);
+        setName(""); // NOI18N
+        setPreferredSize(new java.awt.Dimension(900, 600));
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
             }
         });
-
-        jLabel1.setText("Nome/Apelido:");
-
-        jLabel5.setFont(new java.awt.Font("Stencil Std", 1, 60)); // NOI18N
-        jLabel5.setText("CADASTRO Animal");
-
-        jLabel2.setText("Idade:");
-
-        jLabel3.setText("Cor:");
-
-        jCadastrarA.setText("Cadastrar");
-        jCadastrarA.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCadastrarAActionPerformed(evt);
-            }
-        });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jCancelar.setText("Cancelar");
         jCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -78,84 +89,135 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
                 jCancelarActionPerformed(evt);
             }
         });
+        getContentPane().add(jCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 420, 104, -1));
 
-        jLabel6.setText("CPF do Dono:");
+        jNomeCadastroA.setEnabled(false);
+        getContentPane().add(jNomeCadastroA, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 190, 301, -1));
+
+        jLabel6.setText("CPF do Cliente:");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, -1, -1));
+
+        jIdade.setEnabled(false);
+        jIdade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jIdadeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jIdade, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 230, 128, -1));
 
         jLabel7.setText("Sexo:");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 350, -1, -1));
+
+        jCor.setEnabled(false);
+        getContentPane().add(jCor, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 270, 128, -1));
 
         jLabel8.setText("Raça:");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(210, 210, 210)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 629, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(169, 170, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(477, 477, 477)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel6))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCPFDono, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRaca, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCor, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jNomeCadastroA, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jCadastrarA, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(187, 187, 187))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jNomeCadastroA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jIdade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCPFDono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCadastrarA)
-                    .addComponent(jCancelar))
-                .addContainerGap(104, Short.MAX_VALUE))
-        );
+        jRaca.setEnabled(false);
+        getContentPane().add(jRaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 310, 301, -1));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setText("Dados do Cliente");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, -1, -1));
+
+        jLabel9.setText("Nome:");
+        jLabel9.setToolTipText("");
+        jLabel9.setName(""); // NOI18N
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, -1, -1));
+
+        jLabel1.setText("Nome/Apelido:");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 190, -1, -1));
+
+        NomeActive.setEditable(false);
+        getContentPane().add(NomeActive, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 211, -1));
+
+        jLabel5.setFont(new java.awt.Font("Stencil Std", 1, 60)); // NOI18N
+        jLabel5.setText("CADASTRO Animal");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, 629, 49));
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel10.setText("Dados do Animal");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, -1, -1));
+
+        jLabel2.setText("Idade:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 230, -1, -1));
+
+        jGroupSanimal.add(jSexo1);
+        jSexo1.setText("Macho");
+        jSexo1.setEnabled(false);
+        getContentPane().add(jSexo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 340, -1, -1));
+
+        jLabel3.setText("Cor:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 270, -1, -1));
+
+        jGroupSanimal.add(jSexo2);
+        jSexo2.setText("Fêmea");
+        jSexo2.setEnabled(false);
+        getContentPane().add(jSexo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 360, -1, -1));
+
+        jCadastrarA.setText("Cadastrar");
+        jCadastrarA.setEnabled(false);
+        jCadastrarA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCadastrarAActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jCadastrarA, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 420, 105, -1));
+
+        jConsultCliente.setText("Consultar Cliente");
+        jConsultCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jConsultClienteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jConsultCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 256, -1));
+
+        try {
+            jCPFDono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        getContentPane().add(jCPFDono, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 140, -1));
+
+        jDesktopPane1.setPreferredSize(new java.awt.Dimension(900, 600));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon("C:\\Users\\Felly\\Desktop\\Programas Java\\PetshopSmart\\IMG\\TelaCadastro.png")); // NOI18N
+        jDesktopPane1.add(jLabel12);
+        jLabel12.setBounds(0, 0, 900, 600);
+
+        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jConsultClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsultClienteActionPerformed
+        String cpf;
+
+        cpf = jCPFDono.getText();
+        if (RepositorioCliente.setValidarCPF(cpf)){
+            jNomeCadastroA.setEnabled(true);
+            jIdade.setEnabled(true);
+            jCor.setEnabled(true);
+            jRaca.setEnabled(true);
+            jSexo1.setEnabled(true);
+            jSexo2.setEnabled(true);
+            jCadastrarA.setEnabled(true);
+            NomeActive.setEditable(false);
+            jCPFDono.setEditable(false);
+            NomeActive.setText(RepositorioCliente.clientes.getNome());
+           
+        }
+        else {
+            NomeActive.setText("");
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jConsultClienteActionPerformed
+
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+        Suporte.setMudarStatus(false);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formInternalFrameClosed
 
     private void jCadastrarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastrarAActionPerformed
 
@@ -163,83 +225,65 @@ public class TelaCadastroAnimal extends javax.swing.JFrame {
         String idade;
         String cor;
         String raca;
-        String sexo;
-        int cpf;
-        
+        String sexo = "";
+        String cpf;
+
+        cpf = jCPFDono.getText();
         nome = jNomeCadastroA.getText();
         idade = jIdade.getText();
         cor = jCor.getText();
         raca = jRaca.getText();
-        sexo = jSexo.getText();
-        cpf = Integer.parseInt(jCPFDono.getText());
-        
-        new Animal(nome, idade, cor, raca, sexo, cpf);
+
+        if (jSexo1.isSelected()== true ){
+            sexo = jSexo1.getText();
+        }
+        if (jSexo2.isSelected()== true ){
+            sexo = jSexo2.getText();
+        }
+
+        if (RepositorioAnimal.setCadastroAnimal(nome, idade, cor, raca, sexo, cpf)){
+            JOptionPane.showMessageDialog(null, "Animal cadastrado com sucesso!!!");
+            this.dispose();
+        }
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jCadastrarAActionPerformed
 
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-
-        new TelaMenu().setVisible(true);
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_formWindowClosed
-
     private void jCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCancelarActionPerformed
-        
-        this.dispose(); 
+
+        this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jCancelarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroAnimal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroAnimal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroAnimal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroAnimal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void jIdadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jIdadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jIdadeActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaCadastroAnimal().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField jCPFDono;
+    private javax.swing.JTextField NomeActive;
+    private javax.swing.JFormattedTextField jCPFDono;
     private javax.swing.JButton jCadastrarA;
     private javax.swing.JButton jCancelar;
+    private javax.swing.JButton jConsultCliente;
     private javax.swing.JTextField jCor;
+    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.ButtonGroup jGroupSanimal;
     private javax.swing.JTextField jIdade;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jNomeCadastroA;
     private javax.swing.JTextField jRaca;
-    private javax.swing.JTextField jSexo;
+    private javax.swing.JRadioButton jSexo1;
+    private javax.swing.JRadioButton jSexo2;
     // End of variables declaration//GEN-END:variables
 }

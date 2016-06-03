@@ -5,58 +5,91 @@
  */
 package AllClass;
 
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author Felly
  */
 public class Produto {
+
+    String p_NomeP;
+    String p_InforP;
+    String p_CategoriaP;
+    double p_ValorP;
+    int p_CodigoP;
+    int p_Quantidade;
+
+    public Produto(String nome, String inforp, String categoria, String valor, String codigoP, String quantidade) {
+        this.p_NomeP = nome;
+        this.p_InforP = inforp;
+        this.p_CategoriaP = categoria;
+        this.p_ValorP = Double.parseDouble(valor);
+        this.p_CodigoP = Integer.parseInt(codigoP);
+        this.p_Quantidade = Integer.parseInt(quantidade);
+    }
+
+    public Produto() {
+    }
+
+    public String getNome() {
+        return p_NomeP;
+    }
     
-        String NomeP;
-        String InforP;
-        String CategoriaP;
-        double ValorP;
-        int CodigoP;
-
-        public Produto(String nome, String inforp, String categoria, String valor)
-        {
-            this.NomeP = nome;
-            this.InforP = inforp;
-            this.CategoriaP = categoria;
-            this.ValorP = Double.parseDouble(valor);
-            JOptionPane.showMessageDialog(null,"Nome: " + this.NomeP + "\nInformações: " + this.InforP + "\nCategoria: " + this.CategoriaP + "\nValor: " + this.ValorP + "\nCodigo: " + this.CodigoP);
-        //test
-        }
-        
-        public String getNome(){
-            return NomeP;
-        }
-        
-        public String getInforP(){
-            return InforP;
-        }
-        
-        public String getCategoriaP(){
-            return CategoriaP;
-        }
-        
-        public double getValorP(){
-            return ValorP;
-        }
-        
-        public int CodigoP(){
-            return CodigoP;
-        }
-        
-        public void setCodigo(int codigoP){
-            this.CodigoP = codigoP;
-        }
-
-        public void ExibirP()
-        {
-            //MessageBox.Show($"Nome: {NomeP}\nInformações: {InforP}\nCategoria: {CategoriaP}\nValor: {ValorP}\nCódigo: {CodigoP}");
-        }
-
+    public void setNome(String nomep){
+        this.p_NomeP = nomep;
+    }
     
+    public String getInforP() {
+        return p_InforP;
+    }
+    
+    public void setInforP(String infoP){
+        this.p_InforP = infoP;
+    }
+    
+    public String getCategoriaP() {
+        return p_CategoriaP;
+    }
+    
+    public void setCategoriaP(String categoria){
+        this.p_CategoriaP = categoria;
+    }
+    
+    public double getValorP() {
+        return p_ValorP;
+    }
+    
+    public void setValorP(double valorP){
+        this.p_ValorP = valorP;
+    }
+
+    public int getCodigoP() {
+        return p_CodigoP;
+    }
+
+    public void setCodigo(int codigoP) {
+        this.p_CodigoP = codigoP;
+    }
+
+    public void setQuantidade(int quantidadeP) {
+        this.p_Quantidade = quantidadeP;
+    }
+
+    public int getQuantidade() {
+        return p_Quantidade;
+    }
+
+    public void setQuantCreditar(double quant) {
+        this.p_Quantidade += quant;
+    }
+
+    public void setQuantDebitar(double quant) {
+        this.p_Quantidade -= quant;
+    }
+    
+
+    public void ExibirP() {
+        //MessageBox.Show($"Nome: {NomeP}\nInformações: {InforP}\nCategoria: {CategoriaP}\nValor: {ValorP}\nCódigo: {CodigoP}");
+    }
+
 }

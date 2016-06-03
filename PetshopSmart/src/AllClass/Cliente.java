@@ -13,51 +13,71 @@ import javax.swing.JOptionPane;
  */
 public class Cliente {
     
-        String NomeC;
-        String Cpf;
-        String Telefone;
-        double Saldo;
+        String cNomeC;
+        String cCpf;
+        String cTelefone;
+        String cSexoC;
+        double cSaldo;
 
-        public Cliente (String nome, String cpf, String telefone){
-            this.NomeC = nome;
-            this.Cpf = cpf;
-            this.Telefone = telefone;
-            JOptionPane.showMessageDialog(null,"Mome: " + this.NomeC + "\nCPF: " + this.Cpf + "\nTelefone: " + this.Telefone + "\nSaldo: " + this.Saldo); //test
+        public Cliente (String nome, String cpf, String telefone, String sexo){
+            this.cNomeC = nome;
+            this.cCpf = cpf;
+            this.cTelefone = telefone;
+            this.cSexoC = sexo;
+            this.cSaldo = 0;
         }
         
         public Cliente(){
         }
-        
+              
         public String getNome()
         {
-            return NomeC;
+            return cNomeC;
+        }
+        
+        public void setNome(String nomes){
+            cNomeC = nomes;
         }
         
         public String getCpf(){
-            return Cpf;
+            return cCpf;
+        }
+        public void setCpf(String cpfs){
+            this.cCpf = cpfs;
         }
         
         public String getTelefone(){
-            return Telefone;
+            return cTelefone;
+        }
+        
+        public void setTelefone(String telefones){
+            this.cTelefone = telefones;
         }
         
         public double getSaldo(){
-            return Saldo;
+            return cSaldo;
         }
         
-        public void setSaldoMais (double valor)
-        {
-            Saldo += valor;
-        }
-
-        public void setSaldoMenos (double valor)
-        {
-            Saldo -= valor;
+        public void setSaldoCreditar(double valor){
+            this.cSaldo += valor;
         }
         
+        public void setSaldoDebitar(double valor){
+            this.cSaldo -= valor;
+        }
+        
+        public String getSexo(){
+            return cSexoC;
+        }
+        
+        public void setSexo(String sexos){
+            this.cSexoC = sexos;
+        }
+        
+               
         public void getExibirCliente()
         {
-            JOptionPane.showMessageDialog(null,"Nome: " + NomeC + "\nCPF: " + Cpf + "\nTelefone: " + Telefone + "\nSaldo {Saldo}" + Saldo); 
+            JOptionPane.showMessageDialog(null,"Nome: " + cNomeC + "\nCPF: " + cCpf + "\nTelefone: " + cTelefone + "\nSaldo {Saldo}" + cSaldo); 
         }
     
 }
