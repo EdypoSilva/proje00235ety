@@ -67,7 +67,7 @@ public class TelaAlterarAnimal extends javax.swing.JInternalFrame {
         jLabel12 = new javax.swing.JLabel();
         jBuscarID = new javax.swing.JButton();
         jDesktopPane1 = new javax.swing.JDesktopPane();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
 
         setClosable(true);
         setMaximizable(true);
@@ -116,6 +116,7 @@ public class TelaAlterarAnimal extends javax.swing.JInternalFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jCPFAnimalAlterar.setText("");
         getContentPane().add(jCPFAnimalAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 100, 140, -1));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 770, 20));
         getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 740, 10));
@@ -242,11 +243,11 @@ public class TelaAlterarAnimal extends javax.swing.JInternalFrame {
 
         jDesktopPane1.setPreferredSize(new java.awt.Dimension(900, 600));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Felly\\Desktop\\Programas Java\\PetshopSmart\\IMG\\TelaCadastro.png")); // NOI18N
-        jLabel2.setToolTipText(""); // NOI18N
-        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jDesktopPane1.add(jLabel2);
-        jLabel2.setBounds(0, 0, 900, 600);
+        jLabel13.setIcon(new javax.swing.ImageIcon("C:\\Users\\Felly\\Desktop\\Programas Java\\PetshopSmart\\IMG\\TelaCadastro.png")); // NOI18N
+        jLabel13.setToolTipText(""); // NOI18N
+        jLabel13.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jDesktopPane1.add(jLabel13);
+        jLabel13.setBounds(0, 0, 900, 600);
 
         getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -437,7 +438,7 @@ public class TelaAlterarAnimal extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

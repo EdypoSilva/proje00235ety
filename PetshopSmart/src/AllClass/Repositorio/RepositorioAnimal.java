@@ -103,10 +103,10 @@ public class RepositorioAnimal {
     public static boolean setExibirAnimal(String cpf, String posicao) {
         vAnimal = false;
         exibirAnimal = null;
-        Animal x = new Animal();
+        
         try {
             for (int i = 0; i < BancoListAnimal.size(); i++) {
-                x = BancoListAnimal.get(i);
+                Animal x = BancoListAnimal.get(i);
                 String testCodigo = Integer.toString(x.getCodigoA());
                 if (x.getCpf().equals(cpf) && testCodigo.equals(posicao)) {
                     int posi = Integer.parseInt(posicao);
@@ -118,5 +118,18 @@ public class RepositorioAnimal {
         }
         return vAnimal;
     }
-
+    
+    public static int getQuantAnimalCliente(String cpf){
+        int contAni=0;
+        
+        for (int i=0; i<BancoListAnimal.size(); i++){
+            Animal x = BancoListAnimal.get(i);
+            if (x.getCpf().equals(cpf)){
+                contAni++;
+            }
+        }
+        return contAni;
+        //Retorna a quantidade de animal do determinado cliente
+    }
+    
 }

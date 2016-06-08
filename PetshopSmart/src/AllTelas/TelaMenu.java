@@ -55,9 +55,7 @@ public class TelaMenu extends javax.swing.JFrame {
         RealizarCompra = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jListar = new javax.swing.JMenu();
-        jListarCliente = new javax.swing.JMenu();
-        jLCliente = new javax.swing.JMenuItem();
-        jLClienteeAnimal = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
         jLAnimal = new javax.swing.JMenuItem();
         jLProduto = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -195,20 +193,13 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jListar.setText("Relatórios");
 
-        jListarCliente.setText("Cliente");
-
-        jLCliente.setText("Cliente");
-        jLCliente.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem6.setText("Cliente");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jLClienteActionPerformed(evt);
+                jMenuItem6ActionPerformed(evt);
             }
         });
-        jListarCliente.add(jLCliente);
-
-        jLClienteeAnimal.setText("Cliente&Animal");
-        jListarCliente.add(jLClienteeAnimal);
-
-        jListar.add(jListarCliente);
+        jListar.add(jMenuItem6);
 
         jLAnimal.setText("Animal");
         jListar.add(jLAnimal);
@@ -332,16 +323,6 @@ public class TelaMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCClienteActionPerformed
 
-    private void jLClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLClienteActionPerformed
-
-        String Consult;
-
-        Consult = JOptionPane.showInputDialog("Digite o CPF do Cliente a consultar: ");
-        RepositorioCliente.setConsultaCliente(Consult);
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLClienteActionPerformed
-
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -406,7 +387,7 @@ public class TelaMenu extends javax.swing.JFrame {
             removeCompra.setVisible(true);
             Suporte.setMudarStatus(true);
         }
-        
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
@@ -445,6 +426,18 @@ public class TelaMenu extends javax.swing.JFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jAProdutoActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+
+        if (!Suporte.verificandoTela) {
+            TelaRelatorioCliente relatorioCliente = new TelaRelatorioCliente();
+            areaPrincipal.add(relatorioCliente);
+            relatorioCliente.setVisible(true);
+            Suporte.setMudarStatus(true);
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -503,11 +496,8 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jInserirCliente;
     private javax.swing.JMenu jInserirProduto;
     private javax.swing.JMenuItem jLAnimal;
-    private javax.swing.JMenuItem jLCliente;
-    private javax.swing.JMenuItem jLClienteeAnimal;
     private javax.swing.JMenuItem jLProduto;
     private javax.swing.JMenu jListar;
-    private javax.swing.JMenu jListarCliente;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -516,6 +506,7 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenu jSair;
     // End of variables declaration//GEN-END:variables
 }

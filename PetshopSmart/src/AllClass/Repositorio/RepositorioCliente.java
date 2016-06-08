@@ -108,25 +108,6 @@ public class RepositorioCliente {
         //Remover Compra
     }
 
-    public static void setConsultaCliente(String cpf) {
-        CPFativo = false;
-        clientes = null;
-        Cliente c = new Cliente();
-        for (int i = 0; i < BancoListCliente.size(); i++) {
-            c = BancoListCliente.get(i);
-            if (c.getCpf().equals(cpf)) {
-                clientes = BancoListCliente.get(i);
-                JOptionPane.showMessageDialog(null, "Nome: " + clientes.getNome() + "\nCPF: " + clientes.getCpf() + "\nTelefone: " + clientes.getTelefone() + "\nValor: " + clientes.getSaldo());
-                CPFativo = true;
-            }
-        }
-        if (!CPFativo) {
-            JOptionPane.showMessageDialog(null, "CPF não encontrado!!!");
-        }
-        clientes = null;
-        //Consulta Cliente
-    }
-
     public static boolean setValidarCPF(String cpf) {
         CPFativo = false;
         clientes = null;

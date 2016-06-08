@@ -79,7 +79,7 @@ public class TelaAlterarCliente extends javax.swing.JInternalFrame {
 
         jLabel5.setFont(new java.awt.Font("Stencil Std", 1, 60)); // NOI18N
         jLabel5.setText("Alterar CLIENTE");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 629, 49));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 629, 49));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("Dados do Cliente:");
