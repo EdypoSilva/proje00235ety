@@ -7,6 +7,7 @@ package AllTelas;
 
 import AllClass.Repositorio.RepositorioProduto;
 import AllSuporte.Suporte;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 /**
@@ -149,25 +150,69 @@ public class TelaCadastroProduto extends javax.swing.JInternalFrame {
         String valorp;
         String codigoP;
         int quantidade;
+        String cErros = "!-Preenchimento Incorreto-!\n";
+        boolean testCadastro = true;
 
         nomep = jNomeCadastroP.getText();
         inforp = jInformacoes.getText();
+        valorp = jValor.getText();
+        codigoP = jCodigoProduto.getText();
+        quantidade = (Integer) jQuant.getValue();
+        String xquantidade = Integer.toString(quantidade);
+
+        if (RepositorioProduto.getValidarProduto(codigoP)) {
+            cErros += "* Código Existente\n";
+            testCadastro = false;
+        }
+
+        if ("".equals(codigoP)) {
+            cErros += "* Codigo do Produto\n";
+            testCadastro = false;
+        }
+
+        if ("".equals(nomep)) {
+            cErros += "* Nome\n";
+            testCadastro = false;
+        }
+
+        int convertIdade = Integer.parseInt(valorp);
+        if ("".equals(valorp) && convertIdade <= 0) {
+            cErros += "* Valor\n";
+        }
+
+        if ("".equals(inforp)) {
+            cErros += "* Informações\n";
+            testCadastro = false;
+        }
+
         if (jButtonAdulto.isSelected() == true) {
             categoria = jButtonAdulto.getText();
             if (jButtonInfantil.isSelected() == true) {
                 categoria += " e " + jButtonInfantil.getText();
             }
-        }else{
-            categoria += jButtonInfantil.getText();
+        }
+        if (jButtonAdulto.isSelected() == false) {
+            if (jButtonInfantil.isSelected() == true) {
+                categoria += jButtonInfantil.getText();
+            }
         }
 
-        valorp = jValor.getText();
-        codigoP = jCodigoProduto.getText();
-        quantidade = (Integer) jQuant.getValue();
-        String xquantidade = Integer.toString(quantidade);
-        if (RepositorioProduto.setCadastroProduto(nomep, inforp, categoria, valorp, codigoP, xquantidade)) {
-            JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!!!");
-            this.dispose();
+        if ("".equals(categoria)) {
+            testCadastro = false;
+            cErros += "* Categoria\n";
+        }
+
+        if (testCadastro) {
+            if (RepositorioProduto.setCadastroProduto(nomep, inforp, categoria, valorp, codigoP, xquantidade)) {
+                JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!!!");
+                jNomeCadastroP.setText("");
+                jInformacoes.setText("");
+                jQuant.setValue(1);
+                jValor.setText("");
+                jCodigoProduto.setText("");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, cErros);
         }
 
         // TODO add your handling code here:

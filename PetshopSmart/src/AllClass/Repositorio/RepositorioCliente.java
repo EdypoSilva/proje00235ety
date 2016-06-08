@@ -59,8 +59,11 @@ public class RepositorioCliente {
             for (int i = 0; i < BancoListCliente.size(); i++) {
                 c = BancoListCliente.get(i);
                 if (c.getCpf().equals(cpf)) {
-                    BancoListCliente.remove(i);
-                    clienteRemovido = true;
+                    int resp = JOptionPane.showConfirmDialog(null, "Deseja Remover o Cliente?" + "\nNome: " + c.getNome() + "\nCPF: " + c.getCpf());
+                    if (resp == 0) {
+                        BancoListCliente.remove(i);
+                        clienteRemovido = true;
+                    }
                 } else {
                     JOptionPane.showMessageDialog(null, "!!!Cliente não existente!!!");
                 }

@@ -352,15 +352,14 @@ public class TelaAlterarAnimal extends javax.swing.JInternalFrame {
 
     private void jdeletAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jdeletAnimalActionPerformed
 
+        Object[] colunas = {"ID", "Nome", "Idade", "Cor", "Raça", "Sexo"};
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(colunas);
+        jTableAnimal.setModel(modelo);
         String cpf = jCPFAnimalAlterar.getText();
         String posicao = jidAnimal.getText();
 
         if (RepositorioAnimal.setDeletarAnimal(cpf, posicao)) {
-            Object[] colunas = {"ID", "Nome", "Idade", "Cor", "Raça", "Sexo"};
-            DefaultTableModel modelo = new DefaultTableModel();
-            modelo.setColumnIdentifiers(colunas);
-            jTableAnimal.setModel(modelo);
-
             if (BancoListAnimal.size() == 0) {
                 modelo.addRow(new String[]{"Sem Animais", null, null, null, null, null});
             } else {
@@ -410,8 +409,7 @@ public class TelaAlterarAnimal extends javax.swing.JInternalFrame {
             jIdadeAnimal.setText(Integer.toString(RepositorioAnimal.exibirAnimal.getIdade()));
             jCorAnimal.setText(RepositorioAnimal.exibirAnimal.getCor());
             jRacaAnimal.setText(RepositorioAnimal.exibirAnimal.getRaca());
-            
-            
+
             if (RepositorioAnimal.exibirAnimal.getSexo().equals("Macho")) {
                 jSexo1.setSelected(true);
                 //Homem

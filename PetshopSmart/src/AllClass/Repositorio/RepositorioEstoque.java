@@ -7,6 +7,7 @@ package AllClass.Repositorio;
 
 import AllClass.Produto;
 import static BancoDeDados.BancoPetshop.BancoListProduto;
+import javax.swing.JOptionPane;
 
 public class RepositorioEstoque {
 
@@ -24,8 +25,11 @@ public class RepositorioEstoque {
                 if (p.getCodigoP() == (cod)) {
                     p.setQuantCreditar(quant);
                     p.setValorP(valor);
-                    BancoListProduto.set(i, p);
-                    statusEstoque = true;
+                    int resp = JOptionPane.showConfirmDialog(null, "Confirma Alteração?");
+                    if (resp == 0) {
+                        BancoListProduto.set(i, p);
+                        statusEstoque = true;
+                    }
                 }
             }
         } catch (Exception e) {
@@ -46,8 +50,11 @@ public class RepositorioEstoque {
                 if (p.getCodigoP() == (cod)) {
                     p.setQuantDebitar(quant);
                     p.setValorP(valor);
-                    BancoListProduto.set(i, p);
-                    statusEstoque = true;
+                    int resp = JOptionPane.showConfirmDialog(null, "Deseja Remover Quantidade?");
+                    if (resp == 0) {
+                        BancoListProduto.set(i, p);
+                        statusEstoque = true;
+                    }
                 }
             }
         } catch (Exception e) {
@@ -74,6 +81,7 @@ public class RepositorioEstoque {
             statusEstoque = true;
         }
         return statusEstoque;
+        //
     }
 
     public static boolean getCancelCompra(String xcod, String xquant) {
@@ -94,6 +102,7 @@ public class RepositorioEstoque {
             statusEstoque = true;
         }
         return statusEstoque;
+        //Apenas remove uma compra (Ligaçao com a class RepositorioCompra
     }
 
 }

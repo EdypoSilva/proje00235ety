@@ -6,15 +6,12 @@
 package AllTelas;
 
 import AllClass.Usuario;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import BancoDeDados.ConectaBd;
-import javax.swing.JOptionPane;
 
 
 /**

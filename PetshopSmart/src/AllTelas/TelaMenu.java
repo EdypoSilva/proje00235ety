@@ -202,6 +202,11 @@ public class TelaMenu extends javax.swing.JFrame {
         jListar.add(jMenuItem6);
 
         jLAnimal.setText("Animal");
+        jLAnimal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jLAnimalActionPerformed(evt);
+            }
+        });
         jListar.add(jLAnimal);
 
         jLProduto.setText("Produto");
@@ -438,6 +443,17 @@ public class TelaMenu extends javax.swing.JFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jLAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLAnimalActionPerformed
+
+        if (!Suporte.verificandoTela) {
+            TelaRelatorioAnimal relatorioAnimal = new TelaRelatorioAnimal();
+            areaPrincipal.add(relatorioAnimal);
+            relatorioAnimal.setVisible(true);
+            Suporte.setMudarStatus(true);
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLAnimalActionPerformed
 
     /**
      * @param args the command line arguments

@@ -199,8 +199,7 @@ public class TelaAlterarCliente extends javax.swing.JInternalFrame {
             if (RepositorioCliente.clientes.getSexo().equals("Homem")) {
                 jSexo1C.setSelected(true);
                 //Homem
-            }
-            else{
+            } else {
                 jSexo2C.setSelected(true);
             }
 
@@ -270,11 +269,14 @@ public class TelaAlterarCliente extends javax.swing.JInternalFrame {
             nome = jNomeAlterarC.getText();
             telefone = jTelefoneAlterar.getText();
             String cpf = jCPFDonoAlterar.getText();
-            if (RepositorioCliente.setAlterarCliente(nome, cpf, telefone, sexoC)) {
-                JOptionPane.showMessageDialog(null, "Cliente alterado com sucesso!!!");
+            int resp = JOptionPane.showConfirmDialog(null, "Confirma Alteração?");
+            if (resp == 0) {
+                if (RepositorioCliente.setAlterarCliente(nome, cpf, telefone, sexoC)) {
+                    JOptionPane.showMessageDialog(null, "Cliente alterado com sucesso!!!");
+                } else {
+                    JOptionPane.showMessageDialog(null, cErros);
+                }
             }
-        } else {
-            JOptionPane.showMessageDialog(null, cErros);
         }
 
 //Alterar
