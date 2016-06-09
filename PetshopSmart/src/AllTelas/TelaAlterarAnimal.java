@@ -393,8 +393,10 @@ public class TelaAlterarAnimal extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTableAnimalMouseClicked
 
     private void jBuscarIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscarIDActionPerformed
-        String cpf = jCPFAnimalAlterar.getText();
-        String posicao = jidAnimal.getText();
+        String cpf; 
+        String posicao;
+        cpf = jCPFAnimalAlterar.getText();
+        posicao = jidAnimal.getText();
 
         if (RepositorioAnimal.setExibirAnimal(cpf, posicao)) {
             jBuscarID.setEnabled(false);

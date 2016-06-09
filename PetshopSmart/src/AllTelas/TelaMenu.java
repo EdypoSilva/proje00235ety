@@ -374,13 +374,6 @@ public class TelaMenu extends javax.swing.JFrame {
 
     private void jLProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLProdutoActionPerformed
 
-        if (!Suporte.verificandoTela) {
-            TelaRelatorioCompra a_relatorioCompra = new TelaRelatorioCompra();
-            areaPrincipal.add(a_relatorioCompra);
-            a_relatorioCompra.setVisible(true);
-            Suporte.setMudarStatus(true);
-        }
-
         // TODO add your handling code here:
     }//GEN-LAST:event_jLProdutoActionPerformed
 

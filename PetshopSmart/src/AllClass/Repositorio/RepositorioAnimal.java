@@ -105,13 +105,14 @@ public class RepositorioAnimal {
 
     public static boolean setExibirAnimal(String cpf, String posicao) {
         vAnimal = false;
+        Animal x = new Animal();
         exibirAnimal = null;
 
         try {
+            int convertPosicao = Integer.parseInt(posicao);
             for (int i = 0; i < BancoListAnimal.size(); i++) {
-                Animal x = BancoListAnimal.get(i);
-                String testCodigo = Integer.toString(x.getCodigoA());
-                if (x.getCpf().equals(cpf) && testCodigo.equals(posicao)) {
+                x = BancoListAnimal.get(i);
+                if (x.getCpf().equals(cpf) && x.getCodigoA() == convertPosicao) {
                     JOptionPane.showMessageDialog(null, "OK!!!");
                     int posi = Integer.parseInt(posicao);
                     exibirAnimal = BancoListAnimal.get(posi);

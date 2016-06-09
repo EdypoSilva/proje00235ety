@@ -10,9 +10,6 @@ import java.util.ArrayList;
 
 public class BancoPetshop {
 
-    
-    
-    
     public static ArrayList<Cliente> BancoListCliente = new ArrayList();
     
     public static ArrayList<Animal> BancoListAnimal = new ArrayList();
