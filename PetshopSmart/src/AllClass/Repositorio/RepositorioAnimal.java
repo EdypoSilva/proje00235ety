@@ -16,16 +16,14 @@ public class RepositorioAnimal {
     public static Animal exibirAnimal;
     private static int contAnimal;
 
-    public static boolean setCadastroAnimal(String nome, String idade, String cor, String raca, String sexo, String cpf) {
+    public static boolean setCadastroAnimal(Animal cadAnimal) {
         boolean result = false;
         try {
-            String codigo = Integer.toString(contAnimal);
-            Animal animais = new Animal(nome, idade, cor, raca, sexo, cpf, codigo);
-            BancoPetshop.BancoListAnimal.add(animais);
+            cadAnimal.setCodigoA(contAnimal);
+            BancoPetshop.BancoListAnimal.add(cadAnimal);
             result = true;
             contAnimal++;
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro!!!");
             result = false;
         }
         return result;
@@ -45,53 +43,35 @@ public class RepositorioAnimal {
         //Verifica se existe alguma animal do cliente (Caso deseje remover um cliente)
     }
 
-    public static boolean setAlterarAnimal(String alt_Nome, String alt_idade, String alt_Cor, String alt_Raca, String alt_Sexo, String cpf, String posi) {
+    public static boolean setAlterarAnimal(Animal cadAnimal, int posi) {
         vAnimal = false;
-        Animal a = new Animal();
         Animal x = new Animal();
         try {
             for (int i = 0; i < BancoListAnimal.size(); i++) {
                 x = BancoListAnimal.get(i);
-                String testCodigo = Integer.toString(x.getCodigoA());
-                if (x.getCpf().equals(cpf) && testCodigo.equals(posi)) {
-                    int posicao = Integer.parseInt(posi);
-                    int converIdade = Integer.parseInt(alt_idade);
-                    if (!alt_Nome.equals("") && !alt_Cor.equals("") && !alt_Raca.equals("") && !alt_Sexo.equals("")) {
-                        a.setNome(alt_Nome);
-                        a.setIdade(converIdade);
-                        a.setCor(alt_Cor);
-                        a.setRaca(alt_Raca);
-                        a.setSexo(alt_Sexo);
-                        a.setCpf(cpf);
-                        a.setCodigoA(posicao);
-                        int resp = JOptionPane.showConfirmDialog(null, "Confirma Alteração?");
-                        if (resp == 0) {
-                            BancoListAnimal.set(posicao, a);
-                            vAnimal = true;
-                        }
-                    }
+                if (x.getCpf().equals(cadAnimal.getCpf()) && posi == x.getCodigoA()) {
+                    cadAnimal.setCodigoA(posi);
+                    BancoListAnimal.set(i, cadAnimal);
+                    vAnimal = true;
                 }
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro!!!");
             vAnimal = false;
         }
         return vAnimal;
         //Alterando Animal
     }
 
-    public static boolean setDeletarAnimal(String cpf, String posicao) {
+    public static boolean setDeletarAnimal(String cpf, int posicao) {
         vAnimal = false;
         Animal x = new Animal();
         try {
             for (int i = 0; i < BancoListAnimal.size(); i++) {
                 x = BancoListAnimal.get(i);
-                String testCodigo = Integer.toString(x.getCodigoA());
-                if (x.getCpf().equals(cpf) && testCodigo.equals(posicao)) {
-                    int posi = Integer.parseInt(posicao);
+                if (x.getCpf().equals(cpf) && posicao==x.getCodigoA()) {
                     int resp = JOptionPane.showConfirmDialog(null, "Deseja Remover o Animal?" + "\nNome: " + x.getNomeA() + "\nRaça: " + x.getRaca());
                     if (resp == 0) {
-                        BancoListAnimal.remove(posi);
+                        BancoListAnimal.remove(i);
                         vAnimal = true;
                     }
                 }
@@ -103,26 +83,21 @@ public class RepositorioAnimal {
         return vAnimal;
     }
 
-    public static boolean setExibirAnimal(String cpf, String posicao) {
+    public static Animal setExibirAnimal(String cpf, int posicao) {
         vAnimal = false;
-        Animal x = new Animal();
-        exibirAnimal = null;
-
+        Animal xAnimal = new Animal();
+        
         try {
-            int convertPosicao = Integer.parseInt(posicao);
             for (int i = 0; i < BancoListAnimal.size(); i++) {
-                x = BancoListAnimal.get(i);
-                if (x.getCpf().equals(cpf) && x.getCodigoA() == convertPosicao) {
-                    JOptionPane.showMessageDialog(null, "OK!!!");
-                    int posi = Integer.parseInt(posicao);
-                    exibirAnimal = BancoListAnimal.get(posi);
-                    vAnimal = true;
+                Animal x = BancoListAnimal.get(i);
+                if (x.getCpf().equals(cpf) && x.getCodigoA() == posicao) {
+                    xAnimal = x;
                 }
             }
         } catch (Exception e) {
-            vAnimal = false;
+            JOptionPane.showMessageDialog(null,"Erro!!!");
         }
-        return vAnimal;
+        return xAnimal;
     }
 
     public static int getQuantAnimalCliente(String cpf) {

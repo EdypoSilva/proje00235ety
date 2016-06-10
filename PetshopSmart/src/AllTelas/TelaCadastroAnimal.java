@@ -5,8 +5,9 @@
  */
 package AllTelas;
 
-import AllClass.Repositorio.RepositorioAnimal;
+import AllClass.Animal;
 import AllClass.Repositorio.RepositorioCliente;
+import AllControlador.ControladorAnimal;
 import AllSuporte.Suporte;
 import javax.swing.JOptionPane;
 
@@ -195,7 +196,7 @@ public class TelaCadastroAnimal extends javax.swing.JInternalFrame {
         String cpf;
 
         cpf = jCPFDono.getText();
-        if (RepositorioCliente.setValidarCPF(cpf)){
+        if (RepositorioCliente.setValidarCPF(cpf)) {
             jNomeCadastroA.setEnabled(true);
             jIdade.setEnabled(true);
             jCor.setEnabled(true);
@@ -206,9 +207,8 @@ public class TelaCadastroAnimal extends javax.swing.JInternalFrame {
             NomeActive.setEditable(false);
             jCPFDono.setEditable(false);
             NomeActive.setText(RepositorioCliente.clientes.getNome());
-           
-        }
-        else {
+
+        } else {
             NomeActive.setText("");
         }
         // TODO add your handling code here:
@@ -221,29 +221,46 @@ public class TelaCadastroAnimal extends javax.swing.JInternalFrame {
 
     private void jCadastrarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastrarAActionPerformed
 
-        String nome;
-        String idade;
-        String cor;
-        String raca;
+        String nome = "";
+        String idade = "";
+        String cor = "";
+        String raca = "";
         String sexo = "";
-        String cpf;
+        String cpf = "";
+        int xidade = 0;
+        int codigo = 0;
+        String resultCadastroAnimal = "";
 
         cpf = jCPFDono.getText();
         nome = jNomeCadastroA.getText();
         idade = jIdade.getText();
+        xidade = Integer.parseInt(idade);
         cor = jCor.getText();
         raca = jRaca.getText();
 
-        if (jSexo1.isSelected()== true ){
+        if (jSexo1.isSelected() == true) {
             sexo = jSexo1.getText();
         }
-        if (jSexo2.isSelected()== true ){
+        if (jSexo2.isSelected() == true) {
             sexo = jSexo2.getText();
         }
 
-        if (RepositorioAnimal.setCadastroAnimal(nome, idade, cor, raca, sexo, cpf)){
-            JOptionPane.showMessageDialog(null, "Animal cadastrado com sucesso!!!");
-            this.dispose();
+        Animal xAnimal = new Animal(nome, xidade, cor, raca, sexo, cpf, codigo);
+
+        resultCadastroAnimal = ControladorAnimal.cadastroAnimal(xAnimal);
+        if (resultCadastroAnimal.equals("1")) {
+            jNomeCadastroA.setEnabled(false);
+            jIdade.setEnabled(false);
+            jCor.setEnabled(false);
+            jRaca.setEnabled(false);
+            jSexo1.setEnabled(false);
+            jSexo2.setEnabled(false);
+            jCadastrarA.setEnabled(false);
+            NomeActive.setEditable(true);
+            jCPFDono.setEditable(true);
+            NomeActive.setText("");
+        } else {
+            JOptionPane.showMessageDialog(null, resultCadastroAnimal);
         }
 
         // TODO add your handling code here:

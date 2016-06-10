@@ -6,8 +6,8 @@
 package AllTelas;
 
 import AllClass.Animal;
-import AllClass.Repositorio.RepositorioAnimal;
 import AllClass.Repositorio.RepositorioCliente;
+import AllControlador.ControladorAnimal;
 import AllSuporte.Suporte;
 import static BancoDeDados.BancoPetshop.BancoListAnimal;
 import javax.swing.table.DefaultTableModel;
@@ -263,7 +263,8 @@ public class TelaAlterarAnimal extends javax.swing.JInternalFrame {
         modelo.setColumnIdentifiers(colunas);
         jTableAnimal.setModel(modelo);
 
-        if (RepositorioCliente.setValidarCPF(cpf) && RepositorioAnimal.getExisteClienteAnimal(cpf)) {
+        String testExisteAnimal = ControladorAnimal.existeClienteAnimal(cpf);
+        if (RepositorioCliente.setValidarCPF(cpf) && testExisteAnimal.equals("1")) {
             jCPFAnimalAlterar.setEditable(false);
             jTableAnimal.setEnabled(true);
             jConsultAnimalAlterar.setEnabled(false);
@@ -299,12 +300,16 @@ public class TelaAlterarAnimal extends javax.swing.JInternalFrame {
         String cor = "";
         String raca = "";
         String cpf = "";
-        String posicao = "";
+        int posicao;
+        int xidade = 0;
+        int codigo = 0;
+        String resultCadastroAnimal = "";
 
-        posicao = jidAnimal.getText();
+        posicao = Integer.parseInt(jidAnimal.getText());
         cpf = jCPFAnimalAlterar.getText();
         nome = jNomeAnimal.getText();
         idade = jIdadeAnimal.getText();
+        xidade = Integer.parseInt(idade);
         cor = jCorAnimal.getText();
         raca = jRacaAnimal.getText();
 
@@ -315,7 +320,10 @@ public class TelaAlterarAnimal extends javax.swing.JInternalFrame {
             jsexo = jSexo2.getText();
         }
 
-        if (RepositorioAnimal.setAlterarAnimal(nome, idade, cor, raca, jsexo, cpf, posicao)) {
+        Animal xAnimal = new Animal(nome, xidade, cor, raca, jsexo, cpf, codigo);
+        resultCadastroAnimal = ControladorAnimal.alterarAnimal(xAnimal, posicao);
+
+        if (resultCadastroAnimal.equals("1")) {
 
             Object[] colunas = {"ID", "Nome", "Idade", "Cor", "Raça", "Sexo"};
             DefaultTableModel modelo = new DefaultTableModel();
@@ -357,26 +365,22 @@ public class TelaAlterarAnimal extends javax.swing.JInternalFrame {
         modelo.setColumnIdentifiers(colunas);
         jTableAnimal.setModel(modelo);
         String cpf = jCPFAnimalAlterar.getText();
-        String posicao = jidAnimal.getText();
+        int posicao = Integer.parseInt(jidAnimal.getText());
 
-        if (RepositorioAnimal.setDeletarAnimal(cpf, posicao)) {
-            if (BancoListAnimal.size() == 0) {
-                modelo.addRow(new String[]{"Sem Animais", null, null, null, null, null});
-            } else {
-                for (int i = 0; i < BancoListAnimal.size(); i++) {
-                    Animal a = BancoListAnimal.get(i);
-                    if (a.getCpf().equals(cpf)) {
-                        modelo.addRow(new String[]{a.getCodigoA() + "",
-                            a.getNomeA(),
-                            a.getIdade() + "",
-                            a.getCor(),
-                            a.getRaca(),
-                            a.getSexo()});
-                    }
+        String resultCadastroAnimal = ControladorAnimal.deletarAnimal(cpf, posicao);
+        if (resultCadastroAnimal.equals("1")) {
+            for (int i = 0; i < BancoListAnimal.size(); i++) {
+                Animal a = BancoListAnimal.get(i);
+                if (a.getCpf().equals(cpf)) {
+                    modelo.addRow(new String[]{a.getCodigoA() + "",
+                        a.getNomeA(),
+                        a.getIdade() + "",
+                        a.getCor(),
+                        a.getRaca(),
+                        a.getSexo()});
                 }
-                jTableAnimal.setModel(modelo);
             }
-
+            jTableAnimal.setModel(modelo);
         }
 
         //Deletar
@@ -393,12 +397,12 @@ public class TelaAlterarAnimal extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTableAnimalMouseClicked
 
     private void jBuscarIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscarIDActionPerformed
-        String cpf; 
-        String posicao;
+        String cpf;
+        int posicao;
         cpf = jCPFAnimalAlterar.getText();
-        posicao = jidAnimal.getText();
+        posicao = Integer.parseInt(jidAnimal.getText());
 
-        if (RepositorioAnimal.setExibirAnimal(cpf, posicao)) {
+        Animal exibirAnimal = ControladorAnimal.exibirAnimal(cpf, posicao);
             jBuscarID.setEnabled(false);
             jidAnimal.setEnabled(false);
             jSexo1.setEnabled(true);
@@ -407,18 +411,18 @@ public class TelaAlterarAnimal extends javax.swing.JInternalFrame {
             jIdadeAnimal.setEditable(true);
             jCorAnimal.setEditable(true);
             jRacaAnimal.setEditable(true);
-            jNomeAnimal.setText(RepositorioAnimal.exibirAnimal.getNomeA());
-            jIdadeAnimal.setText(Integer.toString(RepositorioAnimal.exibirAnimal.getIdade()));
-            jCorAnimal.setText(RepositorioAnimal.exibirAnimal.getCor());
-            jRacaAnimal.setText(RepositorioAnimal.exibirAnimal.getRaca());
+            jNomeAnimal.setText(exibirAnimal.getNomeA());
+            jIdadeAnimal.setText(Integer.toString(exibirAnimal.getIdade()));
+            jCorAnimal.setText(exibirAnimal.getCor());
+            jRacaAnimal.setText(exibirAnimal.getRaca());
 
-            if (RepositorioAnimal.exibirAnimal.getSexo().equals("Macho")) {
+            if (exibirAnimal.getSexo().equals("Macho")) {
                 jSexo1.setSelected(true);
                 //Homem
             } else {
                 jSexo2.setSelected(true);
             }
-        }
+        
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jBuscarIDActionPerformed

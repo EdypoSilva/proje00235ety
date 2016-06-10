@@ -21,15 +21,15 @@ public class Animal {
         String a_cpf;
 
 
-        public Animal (String nome, String idade, String cor, String raca, String sexo, String cpf, String codigo)
+        public Animal (String nome, int idade, String cor, String raca, String sexo, String cpf, int codigo)
         {
             this.a_NomeA = nome;
-            this.a_Idade = Integer.parseInt(idade);
+            this.a_Idade = idade;
             this.a_Cor = cor;
             this.a_Raca = raca;
             this.a_Sexo = sexo;
             this.a_cpf = cpf;
-            this.a_CodigoA = Integer.parseInt(codigo);
+            this.a_CodigoA = codigo;
        
         }
         

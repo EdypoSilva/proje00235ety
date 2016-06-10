@@ -15,7 +15,6 @@ public class ControladorAnimal {
     private static boolean testVariaveis;
     private static boolean testConsultaAnimal;
     private static String erros;
-    private Animal exibirAnimal;
 
     private static String validarCamposAnimal(Animal cadAnimal) {
         testVariaveis = true;
@@ -42,7 +41,7 @@ public class ControladorAnimal {
         }
 
         if (cadAnimal.getSexo().equals("")) {
-            erros += "* Sexo\n";
+            erros += "* Selecione o Sexo\n";
             testVariaveis = false;
         }
 
@@ -62,7 +61,6 @@ public class ControladorAnimal {
 
         if (testVariaveis) {
             erros = "1";
-            //RepositorioAnimal.setCadastroAnimal(cadAnimal);
         }
 
         return erros;
@@ -72,11 +70,11 @@ public class ControladorAnimal {
         String testDados = validarCamposAnimal(cadAnimal);
         if (testDados.equals("1")) {
             testDados = "1";
-            /*if(RepositorioAnimal.setCadastroAnimal(cadAnimal)){
-                JOptionPane.showMessageDialog(null,"Cadastrado Com Sucesso!!!");
-            }else{
+            if (RepositorioAnimal.setCadastroAnimal(cadAnimal)) {
+                JOptionPane.showMessageDialog(null, "Cadastrado Com Sucesso!!!");
+            } else {
                 JOptionPane.showMessageDialog(null, "Não Cadastrado!!!");
-            }*/
+            }
         }
         return testDados;
     }
@@ -103,16 +101,16 @@ public class ControladorAnimal {
     public static String alterarAnimal(Animal cadAnimal, int posi) {
         String testDados = validarCamposAnimal(cadAnimal);
         if (testDados.equals("1") && (posi >= 0)) {
-            int resp = JOptionPane.showConfirmDialog(null, "Deseja Remover o Animal?");
+            int resp = JOptionPane.showConfirmDialog(null, "Deseja Alterar o Animal?");
             if (resp == 0) {
-            /*if (RepositorioAnimal.setAlterarAnimal(Animal cadAnimal, int posi)) {
-                JOptionPane.showMessageDialog(null,"Alterado Com Sucesso!!!");
-            }else{
-                 JOptionPane.showMessageDialog(null, "Não Alterado!!!");
-                   }*/
+                if (RepositorioAnimal.setAlterarAnimal(cadAnimal, posi)) {
+                    JOptionPane.showMessageDialog(null, "Alterado Com Sucesso!!!");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Não Alterado!!!");
+                }
             }
         }
-        
+
         return testDados;
     }
 
@@ -121,15 +119,39 @@ public class ControladorAnimal {
         if (!cpf.equals("") && (posi >= 0)) {
             int resp = JOptionPane.showConfirmDialog(null, "Deseja Remover o Animal?");
             if (resp == 0) {
-                /*if(RepositorioAnimal.setDeletarAnimal(cpf, posi)){
-                JOptionPane.showMessageDialog(null,"Removido Com Sucesso!!!");
-            }else{
-                JOptionPane.showMessageDialog(null,"Erro, Não Removido!!!");
-            }*/
+                if (RepositorioAnimal.setDeletarAnimal(cpf, posi)) {
+                    erros="1";
+                    JOptionPane.showMessageDialog(null, "Removido Com Sucesso!!!");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Erro, Não Removido!!!");
+                }
             }
         }
-        
+
         return erros;
+    }
+
+    public static Animal exibirAnimal(String cpf, int posi) {
+        Animal xAnimal = new Animal();
+
+        if (!cpf.equals("") && (posi >= 0)) {
+            xAnimal=RepositorioAnimal.setExibirAnimal(cpf, posi); 
+        }else{
+            JOptionPane.showMessageDialog(null,"Dados, invalidos!!!");
+        }
+         
+        return xAnimal;
+    }
+
+    public static int quantAnimalCliente(String cpf) {
+        int quantAnimal = 0;
+        if (!cpf.equals("")) {
+            quantAnimal = RepositorioAnimal.getQuantAnimalCliente(cpf);
+        } else {
+            JOptionPane.showMessageDialog(null, "Dados, invalidos!!!");
+        }
+
+        return quantAnimal;
     }
 
 }
