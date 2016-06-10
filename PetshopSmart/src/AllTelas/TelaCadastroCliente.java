@@ -5,6 +5,7 @@
  */
 package AllTelas;
 
+import AllClass.Cliente;
 import AllClass.Repositorio.RepositorioCliente;
 import AllSuporte.Suporte;
 import AllSuporte.ValidarDados;
@@ -14,12 +15,13 @@ import javax.swing.JOptionPane;
  *
  * @author Felly
  */
-public class TelaCadastroCliente extends javax.swing.JInternalFrame {  
+public class TelaCadastroCliente extends javax.swing.JInternalFrame {
+
     /**
      * Creates new form TelCadastroCliente
      */
     public TelaCadastroCliente() {
-         //Organiza os Componentes no Formulario
+        //Organiza os Componentes no Formulario
         initComponents();
     }
 
@@ -158,59 +160,31 @@ public class TelaCadastroCliente extends javax.swing.JInternalFrame {
 
     private void jCadastrarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastrarCActionPerformed
 
-        String nome ="";
-        String cpf;
-        String telefone;
-        String sexoC="";
-        String cErros="!-Preenchimento Incorreto-!\n";
-        boolean testCadastro = true;
-
+        String nome="";
+        String cpf="";
+        String telefone="";
+        String sexoC = "";
         
+        nome = jNomeCadastroC.getText();
         cpf = jCPF.getText();
-        if (!AllSuporte.ValidarDados.validarCpf(cpf)){
-            testCadastro = false;
-            cErros += "* CPF\n";
-            jCPF.setText("");
-        }
-        
-        if (RepositorioCliente.setValidarCPF(jCPF.getText())){
-            cErros += "* CPF Existente\n";
-            testCadastro = false;
-        }
-
-
-        if ("".equals(jNomeCadastroC.getText())){
-            cErros += "* Nome\n";
-            testCadastro = false;
-        }
-        
         telefone = jTelefone.getText();
-        if (!ValidarDados.validarTelefone(telefone)){
-            cErros += "* Telefone\n"; 
-            testCadastro = false;
-        }
-        
-        if (jSexo1C.isSelected()== true ){
+        if (jSexo1C.isSelected() == true) {
             sexoC = jSexo1C.getText();
         }
-        if (jSexo2C.isSelected()== true ){
+        if (jSexo2C.isSelected() == true) {
             sexoC = jSexo2C.getText();
         }
 
-        if ("".equals(sexoC)){
-            testCadastro = false;
-            cErros += "* Selecione o Sexo\n"; 
-        }
-
-        if (testCadastro){
-            nome = jNomeCadastroC.getText();
-            if (RepositorioCliente.setCadastroCliente(nome, cpf, telefone, sexoC)){
-                this.dispose();
-            }
+        Cliente c = new Cliente(nome, cpf, telefone, sexoC);
+        String testCadastroCliente = AllControlador.ControladorCliente.cadastroCliente(c);
+        if(testCadastroCliente.equals("1")){
+            jNomeCadastroC.setText("");
+            jCPF.setText("");
+            jTelefone.setText("");
         }else{
-            JOptionPane.showMessageDialog(null,cErros);
+            JOptionPane.showMessageDialog(null, testCadastroCliente);
         }
-
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_jCadastrarCActionPerformed
 
@@ -223,7 +197,6 @@ public class TelaCadastroCliente extends javax.swing.JInternalFrame {
         Suporte.setMudarStatus(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_formInternalFrameClosed
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

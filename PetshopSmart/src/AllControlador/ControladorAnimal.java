@@ -69,7 +69,6 @@ public class ControladorAnimal {
     public static String cadastroAnimal(Animal cadAnimal) {
         String testDados = validarCamposAnimal(cadAnimal);
         if (testDados.equals("1")) {
-            testDados = "1";
             if (RepositorioAnimal.setCadastroAnimal(cadAnimal)) {
                 JOptionPane.showMessageDialog(null, "Cadastrado Com Sucesso!!!");
             } else {

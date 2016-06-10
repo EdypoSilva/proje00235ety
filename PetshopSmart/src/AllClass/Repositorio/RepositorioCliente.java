@@ -6,6 +6,7 @@
 package AllClass.Repositorio;
 
 import AllClass.Cliente;
+import AllSuporte.ValidarDados;
 import static BancoDeDados.BancoPetshop.BancoListCliente;
 import javax.swing.JOptionPane;
 
@@ -16,15 +17,12 @@ public class RepositorioCliente {
     public static Cliente clientes;
     private static boolean statusDebitar;
 
-    public static boolean setCadastroCliente(String nome, String cpf, String telefone, String sexoC) {
+    public static boolean setCadastroCliente(Cliente c) {
         boolean result = false;
         try {
-            Cliente c = new Cliente(nome, cpf, telefone, sexoC);
             BancoListCliente.add(c);
-            JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!!!");
             result = true;
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro, cliente não cadastrado!!!");
             result = false;
         }
         return result;
@@ -124,6 +122,24 @@ public class RepositorioCliente {
         }
         return CPFativo;
         //validando CPF
+    }
+
+    public static boolean setLimparCPF(String cpf) {
+
+        if (ValidarDados.validarCpf(cpf)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public static boolean setLimparTelefone(String telefone) {
+
+        if (ValidarDados.validarTelefone(telefone)) {
+            return true;
+        }
+
+        return false;
     }
 
     //FimClass

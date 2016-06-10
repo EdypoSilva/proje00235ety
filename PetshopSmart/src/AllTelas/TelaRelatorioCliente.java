@@ -228,7 +228,7 @@ public class TelaRelatorioCliente extends javax.swing.JInternalFrame {
                         c.getTelefone(),
                         c.getSexo(),
                         c.getSaldo() + "",
-                        RepositorioAnimal.getQuantAnimalCliente(cpf) + ""});
+                        AllControlador.ControladorAnimal.quantAnimalCliente(cpf) + ""});
                 }
             }
             jTableRelatorioCliente.setModel(modeloTableCliente);
@@ -292,7 +292,7 @@ public class TelaRelatorioCliente extends javax.swing.JInternalFrame {
                     c.getTelefone(),
                     c.getSexo(),
                     c.getSaldo() + "",
-                    RepositorioAnimal.getQuantAnimalCliente(c.getCpf()) + ""});
+                    AllControlador.ControladorAnimal.quantAnimalCliente(c.getCpf()) + ""});
             }
             jTableRelatorioCliente.setModel(modeloTableCliente);
         }

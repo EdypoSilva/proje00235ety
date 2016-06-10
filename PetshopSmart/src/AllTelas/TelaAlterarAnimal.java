@@ -258,10 +258,6 @@ public class TelaAlterarAnimal extends javax.swing.JInternalFrame {
 
         String cpf;
         cpf = jCPFAnimalAlterar.getText();
-        Object[] colunas = {"ID", "Nome", "Idade", "Cor", "Raça", "Sexo"};
-        DefaultTableModel modelo = new DefaultTableModel();
-        modelo.setColumnIdentifiers(colunas);
-        jTableAnimal.setModel(modelo);
 
         String testExisteAnimal = ControladorAnimal.existeClienteAnimal(cpf);
         if (RepositorioCliente.setValidarCPF(cpf) && testExisteAnimal.equals("1")) {
@@ -272,7 +268,12 @@ public class TelaAlterarAnimal extends javax.swing.JInternalFrame {
             jdeletAnimal.setEnabled(true);
             jidAnimal.setEditable(true);
             jBuscarID.setEnabled(true);
+            jidAnimal.setEnabled(true);
 
+            Object[] colunas = {"ID", "Nome", "Idade", "Cor", "Raça", "Sexo"};
+            DefaultTableModel modelo = new DefaultTableModel();
+            modelo.setColumnIdentifiers(colunas);
+            jTableAnimal.setModel(modelo);
             for (int i = 0; i < BancoListAnimal.size(); i++) {
                 Animal a = BancoListAnimal.get(i);
                 if (a.getCpf().equals(cpf)) {
@@ -285,15 +286,13 @@ public class TelaAlterarAnimal extends javax.swing.JInternalFrame {
                 }
             }
             jTableAnimal.setModel(modelo);
-
-        } else {
-            modelo.addRow(new String[]{"Sem Animais", null, null, null, null, null});
         }
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jConsultAnimalAlterarActionPerformed
 
     private void jAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAlterarActionPerformed
+
         String jsexo = "";
         String nome = "";
         String idade = "";
@@ -303,7 +302,6 @@ public class TelaAlterarAnimal extends javax.swing.JInternalFrame {
         int posicao;
         int xidade = 0;
         int codigo = 0;
-        String resultCadastroAnimal = "";
 
         posicao = Integer.parseInt(jidAnimal.getText());
         cpf = jCPFAnimalAlterar.getText();
@@ -321,32 +319,50 @@ public class TelaAlterarAnimal extends javax.swing.JInternalFrame {
         }
 
         Animal xAnimal = new Animal(nome, xidade, cor, raca, jsexo, cpf, codigo);
-        resultCadastroAnimal = ControladorAnimal.alterarAnimal(xAnimal, posicao);
+        String resultAlterarAnimal = ControladorAnimal.alterarAnimal(xAnimal, posicao);
 
-        if (resultCadastroAnimal.equals("1")) {
+        if (resultAlterarAnimal.equals("1")) {
+            jConsultAnimalAlterar.setEnabled(false);
+            jidAnimal.setEditable(false);
+            jidAnimal.setText("");
+            jSexo1.setEnabled(false);
+            jSexo2.setEnabled(false);
+            jCPFAnimalAlterar.setEditable(true);
+            jTableAnimal.setEnabled(false);
+            jConsultAnimalAlterar.setEnabled(true);
+            jAlterar.setEnabled(false);
+            jdeletAnimal.setEnabled(false);
+            jidAnimal.setEditable(true);
+            jBuscarID.setEnabled(false);
+            jNomeAnimal.setEditable(false);
+            jNomeAnimal.setText("");
+            jCorAnimal.setEditable(false);
+            jCorAnimal.setText("");
+            jIdadeAnimal.setEditable(false);
+            jIdadeAnimal.setText("");
+            jRacaAnimal.setEditable(false);
+            jRacaAnimal.setText("");
+        }
 
-            Object[] colunas = {"ID", "Nome", "Idade", "Cor", "Raça", "Sexo"};
-            DefaultTableModel modelo = new DefaultTableModel();
-            modelo.setColumnIdentifiers(colunas);
-            jTableAnimal.setModel(modelo);
-
-            if (BancoListAnimal.size() == 0) {
-                modelo.addRow(new String[]{"Sem Animais", null, null, null, null, null});
-            } else {
-                for (int i = 0; i < BancoListAnimal.size(); i++) {
-                    Animal a = BancoListAnimal.get(i);
-                    if (a.getCpf().equals(cpf)) {
-                        modelo.addRow(new String[]{a.getCodigoA() + "",
-                            a.getNomeA(),
-                            a.getIdade() + "",
-                            a.getCor(),
-                            a.getRaca(),
-                            a.getSexo()});
-                    }
+        Object[] colunas = {"ID", "Nome", "Idade", "Cor", "Raça", "Sexo"};
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(colunas);
+        jTableAnimal.setModel(modelo);
+        if (BancoListAnimal.size() == 0) {
+            modelo.addRow(new String[]{"Sem Animais", null, null, null, null, null});
+        } else {
+            for (int i = 0; i < BancoListAnimal.size(); i++) {
+                Animal a = BancoListAnimal.get(i);
+                if (a.getCpf().equals(cpf)) {
+                    modelo.addRow(new String[]{a.getCodigoA() + "",
+                        a.getNomeA(),
+                        a.getIdade() + "",
+                        a.getCor(),
+                        a.getRaca(),
+                        a.getSexo()});
                 }
-                jTableAnimal.setModel(modelo);
             }
-
+            jTableAnimal.setModel(modelo);
         }
 
         //AlterarAnimal
@@ -360,15 +376,36 @@ public class TelaAlterarAnimal extends javax.swing.JInternalFrame {
 
     private void jdeletAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jdeletAnimalActionPerformed
 
-        Object[] colunas = {"ID", "Nome", "Idade", "Cor", "Raça", "Sexo"};
-        DefaultTableModel modelo = new DefaultTableModel();
-        modelo.setColumnIdentifiers(colunas);
-        jTableAnimal.setModel(modelo);
         String cpf = jCPFAnimalAlterar.getText();
         int posicao = Integer.parseInt(jidAnimal.getText());
 
         String resultCadastroAnimal = ControladorAnimal.deletarAnimal(cpf, posicao);
         if (resultCadastroAnimal.equals("1")) {
+            jConsultAnimalAlterar.setEnabled(false);
+            jidAnimal.setEditable(false);
+            jidAnimal.setText("");
+            jSexo1.setEnabled(false);
+            jSexo2.setEnabled(false);
+            jCPFAnimalAlterar.setEditable(true);
+            jTableAnimal.setEnabled(false);
+            jConsultAnimalAlterar.setEnabled(true);
+            jAlterar.setEnabled(false);
+            jdeletAnimal.setEnabled(false);
+            jidAnimal.setEditable(true);
+            jBuscarID.setEnabled(false);
+            jNomeAnimal.setEditable(false);
+            jNomeAnimal.setText("");
+            jCorAnimal.setEditable(false);
+            jCorAnimal.setText("");
+            jIdadeAnimal.setEditable(false);
+            jIdadeAnimal.setText("");
+            jRacaAnimal.setEditable(false);
+            jRacaAnimal.setText("");
+            
+            Object[] colunas = {"ID", "Nome", "Idade", "Cor", "Raça", "Sexo"};
+            DefaultTableModel modelo = new DefaultTableModel();
+            modelo.setColumnIdentifiers(colunas);
+            jTableAnimal.setModel(modelo);
             for (int i = 0; i < BancoListAnimal.size(); i++) {
                 Animal a = BancoListAnimal.get(i);
                 if (a.getCpf().equals(cpf)) {
@@ -403,26 +440,25 @@ public class TelaAlterarAnimal extends javax.swing.JInternalFrame {
         posicao = Integer.parseInt(jidAnimal.getText());
 
         Animal exibirAnimal = ControladorAnimal.exibirAnimal(cpf, posicao);
-            jBuscarID.setEnabled(false);
-            jidAnimal.setEnabled(false);
-            jSexo1.setEnabled(true);
-            jSexo2.setEnabled(true);
-            jNomeAnimal.setEditable(true);
-            jIdadeAnimal.setEditable(true);
-            jCorAnimal.setEditable(true);
-            jRacaAnimal.setEditable(true);
-            jNomeAnimal.setText(exibirAnimal.getNomeA());
-            jIdadeAnimal.setText(Integer.toString(exibirAnimal.getIdade()));
-            jCorAnimal.setText(exibirAnimal.getCor());
-            jRacaAnimal.setText(exibirAnimal.getRaca());
+        jBuscarID.setEnabled(false);
+        jidAnimal.setEnabled(false);
+        jSexo1.setEnabled(true);
+        jSexo2.setEnabled(true);
+        jNomeAnimal.setEditable(true);
+        jIdadeAnimal.setEditable(true);
+        jCorAnimal.setEditable(true);
+        jRacaAnimal.setEditable(true);
+        jNomeAnimal.setText(exibirAnimal.getNomeA());
+        jIdadeAnimal.setText(Integer.toString(exibirAnimal.getIdade()));
+        jCorAnimal.setText(exibirAnimal.getCor());
+        jRacaAnimal.setText(exibirAnimal.getRaca());
 
-            if (exibirAnimal.getSexo().equals("Macho")) {
-                jSexo1.setSelected(true);
-                //Homem
-            } else {
-                jSexo2.setSelected(true);
-            }
-        
+        if (exibirAnimal.getSexo().equals("Macho")) {
+            jSexo1.setSelected(true);
+            //Homem
+        } else {
+            jSexo2.setSelected(true);
+        }
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jBuscarIDActionPerformed
