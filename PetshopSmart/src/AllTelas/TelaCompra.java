@@ -5,11 +5,12 @@
  */
 package AllTelas;
 
+import AllClass.Cliente;
 import AllClass.Compra;
-import AllClass.Repositorio.RepositorioCliente;
 import AllClass.Repositorio.RepositorioCompra;
 import AllClass.Repositorio.RepositorioEstoque;
 import AllClass.Repositorio.RepositorioProduto;
+import AllControlador.ControladorCliente;
 import AllSuporte.Suporte;
 import static BancoDeDados.BancoPetshop.BancoListCompra;
 import javax.swing.JOptionPane;
@@ -203,21 +204,20 @@ public class TelaCompra extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jConsultClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsultClienteActionPerformed
-        String cpf;
 
-        Object[] colunas = {"ID Compra", "Nome", "Valor", "ID Produto", "Data&Hora", "Quantidade"};
-        DefaultTableModel modelo = new DefaultTableModel();
-        modelo.setColumnIdentifiers(colunas);
-        jTableCompra.setModel(modelo);
-
-        cpf = jCPFDono.getText();
-        if (RepositorioCliente.setValidarCPF(cpf)) {
+        String cpf = jCPFDono.getText();
+        Cliente x = ControladorCliente.exibirCliente(cpf);
+        if (x != null) {
             jCodigoConsultar.setEnabled(true);
             jConsultar.setEnabled(true);
             jNomeCLiente.setEnabled(true);
             jCPFDono.setEditable(false);
-            jNomeCLiente.setText(RepositorioCliente.clientes.getNome());
+            jNomeCLiente.setText(x.getNome());
 
+            Object[] colunas = {"ID Compra", "Nome", "Valor", "ID Produto", "Data&Hora", "Quantidade"};
+            DefaultTableModel modelo = new DefaultTableModel();
+            modelo.setColumnIdentifiers(colunas);
+            jTableCompra.setModel(modelo);
             for (int i = 0; i < BancoListCompra.size(); i++) {
                 Compra c = BancoListCompra.get(i);
                 if (c.getCPFCompra().equals(cpf)) {
@@ -257,68 +257,66 @@ public class TelaCompra extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jConsultarActionPerformed
 
     private void jComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComprarActionPerformed
-        
-        Object[] colunas = {"ID Compra", "Nome", "Valor", "ID Produto", "Data&Hora", "Quantidade"};
-        DefaultTableModel modelo = new DefaultTableModel();
-        modelo.setColumnIdentifiers(colunas);
-        jTableCompra.setModel(modelo);
 
         String nomeCompra = "";
-        String valorCompra = "";
-        String codigoProduto = "";
+        double valorCompra;
+        int codigoProduto;
         String dataCompra = "";
         String CPFCompra = "";
         double convertValor;
         int quant;
         String cpf = jCPFDono.getText();
-        String codigo;
-        codigo = jCodigoConsultar.getText();
+        String codigoPro = jCodigoConsultar.getText();
         quant = (Integer) jQuantCompra.getValue();
         String xquant = Integer.toString(quant);
-        if (RepositorioProduto.getValidarCompra(codigo, xquant)) {
+        if (RepositorioProduto.getValidarCompra(codigoPro, xquant)) {
             nomeCompra = jNomeComprar.getText();
             convertValor = quant * Double.parseDouble(jValorComprar.getText());
-            valorCompra = Double.toString(convertValor);
-            codigoProduto = jCodigoConsultar.getText();
+            codigoProduto = Integer.parseInt(jCodigoConsultar.getText());
             dataCompra = Suporte.getDateTime();
             CPFCompra = jCPFDono.getText();
             String quantidade = Integer.toString(quant);
-            if (RepositorioCompra.setCompra(nomeCompra, valorCompra, codigoProduto, dataCompra, CPFCompra, quantidade)) {
-                RepositorioCliente.setCreditar(CPFCompra, valorCompra);
-                RepositorioEstoque.getRemoveQuantCompra(codigo, xquant);
+            Compra x = new Compra(nomeCompra, convertValor, codigoProduto, 0, dataCompra, CPFCompra, quant);
+
+            String testCompra = AllControlador.ControladorCompra.comprarProduto(x);
+            if (testCompra.equals("1")) {
+                ControladorCliente.creditarCliente(CPFCompra, convertValor);
+                RepositorioEstoque.getRemoveQuantCompra(codigoPro, xquant);
             } else {
-                JOptionPane.showMessageDialog(null, "Quantidade indisponível no estoque");
+                JOptionPane.showMessageDialog(null, testCompra);
             }
 
-            jTableCompra.setModel(modelo);
             jCodigoConsultar.setText("");
             jNomeComprar.setText("");
             jValorComprar.setText("");
             jQuantCompra.setValue(1);
-            
             jNomeComprar.setEnabled(false);
             jValorComprar.setEnabled(false);
             jComprar.setEnabled(false);
             jQuantCompra.setEnabled(false);
             jCodigoConsultar.setEditable(true);
-            
+
         } else {
-            JOptionPane.showMessageDialog(null, "Quantidade insuficiente no estoque!!!"); 
+            JOptionPane.showMessageDialog(null, "Quantidade insuficiente no estoque!!!");
         }
 
-        for (int i = 0; i < BancoListCompra.size(); i++) {
-                Compra c = BancoListCompra.get(i);
-                if (c.getCPFCompra().equals(cpf)) {
-                    modelo.addRow(new String[]{c.getCodigoCompra() + "",
-                        c.getNomeCompra(),
-                        c.getValorCompra() + "",
-                        c.getCodigoProduto() + "",
-                        c.getDataCompra(),
-                        c.getQuantidadeC() + ""});
-                }
-            }
+        Object[] colunas = {"ID Compra", "Nome", "Valor", "ID Produto", "Data&Hora", "Quantidade"};
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(colunas);
         jTableCompra.setModel(modelo);
-        
+        for (int i = 0; i < BancoListCompra.size(); i++) {
+            Compra c = BancoListCompra.get(i);
+            if (c.getCPFCompra().equals(cpf)) {
+                modelo.addRow(new String[]{c.getCodigoCompra() + "",
+                    c.getNomeCompra(),
+                    c.getValorCompra() + "",
+                    c.getCodigoProduto() + "",
+                    c.getDataCompra(),
+                    c.getQuantidadeC() + ""});
+            }
+        }
+        jTableCompra.setModel(modelo);
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jComprarActionPerformed
 

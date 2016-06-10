@@ -103,12 +103,32 @@ public class ControladorCliente {
         if (valor > 0) {
             if (RepositorioCliente.setCreditar(cpf, valor)) {
                 testCreditar = "1";
-            }else{
-                testCreditar= "Erro, cliente não alterado!!!";
+            } else {
+                testCreditar = "Erro, Valor não Creditado!!!";
             }
         }
-//FaltaCompletar
+
         return testCreditar;
     }
+
+     public static Cliente exibirCliente (String cpf){
+        
+        Cliente c = RepositorioCliente.getExibirCliente(cpf);
+        
+        return c;
+    }
+    
+    public static String validarCPF(String cpf) {
+        String testClienteExiste = "";
+        if (RepositorioCliente.setValidarCPF(cpf)){
+            testClienteExiste = "1";
+        }else{
+            testClienteExiste = "Erro, Cliente não Existe";
+        }
+        
+        return testClienteExiste;
+    }
+    
+    
 
 }

@@ -6,8 +6,9 @@
 package AllTelas;
 
 import AllClass.Compra;
-import AllClass.Repositorio.RepositorioCliente;
 import AllClass.Repositorio.RepositorioCompra;
+import AllControlador.ControladorCliente;
+import AllControlador.ControladorCompra;
 import AllSuporte.Suporte;
 import static BancoDeDados.BancoPetshop.BancoListCompra;
 import javax.swing.table.DefaultTableModel;
@@ -208,31 +209,28 @@ public class TelaCompraRemover extends javax.swing.JInternalFrame {
         String cpf;
         cpf = jCPFAnimalAlterar.getText();
 
-        Object[] colunas = {"ID Compra", "Nome", "Valor", "ID Produto", "Data&Hora", "Quantidade"};
-        DefaultTableModel modelo = new DefaultTableModel();
-        modelo.setColumnIdentifiers(colunas);
-        jTableRemoverCompra.setModel(modelo);
+        String testValidarCPFCliente = ControladorCliente.validarCPF(cpf);
+        String testCPFCompra = ControladorCompra.existeCPFCompra(cpf);
+        if (testValidarCPFCliente.equals("1") && testCPFCompra.equals("1")) {
+            jidCompra.setEditable(true);
+            jBuscarID.setEnabled(true);
 
-        if (RepositorioCliente.setValidarCPF(cpf)) {
-
-            if (!RepositorioCompra.getExisteClienteCompra(cpf)) {
-                modelo.addRow(new String[]{"Sem Compras", null, null, null, null, null});
-            } else {
-                for (int i = 0; i < BancoListCompra.size(); i++) {
-                    Compra c = BancoListCompra.get(i);
-                    if (c.getCPFCompra().equals(cpf)) {
-                        modelo.addRow(new String[]{c.getCodigoCompra() + "",
-                            c.getNomeCompra(),
-                            c.getValorCompra() + "",
-                            c.getCodigoProduto() + "",
-                            c.getDataCompra(),
-                            c.getQuantidadeC() + ""});
-                    }
+            Object[] colunas = {"ID Compra", "Nome", "Valor", "ID Produto", "Data&Hora", "Quantidade"};
+            DefaultTableModel modelo = new DefaultTableModel();
+            modelo.setColumnIdentifiers(colunas);
+            jTableRemoverCompra.setModel(modelo);
+            for (int i = 0; i < BancoListCompra.size(); i++) {
+                Compra c = BancoListCompra.get(i);
+                if (c.getCPFCompra().equals(cpf)) {
+                    modelo.addRow(new String[]{c.getCodigoCompra() + "",
+                        c.getNomeCompra(),
+                        c.getValorCompra() + "",
+                        c.getCodigoProduto() + "",
+                        c.getDataCompra(),
+                        c.getQuantidadeC() + ""});
                 }
-                jTableRemoverCompra.setModel(modelo);
-                jidCompra.setEditable(true);
-                jBuscarID.setEnabled(true);
             }
+            jTableRemoverCompra.setModel(modelo);
         }
 
         // TODO add your handling code here:
@@ -240,28 +238,24 @@ public class TelaCompraRemover extends javax.swing.JInternalFrame {
 
     private void jBuscarIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscarIDActionPerformed
         String cpf = jCPFAnimalAlterar.getText();
-        String posicao = jidCompra.getText();
-
-        if (RepositorioCompra.getExisteCompra(cpf, posicao)) {
+        int posicao = Integer.parseInt(jidCompra.getText());
+        Compra exibirCompra = ControladorCompra.exibirCompra(cpf, posicao);
+        if (exibirCompra != null) {
             jBuscarID.setEnabled(false);
             jidCompra.setEditable(false);
             jNomeCompra.setEditable(true);
             jidproduto.setEditable(true);
             jdeletCompra.setEnabled(true);
-            jNomeCompra.setText(RepositorioCompra.exibirCompra.getNomeCompra());
-            jidproduto.setText(RepositorioCompra.exibirCompra.getDataCompra());
+            jNomeCompra.setText(exibirCompra.getNomeCompra());
+            jidproduto.setText(exibirCompra.getDataCompra());
         }
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jBuscarIDActionPerformed
 
     private void jdeletCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jdeletCompraActionPerformed
-        Object[] colunas = {"ID Compra", "Nome", "Valor", "ID Produto", "Data&Hora", "Quantidade"};
-        DefaultTableModel modelo = new DefaultTableModel();
-        modelo.setColumnIdentifiers(colunas);
-        jTableRemoverCompra.setModel(modelo);
         String cpf = jCPFAnimalAlterar.getText();
-        String posicao = jidCompra.getText();
+        int posicao = Integer.parseInt(jidCompra.getText());
 
         if (RepositorioCompra.setRemoverCompra(cpf, posicao)) {
             jNomeCompra.setEditable(false);
@@ -272,7 +266,11 @@ public class TelaCompraRemover extends javax.swing.JInternalFrame {
             jidCompra.setEditable(true);
             jBuscarID.setEnabled(true);
         }
-
+        
+        Object[] colunas = {"ID Compra", "Nome", "Valor", "ID Produto", "Data&Hora", "Quantidade"};
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(colunas);
+        jTableRemoverCompra.setModel(modelo);
         for (int i = 0; i < BancoListCompra.size(); i++) {
             Compra c = BancoListCompra.get(i);
             if (c.getCPFCompra().equals(cpf)) {

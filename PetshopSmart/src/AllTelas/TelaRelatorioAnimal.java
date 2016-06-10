@@ -8,6 +8,8 @@ package AllTelas;
 import AllClass.Animal;
 import AllClass.Repositorio.RepositorioAnimal;
 import AllClass.Repositorio.RepositorioCliente;
+import AllControlador.ControladorAnimal;
+import AllControlador.ControladorCliente;
 import AllSuporte.Suporte;
 import static BancoDeDados.BancoPetshop.BancoListAnimal;
 import javax.swing.table.DefaultTableModel;
@@ -198,8 +200,10 @@ public class TelaRelatorioAnimal extends javax.swing.JInternalFrame {
         modelo.setColumnIdentifiers(colunas);
         jTableRelatorioAnimal.setModel(modelo);
 
-        if (RepositorioCliente.setValidarCPF(cpf) && RepositorioAnimal.getExisteClienteAnimal(cpf)) {
-
+        
+        String testExisteAnimal = ControladorAnimal.existeClienteAnimal(cpf);
+        String testValidarCPF = ControladorCliente.validarCPF(cpf);
+        if (testValidarCPF.equals("1") && testExisteAnimal.equals("1")) {
             for (int i = 0; i < BancoListAnimal.size(); i++) {
                 Animal a = BancoListAnimal.get(i);
                 if (a.getCpf().equals(cpf)) {

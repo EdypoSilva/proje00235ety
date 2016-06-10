@@ -8,13 +8,11 @@ package AllClass.Repositorio;
 import AllClass.Cliente;
 import AllSuporte.ValidarDados;
 import static BancoDeDados.BancoPetshop.BancoListCliente;
-import javax.swing.JOptionPane;
 
 public class RepositorioCliente {
 
     public static boolean CPFativo = false;
     public static boolean clienteAlterado = false;
-    public static Cliente clientes;
     private static boolean statusDebitar;
 
     public static boolean setCadastroCliente(Cliente c) {
@@ -84,10 +82,9 @@ public class RepositorioCliente {
         //Adicionar Compra
     }
 
-    public static boolean setDebitar(String cpf, String xvalor) {
+    public static boolean setDebitar(String cpf, double valor) {
         statusDebitar = false;
         try {
-            double valor = Double.parseDouble(xvalor);
             Cliente c = new Cliente();
             for (int i = 0; i < BancoListCliente.size(); i++) {
                 c = BancoListCliente.get(i);
@@ -111,21 +108,16 @@ public class RepositorioCliente {
                 exbCliente=x;
             }
         }
-        
         return exbCliente;
     }
     
-    
-    
-    
     public static boolean setValidarCPF(String cpf) {
         CPFativo = false;
-        clientes = null;
+        Cliente clientes;
         Cliente c = new Cliente();
         for (int i = 0; i < BancoListCliente.size(); i++) {
             c = BancoListCliente.get(i);
             if (c.getCpf().equals(cpf)) {
-                clientes = BancoListCliente.get(i);
                 CPFativo = true;
             }
         }
@@ -134,14 +126,11 @@ public class RepositorioCliente {
     }
 
     public static boolean setLimparCPF(String cpf) {
-
         if (ValidarDados.validarCpf(cpf)) {
             return true;
         }
-
         return false;
     }
 
-   
     //FimClass
 }

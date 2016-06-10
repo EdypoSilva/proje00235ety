@@ -6,8 +6,7 @@
 package AllTelas;
 
 import AllClass.Cliente;
-import AllClass.Repositorio.RepositorioAnimal;
-import AllClass.Repositorio.RepositorioCliente;
+import AllControlador.ControladorCliente;
 import AllSuporte.Suporte;
 import static BancoDeDados.BancoPetshop.BancoListCliente;
 import javax.swing.table.DefaultTableModel;
@@ -219,7 +218,8 @@ public class TelaRelatorioCliente extends javax.swing.JInternalFrame {
         modeloTableCliente.setColumnIdentifiers(colunas);
         jTableRelatorioCliente.setModel(modeloTableCliente);
 
-        if (RepositorioCliente.setValidarCPF(cpf)) {
+        String testValidarCPF = ControladorCliente.validarCPF(cpf);
+        if (testValidarCPF.equals("1")) {
             for (int i = 0; i < BancoListCliente.size(); i++) {
                 Cliente c = BancoListCliente.get(i);
                 if (c.getCpf().equals(cpf)) {

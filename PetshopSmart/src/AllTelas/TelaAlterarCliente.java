@@ -6,9 +6,8 @@
 package AllTelas;
 
 import AllClass.Cliente;
-import AllClass.Repositorio.RepositorioCliente;
+import AllControlador.ControladorCliente;
 import AllSuporte.Suporte;
-import AllSuporte.ValidarDados;
 import javax.swing.JOptionPane;
 
 /**
@@ -186,7 +185,8 @@ public class TelaAlterarCliente extends javax.swing.JInternalFrame {
 
         String cpf;
         cpf = jCPFDonoAlterar.getText();
-        if (RepositorioCliente.setValidarCPF(cpf)) {
+        Cliente x = ControladorCliente.exibirCliente(cpf);
+        if (x != null) {
             jNomeAlterarC.setEnabled(true);
             jTelefoneAlterar.setEnabled(true);
             jSexo1C.setEnabled(true);
@@ -194,17 +194,17 @@ public class TelaAlterarCliente extends javax.swing.JInternalFrame {
             jSexo2C.setEnabled(true);
             jRemoverC.setEnabled(true);
             jCPFDonoAlterar.setEnabled(false);
-            jNomeAlterarC.setText(RepositorioCliente.clientes.getNome());
-            jTelefoneAlterar.setText(RepositorioCliente.clientes.getTelefone());
+            jNomeAlterarC.setText(x.getNome());
+            jTelefoneAlterar.setText(x.getTelefone());
 
-            if (RepositorioCliente.clientes.getSexo().equals("Homem")) {
+            if (x.getSexo().equals("Homem")) {
                 jSexo1C.setSelected(true);
                 //Homem
             } else {
                 jSexo2C.setSelected(true);
             }
-
         }
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jConsultClienteAlterarActionPerformed
 
@@ -224,10 +224,9 @@ public class TelaAlterarCliente extends javax.swing.JInternalFrame {
             jSexo2C.setEnabled(false);
             jRemoverC.setEnabled(false);
             jCPFDonoAlterar.setEnabled(true);
-        }else{
-            JOptionPane.showMessageDialog(null,testRemoverCliente);
+        } else {
+            JOptionPane.showMessageDialog(null, testRemoverCliente);
         }
-       
 
         //Remover
         // TODO add your handling code here:
@@ -253,7 +252,6 @@ public class TelaAlterarCliente extends javax.swing.JInternalFrame {
         String telefone = "";
         String sexoC = "";
 
-        
         if (jSexo1C.isSelected() == true) {
             sexoC = jSexo1C.getText();
         }

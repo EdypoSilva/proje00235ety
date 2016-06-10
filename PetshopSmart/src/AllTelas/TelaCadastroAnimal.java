@@ -6,8 +6,10 @@
 package AllTelas;
 
 import AllClass.Animal;
+import AllClass.Cliente;
 import AllClass.Repositorio.RepositorioCliente;
 import AllControlador.ControladorAnimal;
+import AllControlador.ControladorCliente;
 import AllSuporte.Suporte;
 import javax.swing.JOptionPane;
 
@@ -196,7 +198,8 @@ public class TelaCadastroAnimal extends javax.swing.JInternalFrame {
         String cpf;
 
         cpf = jCPFDono.getText();
-        if (RepositorioCliente.setValidarCPF(cpf)) {
+        Cliente x = ControladorCliente.exibirCliente(cpf);
+        if (x != null) {
             jNomeCadastroA.setEnabled(true);
             jIdade.setEnabled(true);
             jCor.setEnabled(true);
@@ -206,8 +209,7 @@ public class TelaCadastroAnimal extends javax.swing.JInternalFrame {
             jCadastrarA.setEnabled(true);
             NomeActive.setEditable(false);
             jCPFDono.setEditable(false);
-            NomeActive.setText(RepositorioCliente.clientes.getNome());
-
+            NomeActive.setText(x.getNome());
         } else {
             NomeActive.setText("");
         }

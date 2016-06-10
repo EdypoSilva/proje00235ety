@@ -337,12 +337,7 @@ public class TelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu3MouseClicked
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        String cpf;
-
-        cpf = JOptionPane.showInputDialog("Digite o CPF do Cliente: ");
-        RepositorioCompra.setListarCompras(cpf);
-
-        // TODO add your handling code here:
+// TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed

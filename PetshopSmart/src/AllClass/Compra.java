@@ -1,7 +1,10 @@
 
 package AllClass;
 
-
+/**
+ *
+ * @author Felly
+ */
 public class Compra {
 String c_NomeCompra;
 double c_ValorCompra;
@@ -15,16 +18,23 @@ int c_Quantidade;
 public Compra(){
 }
 
-public Compra(String nomeCompra, String valorCompra, String c_codigoProduto,String codigoCompra, String dataCompra, String CPFcompra, int quantidade){
+public Compra(String nomeCompra, double valorCompra, int c_codigoProduto,int codigoCompra, String dataCompra, String CPFcompra, int quantidade){
     this.c_NomeCompra = nomeCompra;
-    this.c_ValorCompra = Double.parseDouble(valorCompra);
-    this.c_codigoProduto = Integer.parseInt(c_codigoProduto);
-    this.c_CodigoCompra = Integer.parseInt(codigoCompra);
+    this.c_ValorCompra = valorCompra;
+    this.c_codigoProduto = c_codigoProduto;
+    this.c_CodigoCompra = codigoCompra;
     this.c_DataCompra = dataCompra;
     this.c_CPFCompra = CPFcompra;
     this.c_Quantidade = quantidade;
 }
 
+public void setCodigoCompra(int codCompra){
+    this.c_CodigoCompra = codCompra;
+}
+
+public void setQuantidadec(int quantCompra){
+    this.c_Quantidade = quantCompra;
+}
 
 public String getNomeCompra(){
     return this.c_NomeCompra;

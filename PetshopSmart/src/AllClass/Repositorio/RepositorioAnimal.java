@@ -8,12 +8,10 @@ package AllClass.Repositorio;
 import AllClass.Animal;
 import BancoDeDados.BancoPetshop;
 import static BancoDeDados.BancoPetshop.BancoListAnimal;
-import javax.swing.JOptionPane;
 
 public class RepositorioAnimal {
 
     public static boolean vAnimal;
-    public static Animal exibirAnimal;
     private static int contAnimal;
 
     public static boolean setCadastroAnimal(Animal cadAnimal) {
@@ -68,16 +66,12 @@ public class RepositorioAnimal {
         try {
             for (int i = 0; i < BancoListAnimal.size(); i++) {
                 x = BancoListAnimal.get(i);
-                if (x.getCpf().equals(cpf) && posicao==x.getCodigoA()) {
-                    int resp = JOptionPane.showConfirmDialog(null, "Deseja Remover o Animal?" + "\nNome: " + x.getNomeA() + "\nRaça: " + x.getRaca());
-                    if (resp == 0) {
-                        BancoListAnimal.remove(i);
-                        vAnimal = true;
-                    }
+                if (x.getCpf().equals(cpf) && posicao == x.getCodigoA()) {
+                    BancoListAnimal.remove(i);
+                    vAnimal = true;
                 }
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro!!!");
             vAnimal = false;
         }
         return vAnimal;
@@ -86,7 +80,6 @@ public class RepositorioAnimal {
     public static Animal setExibirAnimal(String cpf, int posicao) {
         vAnimal = false;
         Animal xAnimal = new Animal();
-        
         try {
             for (int i = 0; i < BancoListAnimal.size(); i++) {
                 Animal x = BancoListAnimal.get(i);
@@ -95,14 +88,12 @@ public class RepositorioAnimal {
                 }
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"Erro!!!");
         }
         return xAnimal;
     }
 
     public static int getQuantAnimalCliente(String cpf) {
         int contAni = 0;
-
         for (int i = 0; i < BancoListAnimal.size(); i++) {
             Animal x = BancoListAnimal.get(i);
             if (x.getCpf().equals(cpf)) {

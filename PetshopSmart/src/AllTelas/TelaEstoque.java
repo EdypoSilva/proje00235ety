@@ -7,6 +7,7 @@ package AllTelas;
 
 import AllClass.Repositorio.RepositorioEstoque;
 import AllClass.Repositorio.RepositorioProduto;
+import AllControlador.ControladorEstoque;
 import AllSuporte.Suporte;
 
 /**
@@ -203,7 +204,7 @@ public class TelaEstoque extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
-
+        
         Suporte.setMudarStatus(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_formInternalFrameClosed
@@ -222,41 +223,37 @@ public class TelaEstoque extends javax.swing.JInternalFrame {
             jSalvarEstoque.setEnabled(true);
             jAdd.setEnabled(true);
             jRemover.setEnabled(true);
-
+            
             jNomeProduto.setText(RepositorioProduto.estoqueProduto.getNome());
             jQuantidade.setText(Integer.toString(RepositorioProduto.estoqueProduto.getQuantidade()));
             jValorAtual.setText(Double.toString(RepositorioProduto.estoqueProduto.getValorP()));
             jNovoValor.setText(Double.toString(RepositorioProduto.estoqueProduto.getValorP()));
-
+            
         }
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jBuscarProdutoActionPerformed
 
     private void jSalvarEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSalvarEstoqueActionPerformed
-        String codigo;
         int quantMais;
         int quantMenos;
-        String valor;
-        codigo = jCodigoProduto.getText();
+        int codigo = Integer.parseInt(jCodigoProduto.getText());
         quantMais = (Integer) jQuantMais.getValue();
         quantMenos = (Integer) jQuantMenos.getValue();
-        String xquantMais = Integer.toString(quantMais);
         String xquantMenos = Integer.toString(quantMenos);
-        valor = jNovoValor.getText();
-
-        if (quantMais > 0) {
-            if (RepositorioEstoque.getADDEstoque(codigo, xquantMais, valor)) {
-                jNomeProduto.setText(RepositorioProduto.estoqueProduto.getNome());
-                jQuantidade.setText(Integer.toString(RepositorioProduto.estoqueProduto.getQuantidade()));
-                jValorAtual.setText(Double.toString(RepositorioProduto.estoqueProduto.getValorP()));
-                jNovoValor.setText(Double.toString(RepositorioProduto.estoqueProduto.getValorP()));
-
-            }
+        double valor = Double.parseDouble(jNovoValor.getText());
+        
+        String testADDEstoque = ControladorEstoque.addEstoque(codigo, quantMais, valor);
+        if (testADDEstoque.equals("1")) {
+            jNomeProduto.setText(RepositorioProduto.estoqueProduto.getNome());
+            jQuantidade.setText(Integer.toString(RepositorioProduto.estoqueProduto.getQuantidade()));
+            jValorAtual.setText(Double.toString(RepositorioProduto.estoqueProduto.getValorP()));
+            jNovoValor.setText(Double.toString(RepositorioProduto.estoqueProduto.getValorP()));
         }
-
+        
+        String testRemoveEstoque = ControladorEstoque.removeEstoque(codigo, quantMenos, valor);
         if ((quantMenos > 0) && (quantMenos <= RepositorioProduto.estoqueProduto.getQuantidade())) {
-            if (RepositorioEstoque.getRemoveEstoque(codigo, xquantMenos, valor)) {
+            if (testRemoveEstoque.equals("1")) {
                 jNomeProduto.setText(RepositorioProduto.estoqueProduto.getNome());
                 jQuantidade.setText(Integer.toString(RepositorioProduto.estoqueProduto.getQuantidade()));
                 jValorAtual.setText(Double.toString(RepositorioProduto.estoqueProduto.getValorP()));
@@ -268,7 +265,7 @@ public class TelaEstoque extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jSalvarEstoqueActionPerformed
 
     private void jAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddActionPerformed
-
+        
         if (jAdd.isSelected() == true) {
             jQuantMais.setEnabled(true);
             jQuantMenos.setValue(0);
@@ -279,7 +276,7 @@ public class TelaEstoque extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jAddActionPerformed
 
     private void jRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRemoverActionPerformed
-       
+        
         if (jRemover.isSelected() == true) {
             jQuantMais.setEnabled(false);
             jQuantMenos.setEnabled(true);

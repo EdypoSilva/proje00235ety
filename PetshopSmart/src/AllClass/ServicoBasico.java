@@ -2,6 +2,10 @@ package AllClass;
 
 import javax.swing.JOptionPane;
 
+/**
+ *
+ * @author Felly
+ */
 public class ServicoBasico {
 
     String s_NomeS;

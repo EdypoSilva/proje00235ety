@@ -6,8 +6,8 @@
 package AllTelas;
 
 import AllClass.Animal;
-import AllClass.Repositorio.RepositorioCliente;
 import AllControlador.ControladorAnimal;
+import AllControlador.ControladorCliente;
 import AllSuporte.Suporte;
 import static BancoDeDados.BancoPetshop.BancoListAnimal;
 import javax.swing.table.DefaultTableModel;
@@ -260,7 +260,8 @@ public class TelaAlterarAnimal extends javax.swing.JInternalFrame {
         cpf = jCPFAnimalAlterar.getText();
 
         String testExisteAnimal = ControladorAnimal.existeClienteAnimal(cpf);
-        if (RepositorioCliente.setValidarCPF(cpf) && testExisteAnimal.equals("1")) {
+        String testValidarCPF = ControladorCliente.validarCPF(cpf);
+        if (testValidarCPF.equals("1") && testExisteAnimal.equals("1")) {
             jCPFAnimalAlterar.setEditable(false);
             jTableAnimal.setEnabled(true);
             jConsultAnimalAlterar.setEnabled(false);
