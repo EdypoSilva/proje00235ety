@@ -79,30 +79,21 @@ public class ControladorAnimal {
     }
 
     public static String existeClienteAnimal(String cpf) {
-        testConsultaAnimal = true;
         erros = "";
-        if (cpf.equals("")) {
-            testConsultaAnimal = false;
-            erros += "* CPF Incorreto";
+        if (RepositorioAnimal.getExisteClienteAnimal(cpf)) {
+            erros = "1";
+        } else {
+            erros = "* CPF Não Existe";
         }
-
-        if (testConsultaAnimal) {
-            if (RepositorioAnimal.getExisteClienteAnimal(cpf)) {
-                erros = "1";
-            } else {
-                erros = "* CPF Não Existe";
-            }
-        }
-
         return erros;
     }
 
-    public static String alterarAnimal(Animal cadAnimal, int posi) {
-        String testDados = validarCamposAnimal(cadAnimal);
+    public static String alterarAnimal(Animal altAnimal, int posi) {
+        String testDados = validarCamposAnimal(altAnimal);
         if (testDados.equals("1") && (posi >= 0)) {
             int resp = JOptionPane.showConfirmDialog(null, "Deseja Alterar o Animal?");
             if (resp == 0) {
-                if (RepositorioAnimal.setAlterarAnimal(cadAnimal, posi)) {
+                if (RepositorioAnimal.setAlterarAnimal(altAnimal, posi)) {
                     JOptionPane.showMessageDialog(null, "Alterado Com Sucesso!!!");
                 } else {
                     JOptionPane.showMessageDialog(null, "Não Alterado!!!");
@@ -119,7 +110,7 @@ public class ControladorAnimal {
             int resp = JOptionPane.showConfirmDialog(null, "Deseja Remover o Animal?");
             if (resp == 0) {
                 if (RepositorioAnimal.setDeletarAnimal(cpf, posi)) {
-                    erros="1";
+                    erros = "1";
                     JOptionPane.showMessageDialog(null, "Removido Com Sucesso!!!");
                 } else {
                     JOptionPane.showMessageDialog(null, "Erro, Não Removido!!!");
@@ -134,11 +125,11 @@ public class ControladorAnimal {
         Animal xAnimal = new Animal();
 
         if (!cpf.equals("") && (posi >= 0)) {
-            xAnimal=RepositorioAnimal.setExibirAnimal(cpf, posi); 
-        }else{
-            JOptionPane.showMessageDialog(null,"Dados, invalidos!!!");
+            xAnimal = RepositorioAnimal.setExibirAnimal(cpf, posi);
+        } else {
+            JOptionPane.showMessageDialog(null, "Dados, invalidos!!!");
         }
-         
+
         return xAnimal;
     }
 

@@ -29,22 +29,19 @@ public class RepositorioCliente {
         //Cadastrando Cliente
     }
 
-    public static boolean setAlterarCliente(String alt_Nome, String cpf, String alt_Telefone, String alt_Sexo) {
+    public static boolean setAlterarCliente(Cliente c) {
         clienteAlterado = false;
-        Cliente c = new Cliente();
+        Cliente clienteX;
         try {
             for (int i = 0; i < BancoListCliente.size(); i++) {
-                c = BancoListCliente.get(i);
-                if (c.getCpf().equals(cpf)) {
-                    c.setNome(alt_Nome);
-                    c.setTelefone(alt_Telefone);
-                    c.setSexo(alt_Sexo);
+                clienteX = BancoListCliente.get(i);
+                if (clienteX.getCpf().equals(c.getCpf())) {
+                    c.setSaldo(clienteX.getSaldo());
                     BancoListCliente.set(i, c);
                     clienteAlterado = true;
                 }
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro!!!");
         }
         return clienteAlterado;
         //Alterando Cliente
@@ -57,36 +54,33 @@ public class RepositorioCliente {
             for (int i = 0; i < BancoListCliente.size(); i++) {
                 c = BancoListCliente.get(i);
                 if (c.getCpf().equals(cpf)) {
-                    int resp = JOptionPane.showConfirmDialog(null, "Deseja Remover o Cliente?" + "\nNome: " + c.getNome() + "\nCPF: " + c.getCpf());
-                    if (resp == 0) {
-                        BancoListCliente.remove(i);
-                        clienteRemovido = true;
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "!!!Cliente não existente!!!");
+                    BancoListCliente.remove(i);
+                    clienteRemovido = true;
                 }
             }
         } else {
-            JOptionPane.showMessageDialog(null, "!!!Não pode ser removido!!! - Cliente possue compras ou animais!!!");
+            clienteRemovido=false;
         }
         return clienteRemovido;
         //Remover Cliente
     }
 
-    public static void setCreditar(String cpf, String valor) {
+    public static boolean setCreditar(String cpf, double valor) {
+        boolean testcreditar=false;
         try {
-            double valorConv = Double.parseDouble(valor);
             Cliente c = new Cliente();
             for (int i = 0; i < BancoListCliente.size(); i++) {
                 c = BancoListCliente.get(i);
                 if (c.getCpf().equals(cpf)) {
-                    c.setSaldoCreditar(valorConv);
+                    c.setSaldoCreditar(valor);
                     BancoListCliente.set(i, c);
+                    testcreditar = true;
                 }
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro, cliente não alterado!!!");
+            testcreditar =false;
         }
+        return testcreditar;
         //Adicionar Compra
     }
 
@@ -109,6 +103,21 @@ public class RepositorioCliente {
         //Remover Compra
     }
 
+    public static Cliente getExibirCliente(String cpf){
+        Cliente exbCliente = new Cliente();
+        for (int i = 0; i < BancoListCliente.size(); i++) {
+            Cliente x = BancoListCliente.get(i);
+            if (x.getCpf().equals(cpf)) {
+                exbCliente=x;
+            }
+        }
+        
+        return exbCliente;
+    }
+    
+    
+    
+    
     public static boolean setValidarCPF(String cpf) {
         CPFativo = false;
         clientes = null;
@@ -133,14 +142,6 @@ public class RepositorioCliente {
         return false;
     }
 
-    public static boolean setLimparTelefone(String telefone) {
-
-        if (ValidarDados.validarTelefone(telefone)) {
-            return true;
-        }
-
-        return false;
-    }
-
+   
     //FimClass
 }

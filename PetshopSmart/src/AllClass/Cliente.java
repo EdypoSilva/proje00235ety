@@ -70,6 +70,10 @@ public class Cliente {
             return cSexoC;
         }
         
+        public void setSaldo(double saldo){
+            this.cSaldo = saldo;
+        }
+        
         public void setSexo(String sexos){
             this.cSexoC = sexos;
         }

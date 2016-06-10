@@ -5,6 +5,8 @@
  */
 package AllSuporte;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Felly
@@ -12,7 +14,6 @@ package AllSuporte;
 public class ValidarDados {
 
     private static String cpf;
-    private static String telefone;
 
     private static void removerCaracteres() {
         ValidarDados.cpf = ValidarDados.cpf.replace("-", "");
@@ -83,33 +84,5 @@ public class ValidarDados {
         return true;
     }
     //Validando - CPF
-
-    //Validando - Telefone
-    private static void removerCaracteresTell() {
-        ValidarDados.telefone = ValidarDados.telefone.replace("(", "");
-        ValidarDados.telefone = ValidarDados.telefone.replace(")", "");
-        ValidarDados.telefone = ValidarDados.telefone.replace("-", "");
-    }
-
-    private static boolean verificarSeTamanhoTell(String telefone) {
-        if (telefone.length() != 10) {
-            return true;
-        }
-        return false;
-    }
-
-    public static boolean validarTelefone(String telefone) {
-        if (telefone == null) {
-            return false;
-        } else {
-            ValidarDados.telefone = telefone;
-            removerCaracteresTell();
-            if (verificarSeTamanhoTell(ValidarDados.telefone)) {
-                return false;
-            }
-            
-        }
-        return true;
-    }
 
 }

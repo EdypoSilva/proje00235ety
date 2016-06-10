@@ -28,8 +28,8 @@ public class PetshopSmart {
         Animal b = new Animal("ABBBA", 10, "Preto", "AAAXX", "Macho", "082.660.874-40",1);
         Animal c = new Animal("CCCCC", 5, "Preto", "AAAAA", "Macho", "111.111.111-11",2);
         Animal d = new Animal("CDDDC", 5, "Preto", "AAAAA", "Macho", "111.111.111-11",3);
-        Cliente CliA = new Cliente("Edypo", "082.660.874-40", "8111111111", "Homem");
-        Cliente CliB = new Cliente("Gleyci", "111.111.111-11", "8111111111", "Mulher");
+        Cliente CliA = new Cliente("Edypo", "082.660.874-40", "(81)1111-1111", "Homem");
+        Cliente CliB = new Cliente("Gleyci", "111.111.111-11", "(81)1111-1111", "Mulher");
         
         RepositorioCliente.setCadastroCliente(CliA);
         RepositorioCliente.setCadastroCliente(CliB);

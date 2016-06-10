@@ -11,13 +11,10 @@ import javax.swing.JOptionPane;
 
 public class ControladorCliente {
 
-    private static boolean testCadastro;
-    private static boolean testVariaveis;
-    private static boolean testConsultaAnimal;
     private static String erros;
 
     private static String validarCamposCliente(Cliente cadCliente) {
-        testVariaveis = true;
+        boolean testVariaveis = true;
         erros = "Campo * Incorreto *\n";
 
         if (cadCliente.getNome().equals("")) {
@@ -30,7 +27,7 @@ public class ControladorCliente {
             testVariaveis = false;
         }
 
-        if (!RepositorioCliente.setLimparTelefone(cadCliente.getTelefone())) {
+        if (cadCliente.getTelefone().equals("(  )    -    ")) {
             erros += "* Telefone\n";
             testVariaveis = false;
         }
@@ -40,8 +37,8 @@ public class ControladorCliente {
             testVariaveis = false;
         }
 
-        if (testVariaveis==true){
-            erros="1";
+        if (testVariaveis == true) {
+            erros = "1";
         }
         return erros;
     }
@@ -56,15 +53,62 @@ public class ControladorCliente {
                 } else {
                     JOptionPane.showMessageDialog(null, "Não Cadastrado!!!");
                 }
-            }else{
-               testDados="* CPF Existente"; 
+            } else {
+                testDados = "* CPF Existente";
             }
         }
 
         return testDados;
     }
 
-    
-    
-    
+    public static String alterarCliente(Cliente altCliente) {
+
+        String testDados = validarCamposCliente(altCliente);
+        if (testDados.equals("1")) {
+            int resp = JOptionPane.showConfirmDialog(null, "Deseja Alterar o Animal?");
+            if (resp == 0) {
+                if (RepositorioCliente.setAlterarCliente(altCliente)) {
+                    JOptionPane.showMessageDialog(null, "Alterado Com Sucesso!!!");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Não Alterado!!!");
+                }
+            }
+        }
+
+        return testDados;
+    }
+
+    public static String removerCliente(String cpf) {
+        String dellCliente = "";
+
+        if (!cpf.equals("")) {
+            int resp = JOptionPane.showConfirmDialog(null, "Deseja Remover o Cliente?");
+            if (resp == 0) {
+                if (RepositorioCliente.setRemoverCliente(cpf)) {
+                    dellCliente = "1";
+                    JOptionPane.showMessageDialog(null, "Removido Com Sucesso!!!");
+                } else {
+                    dellCliente = "!!!Não pode ser removido!!! \n* Cliente possue compras ou animais!!!";
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Campo * Incorreto *\n* CPF");
+        }
+
+        return dellCliente;
+    }
+
+    public static String creditarCliente(String cpf, double valor) {
+        String testCreditar = "";
+        if (valor > 0) {
+            if (RepositorioCliente.setCreditar(cpf, valor)) {
+                testCreditar = "1";
+            }else{
+                testCreditar= "Erro, cliente não alterado!!!";
+            }
+        }
+//FaltaCompletar
+        return testCreditar;
+    }
+
 }

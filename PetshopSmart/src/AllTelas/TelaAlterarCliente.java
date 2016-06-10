@@ -5,6 +5,7 @@
  */
 package AllTelas;
 
+import AllClass.Cliente;
 import AllClass.Repositorio.RepositorioCliente;
 import AllSuporte.Suporte;
 import AllSuporte.ValidarDados;
@@ -211,10 +212,22 @@ public class TelaAlterarCliente extends javax.swing.JInternalFrame {
 
         String cpf;
         cpf = jCPFDonoAlterar.getText();
-        if (RepositorioCliente.setRemoverCliente(cpf)) {
-            JOptionPane.showMessageDialog(null, "Cliente removido com sucesso!!!");
-            this.dispose();
+
+        String testRemoverCliente = AllControlador.ControladorCliente.removerCliente(cpf);
+        if (testRemoverCliente.equals("1")) {
+            jNomeAlterarC.setEnabled(false);
+            jNomeAlterarC.setText("");
+            jTelefoneAlterar.setEnabled(false);
+            jTelefoneAlterar.setText("");
+            jSexo1C.setEnabled(false);
+            jAlterarC.setEnabled(false);
+            jSexo2C.setEnabled(false);
+            jRemoverC.setEnabled(false);
+            jCPFDonoAlterar.setEnabled(true);
+        }else{
+            JOptionPane.showMessageDialog(null,testRemoverCliente);
         }
+       
 
         //Remover
         // TODO add your handling code here:
@@ -237,22 +250,10 @@ public class TelaAlterarCliente extends javax.swing.JInternalFrame {
     private void jAlterarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAlterarCActionPerformed
 
         String nome = "";
-        String telefone;
+        String telefone = "";
         String sexoC = "";
-        String cErros = "!-Preenchimento Incorreto-!\n";
-        boolean testCadastro = true;
 
-        if ("".equals(jNomeAlterarC.getText())) {
-            cErros += "* Nome\n";
-            testCadastro = false;
-        }
-
-        telefone = jTelefoneAlterar.getText();
-        if (!ValidarDados.validarTelefone(telefone)) {
-            cErros += "* Telefone\n";
-            testCadastro = false;
-        }
-
+        
         if (jSexo1C.isSelected() == true) {
             sexoC = jSexo1C.getText();
         }
@@ -260,23 +261,21 @@ public class TelaAlterarCliente extends javax.swing.JInternalFrame {
             sexoC = jSexo2C.getText();
         }
 
-        if ("".equals(sexoC)) {
-            testCadastro = false;
-            cErros += "* Selecione o Sexo\n";
-        }
+        Cliente altCliente = new Cliente(jNomeAlterarC.getText(), jCPFDonoAlterar.getText(), jTelefoneAlterar.getText(), sexoC);
+        String testAlterarCliente = AllControlador.ControladorCliente.alterarCliente(altCliente);
 
-        if (testCadastro) {
-            nome = jNomeAlterarC.getText();
-            telefone = jTelefoneAlterar.getText();
-            String cpf = jCPFDonoAlterar.getText();
-            int resp = JOptionPane.showConfirmDialog(null, "Confirma Alteração?");
-            if (resp == 0) {
-                if (RepositorioCliente.setAlterarCliente(nome, cpf, telefone, sexoC)) {
-                    JOptionPane.showMessageDialog(null, "Cliente alterado com sucesso!!!");
-                } else {
-                    JOptionPane.showMessageDialog(null, cErros);
-                }
-            }
+        if (testAlterarCliente.equals("1")) {
+            jNomeAlterarC.setEnabled(false);
+            jNomeAlterarC.setText("");
+            jTelefoneAlterar.setEnabled(false);
+            jTelefoneAlterar.setText("");
+            jSexo1C.setEnabled(false);
+            jAlterarC.setEnabled(false);
+            jSexo2C.setEnabled(false);
+            jRemoverC.setEnabled(false);
+            jCPFDonoAlterar.setEnabled(true);
+        } else {
+            JOptionPane.showMessageDialog(null, testAlterarCliente);
         }
 
 //Alterar
