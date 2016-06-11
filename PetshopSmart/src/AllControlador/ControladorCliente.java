@@ -112,8 +112,10 @@ public class ControladorCliente {
     }
 
      public static Cliente exibirCliente (String cpf){
-        
-        Cliente c = RepositorioCliente.getExibirCliente(cpf);
+        Cliente c=null;
+        if (RepositorioCliente.setValidarCPF(cpf)){
+        c = RepositorioCliente.getExibirCliente(cpf);
+        }
         
         return c;
     }

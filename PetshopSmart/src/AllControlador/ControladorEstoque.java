@@ -22,7 +22,7 @@ public class ControladorEstoque {
                     testEstoqueADD = "Erro, Produto não Atualizado!!!";
                 }
             }
-        } 
+        }
 
         return testEstoqueADD;
     }
@@ -43,19 +43,16 @@ public class ControladorEstoque {
 
         return testRemoveEstoque;
     }
-    
-    public static String removeQuantCompra(int cod, int quant){
+
+    public static String removeQuantCompra(int cod, int quant) {
         String testRemovendoQuantCompras = "";
-        
-        //Falta Implementar
-        
-        
-        
-        
+
+        if (RepositorioEstoque.getRemoveQuantCompra(cod, quant)) {
+            testRemovendoQuantCompras = "1";
+        } else {
+            testRemovendoQuantCompras = "Erro!!!";
+        }
         return testRemovendoQuantCompras;
     }
-    
-    
-    
 
 }

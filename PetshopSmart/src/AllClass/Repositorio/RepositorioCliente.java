@@ -57,14 +57,14 @@ public class RepositorioCliente {
                 }
             }
         } else {
-            clienteRemovido=false;
+            clienteRemovido = false;
         }
         return clienteRemovido;
         //Remover Cliente
     }
 
     public static boolean setCreditar(String cpf, double valor) {
-        boolean testcreditar=false;
+        boolean testcreditar = false;
         try {
             Cliente c = new Cliente();
             for (int i = 0; i < BancoListCliente.size(); i++) {
@@ -76,7 +76,7 @@ public class RepositorioCliente {
                 }
             }
         } catch (Exception e) {
-            testcreditar =false;
+            testcreditar = false;
         }
         return testcreditar;
         //Adicionar Compra
@@ -100,27 +100,31 @@ public class RepositorioCliente {
         //Remover Compra
     }
 
-    public static Cliente getExibirCliente(String cpf){
+    public static Cliente getExibirCliente(String cpf) {
         Cliente exbCliente = new Cliente();
         for (int i = 0; i < BancoListCliente.size(); i++) {
             Cliente x = BancoListCliente.get(i);
             if (x.getCpf().equals(cpf)) {
-                exbCliente=x;
+                exbCliente = x;
             }
         }
         return exbCliente;
     }
-    
+
     public static boolean setValidarCPF(String cpf) {
         CPFativo = false;
-        Cliente clientes;
         Cliente c = new Cliente();
-        for (int i = 0; i < BancoListCliente.size(); i++) {
-            c = BancoListCliente.get(i);
-            if (c.getCpf().equals(cpf)) {
-                CPFativo = true;
+        try {
+            for (int i = 0; i < BancoListCliente.size(); i++) {
+                c = BancoListCliente.get(i);
+                if (c.getCpf().equals(cpf)) {
+                    CPFativo = true;
+                }
             }
+        } catch (Exception e) {
+            CPFativo =false;
         }
+
         return CPFativo;
         //validando CPF
     }

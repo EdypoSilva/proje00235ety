@@ -11,6 +11,8 @@ import AllClass.Repositorio.RepositorioCompra;
 import AllClass.Repositorio.RepositorioEstoque;
 import AllClass.Repositorio.RepositorioProduto;
 import AllControlador.ControladorCliente;
+import AllControlador.ControladorCompra;
+import AllControlador.ControladorEstoque;
 import AllSuporte.Suporte;
 import static BancoDeDados.BancoPetshop.BancoListCompra;
 import javax.swing.JOptionPane;
@@ -266,10 +268,9 @@ public class TelaCompra extends javax.swing.JInternalFrame {
         double convertValor;
         int quant;
         String cpf = jCPFDono.getText();
-        String codigoPro = jCodigoConsultar.getText();
+        int codigoPro = Integer.parseInt(jCodigoConsultar.getText());
         quant = (Integer) jQuantCompra.getValue();
-        String xquant = Integer.toString(quant);
-        if (RepositorioProduto.getValidarCompra(codigoPro, xquant)) {
+        if (RepositorioProduto.getValidarCompra(codigoPro, quant)) {
             nomeCompra = jNomeComprar.getText();
             convertValor = quant * Double.parseDouble(jValorComprar.getText());
             codigoProduto = Integer.parseInt(jCodigoConsultar.getText());
@@ -280,22 +281,29 @@ public class TelaCompra extends javax.swing.JInternalFrame {
 
             String testCompra = AllControlador.ControladorCompra.comprarProduto(x);
             if (testCompra.equals("1")) {
-                ControladorCliente.creditarCliente(CPFCompra, convertValor);
-                RepositorioEstoque.getRemoveQuantCompra(codigoPro, xquant);
+                String testCreditarCliente = ControladorCliente.creditarCliente(CPFCompra, convertValor);
+                if (testCreditarCliente.equals("1")) {
+                    String testRemoverQuantCompra = ControladorEstoque.removeQuantCompra(codigoPro, quant);
+                    if (testRemoverQuantCompra.equals("1")) {
+                        jCodigoConsultar.setText("");
+                        jNomeComprar.setText("");
+                        jValorComprar.setText("");
+                        jQuantCompra.setValue(1);
+                        jNomeComprar.setEnabled(false);
+                        jValorComprar.setEnabled(false);
+                        jComprar.setEnabled(false);
+                        jQuantCompra.setEnabled(false);
+                        jCodigoConsultar.setEditable(true);
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, testRemoverQuantCompra);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, testCreditarCliente);
+                }
             } else {
                 JOptionPane.showMessageDialog(null, testCompra);
             }
-
-            jCodigoConsultar.setText("");
-            jNomeComprar.setText("");
-            jValorComprar.setText("");
-            jQuantCompra.setValue(1);
-            jNomeComprar.setEnabled(false);
-            jValorComprar.setEnabled(false);
-            jComprar.setEnabled(false);
-            jQuantCompra.setEnabled(false);
-            jCodigoConsultar.setEditable(true);
-
         } else {
             JOptionPane.showMessageDialog(null, "Quantidade insuficiente no estoque!!!");
         }

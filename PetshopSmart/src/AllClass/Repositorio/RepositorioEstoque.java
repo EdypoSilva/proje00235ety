@@ -45,17 +45,15 @@ public class RepositorioEstoque {
                 }
             }
         } catch (Exception e) {
-            statusEstoque = true;
+            statusEstoque = false;
         }
         return statusEstoque;
     }
 
-    public static boolean getRemoveQuantCompra(String xcod, String xquant) {
+    public static boolean getRemoveQuantCompra(int cod, int quant) {
         statusEstoque = false;
         Produto p = new Produto();
         try {
-            int cod = Integer.parseInt(xcod);
-            int quant = Integer.parseInt(xquant);
             for (int i = 0; i < BancoListProduto.size(); i++) {
                 p = BancoListProduto.get(i);
                 if (p.getCodigoP() == (cod) && quant <= p.getQuantidade()) {
@@ -65,18 +63,16 @@ public class RepositorioEstoque {
                 }
             }
         } catch (Exception e) {
-            statusEstoque = true;
+            statusEstoque = false;
         }
         return statusEstoque;
         //
     }
 
-    public static boolean getCancelCompra(String xcod, String xquant) {
+    public static boolean getCancelCompra(int cod, int quant) {
         statusEstoque = false;
         Produto p = new Produto();
         try {
-            int cod = Integer.parseInt(xcod);
-            int quant = Integer.parseInt(xquant);
             for (int i = 0; i < BancoListProduto.size(); i++) {
                 p = BancoListProduto.get(i);
                 if (p.getCodigoP() == (cod)) {
@@ -86,7 +82,7 @@ public class RepositorioEstoque {
                 }
             }
         } catch (Exception e) {
-            statusEstoque = true;
+            statusEstoque = false;
         }
         return statusEstoque;
         //Apenas remove uma compra (Ligaçao com a class RepositorioCompra

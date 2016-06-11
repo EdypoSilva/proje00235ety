@@ -78,7 +78,6 @@ public class RepositorioAnimal {
     }
 
     public static Animal setExibirAnimal(String cpf, int posicao) {
-        vAnimal = false;
         Animal xAnimal = new Animal();
         try {
             for (int i = 0; i < BancoListAnimal.size(); i++) {
@@ -92,6 +91,22 @@ public class RepositorioAnimal {
         return xAnimal;
     }
 
+    public static boolean setExisteAnimalPosi(String cpf, int posicao) {
+        vAnimal = false;
+        try {
+            for (int i = 0; i < BancoListAnimal.size(); i++) {
+                Animal x = BancoListAnimal.get(i);
+                if (x.getCpf().equals(cpf) && x.getCodigoA() == posicao) {
+                    vAnimal = true;
+                }
+            }
+        } catch (Exception e) {
+            vAnimal = false;
+        }
+        return vAnimal;
+    }
+    
+    
     public static int getQuantAnimalCliente(String cpf) {
         int contAni = 0;
         for (int i = 0; i < BancoListAnimal.size(); i++) {

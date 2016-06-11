@@ -402,7 +402,7 @@ public class TelaAlterarAnimal extends javax.swing.JInternalFrame {
             jIdadeAnimal.setText("");
             jRacaAnimal.setEditable(false);
             jRacaAnimal.setText("");
-            
+
             Object[] colunas = {"ID", "Nome", "Idade", "Cor", "Raça", "Sexo"};
             DefaultTableModel modelo = new DefaultTableModel();
             modelo.setColumnIdentifiers(colunas);
@@ -440,25 +440,28 @@ public class TelaAlterarAnimal extends javax.swing.JInternalFrame {
         cpf = jCPFAnimalAlterar.getText();
         posicao = Integer.parseInt(jidAnimal.getText());
 
-        Animal exibirAnimal = ControladorAnimal.exibirAnimal(cpf, posicao);
-        jBuscarID.setEnabled(false);
-        jidAnimal.setEnabled(false);
-        jSexo1.setEnabled(true);
-        jSexo2.setEnabled(true);
-        jNomeAnimal.setEditable(true);
-        jIdadeAnimal.setEditable(true);
-        jCorAnimal.setEditable(true);
-        jRacaAnimal.setEditable(true);
-        jNomeAnimal.setText(exibirAnimal.getNomeA());
-        jIdadeAnimal.setText(Integer.toString(exibirAnimal.getIdade()));
-        jCorAnimal.setText(exibirAnimal.getCor());
-        jRacaAnimal.setText(exibirAnimal.getRaca());
+        String testAniExistePOsi = ControladorAnimal.existeAnimalPosi(cpf, posicao);
+        if (testAniExistePOsi.equals("1")) {
+            Animal exibirAnimal = ControladorAnimal.exibirAnimal(cpf, posicao);
+            jBuscarID.setEnabled(false);
+            jidAnimal.setEnabled(false);
+            jSexo1.setEnabled(true);
+            jSexo2.setEnabled(true);
+            jNomeAnimal.setEditable(true);
+            jIdadeAnimal.setEditable(true);
+            jCorAnimal.setEditable(true);
+            jRacaAnimal.setEditable(true);
+            jNomeAnimal.setText(exibirAnimal.getNomeA());
+            jIdadeAnimal.setText(Integer.toString(exibirAnimal.getIdade()));
+            jCorAnimal.setText(exibirAnimal.getCor());
+            jRacaAnimal.setText(exibirAnimal.getRaca());
 
-        if (exibirAnimal.getSexo().equals("Macho")) {
-            jSexo1.setSelected(true);
-            //Homem
-        } else {
-            jSexo2.setSelected(true);
+            if (exibirAnimal.getSexo().equals("Macho")) {
+                jSexo1.setSelected(true);
+                //Homem
+            } else {
+                jSexo2.setSelected(true);
+            }
         }
 
         // TODO add your handling code here:

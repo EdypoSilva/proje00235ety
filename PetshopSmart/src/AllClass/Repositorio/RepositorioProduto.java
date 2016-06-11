@@ -139,15 +139,13 @@ public class RepositorioProduto {
         //Verifica se o produto existe e esta dispinivel para exibicao
     }
 
-    public static boolean getValidarCompra(String xcod, String xquant) {
+    public static boolean getValidarCompra(int cod, int quant) {
         statusProduto = false;
         Produto p = new Produto();
         try {
-            int cod = Integer.parseInt(xcod);
-            int quant = Integer.parseInt(xquant);
             for (int i = 0; i < BancoListProduto.size(); i++) {
                 p = BancoListProduto.get(i);
-                if (p.getCodigoP() == (cod) && (p.getQuantidade() >= quant)) {
+                if ((p.getCodigoP() == (cod)) && (p.getQuantidade() >= quant)) {
                     statusProduto = true;
                 }
             }

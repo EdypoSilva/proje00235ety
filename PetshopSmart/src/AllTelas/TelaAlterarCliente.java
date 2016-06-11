@@ -183,10 +183,10 @@ public class TelaAlterarCliente extends javax.swing.JInternalFrame {
 
     private void jConsultClienteAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsultClienteAlterarActionPerformed
 
-        String cpf;
-        cpf = jCPFDonoAlterar.getText();
-        Cliente x = ControladorCliente.exibirCliente(cpf);
-        if (x != null) {
+        String cpf = jCPFDonoAlterar.getText();
+        String validarCPF = ControladorCliente.validarCPF(cpf);
+        if (validarCPF.equals("1")) {
+            Cliente x = ControladorCliente.exibirCliente(cpf);
             jNomeAlterarC.setEnabled(true);
             jTelefoneAlterar.setEnabled(true);
             jSexo1C.setEnabled(true);

@@ -144,4 +144,15 @@ public class ControladorAnimal {
         return quantAnimal;
     }
 
+    public static String existeAnimalPosi(String cpf, int posi) {
+        String testExisteAnimalPOsi = "";
+        if (RepositorioAnimal.setExisteAnimalPosi(cpf, posi)) {
+            testExisteAnimalPOsi = "1";
+        } else {
+            testExisteAnimalPOsi = "Erro, Animal não Cadastrado";
+        }
+
+        return testExisteAnimalPOsi;
+    }
+
 }

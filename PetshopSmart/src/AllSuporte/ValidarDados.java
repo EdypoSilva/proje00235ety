@@ -5,7 +5,6 @@
  */
 package AllSuporte;
 
-import javax.swing.JOptionPane;
 
 /**
  *

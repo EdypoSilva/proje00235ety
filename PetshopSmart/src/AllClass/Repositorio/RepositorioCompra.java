@@ -29,8 +29,8 @@ public class RepositorioCompra {
             for (Compra comp : BancoListCompra) {
                 if (cpf.equals(comp.getCPFCompra()) && (id_compra == comp.getCodigoCompra())) {
                     if (RepositorioCliente.setDebitar(cpf, comp.getValorCompra())) {
-                        String codCompra = Integer.toString(comp.getCodigoProduto());
-                        String quantCompra = Integer.toString(comp.getQuantidadeC());
+                        int codCompra = comp.getCodigoProduto();
+                        int quantCompra = comp.getQuantidadeC();
                         if (RepositorioEstoque.getCancelCompra(codCompra, quantCompra)) {
                             BancoListCompra.remove(comp);
                             pesquisaCompra = true;
