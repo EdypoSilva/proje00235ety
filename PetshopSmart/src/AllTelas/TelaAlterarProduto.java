@@ -5,7 +5,8 @@
  */
 package AllTelas;
 
-import AllClass.Repositorio.RepositorioProduto;
+import AllClass.Produto;
+import AllControlador.ControladorProduto;
 import AllSuporte.Suporte;
 import javax.swing.JOptionPane;
 
@@ -195,9 +196,11 @@ public class TelaAlterarProduto extends javax.swing.JInternalFrame {
 
     private void jConsultAnimalAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsultAnimalAlterarActionPerformed
 
-        String cod;
-        cod = jcodigo.getText();
-        if (RepositorioProduto.getExibirProduto(cod)) {
+        int cod;
+        cod = Integer.parseInt(jcodigo.getText());
+        
+        Produto exibeProduto = ControladorProduto.exibirProduto(cod);
+        if (exibeProduto!=null){
             jcodigo.setEditable(false);
             jConsultAnimalAlterar.setEnabled(false);
             jNomeAlterarP.setEditable(true);
@@ -208,21 +211,21 @@ public class TelaAlterarProduto extends javax.swing.JInternalFrame {
             jValor.setEditable(true);
             jAlterarProduto.setEnabled(true);
             jdeletProduto.setEnabled(true);
-            jNomeAlterarP.setText(RepositorioProduto.exibeProduto.getNome());
-            jInformacoes.setText(RepositorioProduto.exibeProduto.getInforP());
-            jValor.setText(Double.toString(RepositorioProduto.exibeProduto.getValorP()));
-            jQuant.setValue(RepositorioProduto.exibeProduto.getQuantidade());
+            jNomeAlterarP.setText(exibeProduto.getNome());
+            jInformacoes.setText(exibeProduto.getInforP());
+            jValor.setText(Double.toString(exibeProduto.getValorP()));
+            jQuant.setValue(exibeProduto.getQuantidade());
 
-            if (RepositorioProduto.exibeProduto.getCategoriaP().equals("Adulto")) {
+            if (exibeProduto.getCategoriaP().equals("Adulto")) {
                 jButtonAdulto.setSelected(true);
                 //Adulto
             }
 
-            if (RepositorioProduto.exibeProduto.getCategoriaP().equals("Infantil")) {
+            if (exibeProduto.getCategoriaP().equals("Infantil")) {
                 jButtonInfantil.setSelected(true);
             }
 
-            if (RepositorioProduto.exibeProduto.getCategoriaP().equals("Adulto e Infantil")) {
+            if (exibeProduto.getCategoriaP().equals("Adulto e Infantil")) {
                 jButtonAdulto.setSelected(true);
                 jButtonInfantil.setSelected(true);
             }
@@ -235,12 +238,9 @@ public class TelaAlterarProduto extends javax.swing.JInternalFrame {
         String nomeP = "";
         String inforP = "";
         String categP = "";
-        String valorP = "";
-        String quantP = "";
-        String codigoP = "";
-
-        nomeP = jNomeAlterarP.getText();
-        inforP = jInformacoes.getText();
+        double valorP;
+        int quantP;
+        int codigoP;
 
         if (jButtonAdulto.isSelected() == true) {
             categP = "";
@@ -256,11 +256,16 @@ public class TelaAlterarProduto extends javax.swing.JInternalFrame {
             }
         }
 
-        valorP = jValor.getText();
-        quantP = Integer.toString((int) jQuant.getValue());
-        codigoP = jcodigo.getText();
+        nomeP = jNomeAlterarP.getText();
+        inforP = jInformacoes.getText();
+        valorP = Double.parseDouble(jValor.getText());
+        quantP = (Integer) jQuant.getValue();
+        codigoP = Integer.parseInt(jcodigo.getText());
 
-        if (RepositorioProduto.setEditarProduto(nomeP, inforP, categP, valorP, codigoP, quantP)) {
+        Produto altProduto = new Produto(nomeP, inforP, categP, valorP, codigoP, quantP);
+
+        String testAlterarProduto = ControladorProduto.editarProduto(altProduto);
+        if (testAlterarProduto.equals("1")) {
             jcodigo.setEditable(true);
             jcodigo.setText("");
             jConsultAnimalAlterar.setEnabled(true);
@@ -275,7 +280,8 @@ public class TelaAlterarProduto extends javax.swing.JInternalFrame {
             jValor.setText("");
             jAlterarProduto.setEnabled(false);
             jdeletProduto.setEnabled(false);
-            JOptionPane.showMessageDialog(null, "Alterado com Sucesso!!!");
+        } else {
+            JOptionPane.showMessageDialog(null, testAlterarProduto);
         }
 
         //AlterarAnimal
@@ -284,9 +290,10 @@ public class TelaAlterarProduto extends javax.swing.JInternalFrame {
 
     private void jdeletProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jdeletProdutoActionPerformed
 
-        String codigoP = "";
-        codigoP = jcodigo.getText();
-        if (RepositorioProduto.setRemoverProduto(codigoP)) {
+        int codigoP;
+        codigoP = Integer.parseInt(jcodigo.getText());
+        String testRemover = ControladorProduto.removerProduto(codigoP);
+        if (testRemover.equals("1")){
             jcodigo.setEditable(true);
             jcodigo.setText("");
             jConsultAnimalAlterar.setEnabled(true);
@@ -301,6 +308,8 @@ public class TelaAlterarProduto extends javax.swing.JInternalFrame {
             jValor.setText("");
             jAlterarProduto.setEnabled(false);
             jdeletProduto.setEnabled(false);
+        }else{
+            JOptionPane.showMessageDialog(null, testRemover);
         }
 
         //Deletar

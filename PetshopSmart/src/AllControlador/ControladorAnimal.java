@@ -11,9 +11,7 @@ import javax.swing.JOptionPane;
 
 public class ControladorAnimal {
 
-    private static boolean testCadastro;
     private static boolean testVariaveis;
-    private static boolean testConsultaAnimal;
     private static String erros;
 
     private static String validarCamposAnimal(Animal cadAnimal) {

@@ -7,6 +7,7 @@ package petshopsmart;
 
 import AllClass.Animal;
 import AllClass.Cliente;
+import AllClass.Produto;
 import AllClass.Repositorio.RepositorioAnimal;
 import AllClass.Repositorio.RepositorioCliente;
 import AllClass.Repositorio.RepositorioProduto;
@@ -28,16 +29,18 @@ public class PetshopSmart {
         Animal b = new Animal("ABBBA", 10, "Preto", "AAAXX", "Macho", "082.660.874-40",1);
         Animal c = new Animal("CCCCC", 5, "Preto", "AAAAA", "Macho", "111.111.111-11",2);
         Animal d = new Animal("CDDDC", 5, "Preto", "AAAAA", "Macho", "111.111.111-11",3);
-        Cliente CliA = new Cliente("Edypo", "082.660.874-40", "(81)1111-1111", "Homem");
-        Cliente CliB = new Cliente("Gleyci", "111.111.111-11", "(81)1111-1111", "Mulher");
+        Cliente cliA = new Cliente("Edypo", "082.660.874-40", "(81)1111-1111", "Homem");
+        Cliente cliB = new Cliente("Gleyci", "111.111.111-11", "(81)1111-1111", "Mulher");
+        Produto proA = new Produto("Bola JX", "New Bola SUP", "Adulto", 100, 111, 10);
         
-        RepositorioCliente.setCadastroCliente(CliA);
-        RepositorioCliente.setCadastroCliente(CliB);
+        
+        RepositorioCliente.setCadastroCliente(cliA);
+        RepositorioCliente.setCadastroCliente(cliB);
         RepositorioAnimal.setCadastroAnimal(a);
         RepositorioAnimal.setCadastroAnimal(b);
         RepositorioAnimal.setCadastroAnimal(c);
         RepositorioAnimal.setCadastroAnimal(d);
-        RepositorioProduto.setCadastroProduto("Bola JX", "New Bola SUP", "Adulto", "100", "111", "10");
+        RepositorioProduto.setCadastroProduto(proA);
         
     }
 }

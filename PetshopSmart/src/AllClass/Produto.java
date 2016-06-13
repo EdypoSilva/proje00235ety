@@ -18,13 +18,13 @@ public class Produto {
     int p_CodigoP;
     int p_Quantidade;
 
-    public Produto(String nome, String inforp, String categoria, String valor, String codigoP, String quantidade) {
+    public Produto(String nome, String inforp, String categoria, double valor, int codigoP, int quantidade) {
         this.p_NomeP = nome;
         this.p_InforP = inforp;
         this.p_CategoriaP = categoria;
-        this.p_ValorP = Double.parseDouble(valor);
-        this.p_CodigoP = Integer.parseInt(codigoP);
-        this.p_Quantidade = Integer.parseInt(quantidade);
+        this.p_ValorP = valor;
+        this.p_CodigoP = codigoP;
+        this.p_Quantidade = quantidade;
     }
 
     public Produto() {

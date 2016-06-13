@@ -5,9 +5,10 @@
  */
 package AllTelas;
 
-import AllClass.Repositorio.RepositorioEstoque;
+import AllClass.Produto;
 import AllClass.Repositorio.RepositorioProduto;
 import AllControlador.ControladorEstoque;
+import AllControlador.ControladorProduto;
 import AllSuporte.Suporte;
 
 /**
@@ -215,19 +216,21 @@ public class TelaEstoque extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jCancelarExitActionPerformed
 
     private void jBuscarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscarProdutoActionPerformed
-        String codigo;
-        codigo = jCodigoProduto.getText();
-        if (RepositorioProduto.getValidarProduto(codigo)) {
+        
+        int codigo = Integer.parseInt(jCodigoProduto.getText());
+        
+        Produto exibeProduto = ControladorProduto.exibirProduto(codigo);
+        if (exibeProduto!=null) {
             jCodigoProduto.setEditable(false);
             jNovoValor.setEditable(true);
             jSalvarEstoque.setEnabled(true);
             jAdd.setEnabled(true);
             jRemover.setEnabled(true);
             
-            jNomeProduto.setText(RepositorioProduto.estoqueProduto.getNome());
-            jQuantidade.setText(Integer.toString(RepositorioProduto.estoqueProduto.getQuantidade()));
-            jValorAtual.setText(Double.toString(RepositorioProduto.estoqueProduto.getValorP()));
-            jNovoValor.setText(Double.toString(RepositorioProduto.estoqueProduto.getValorP()));
+            jNomeProduto.setText(exibeProduto.getNome());
+            jQuantidade.setText(Integer.toString(exibeProduto.getQuantidade()));
+            jValorAtual.setText(Double.toString(exibeProduto.getValorP()));
+            jNovoValor.setText(Double.toString(exibeProduto.getValorP()));
             
         }
 

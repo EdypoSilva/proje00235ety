@@ -7,12 +7,11 @@ package AllTelas;
 
 import AllClass.Cliente;
 import AllClass.Compra;
-import AllClass.Repositorio.RepositorioCompra;
-import AllClass.Repositorio.RepositorioEstoque;
+import AllClass.Produto;
 import AllClass.Repositorio.RepositorioProduto;
 import AllControlador.ControladorCliente;
-import AllControlador.ControladorCompra;
 import AllControlador.ControladorEstoque;
+import AllControlador.ControladorProduto;
 import AllSuporte.Suporte;
 import static BancoDeDados.BancoPetshop.BancoListCompra;
 import javax.swing.JOptionPane;
@@ -241,19 +240,18 @@ public class TelaCompra extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jConsultClienteActionPerformed
 
     private void jConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsultarActionPerformed
-        String codigo;
-        codigo = jCodigoConsultar.getText();
-        if (RepositorioProduto.getValidarEstoque(codigo)) {
+        
+        int codigo = Integer.parseInt(jCodigoConsultar.getText());
+        Produto exibeProdutoValido = ControladorProduto.validarEstoque(codigo);
+        if (exibeProdutoValido != null) {
             jNomeComprar.setEnabled(true);
             jValorComprar.setEnabled(true);
             jComprar.setEnabled(true);
             jQuantCompra.setEnabled(true);
-            jNomeComprar.setText(RepositorioProduto.exibeProduto.getNome());
-            jValorComprar.setText("" + RepositorioProduto.exibeProduto.getValorP());
+            jNomeComprar.setText(exibeProdutoValido.getNome());
+            jValorComprar.setText("" + exibeProdutoValido.getValorP());
             jCodigoConsultar.setEditable(false);
-        } else {
-            JOptionPane.showMessageDialog(null, "Produto indisponível!!!");
-        }
+        } 
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jConsultarActionPerformed
