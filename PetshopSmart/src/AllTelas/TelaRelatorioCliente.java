@@ -155,6 +155,11 @@ public class TelaRelatorioCliente extends javax.swing.JInternalFrame {
         jConsultarPorNome.setText("@");
         jConsultarPorNome.setToolTipText("");
         jConsultarPorNome.setEnabled(false);
+        jConsultarPorNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jConsultarPorNomeActionPerformed(evt);
+            }
+        });
         getContentPane().add(jConsultarPorNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 140, 30, 30));
 
         jConsultarPorCPF1.setText("@");
@@ -299,6 +304,31 @@ public class TelaRelatorioCliente extends javax.swing.JInternalFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioAllClientesActionPerformed
+
+    private void jConsultarPorNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsultarPorNomeActionPerformed
+
+        String nomeCliente = jPesquisaNome.getText();
+
+        Object[] colunas = {"Nome", "CPF", "Telefone", "Sexo", "Saldo", "N° de Animal"};
+        DefaultTableModel modeloTableCliente = new DefaultTableModel();
+        modeloTableCliente.setColumnIdentifiers(colunas);
+        jTableRelatorioCliente.setModel(modeloTableCliente);
+
+        for (int i = 0; i < BancoListCliente.size(); i++) {
+            Cliente c = BancoListCliente.get(i);
+            if (c.getNome().toLowerCase().contains(nomeCliente.toLowerCase())) {
+                modeloTableCliente.addRow(new String[]{c.getNome(),
+                    c.getCpf(),
+                    c.getTelefone(),
+                    c.getSexo(),
+                    c.getSaldo() + "",
+                    AllControlador.ControladorAnimal.quantAnimalCliente(c.getCpf()) + ""});
+            }
+        }
+        jTableRelatorioCliente.setModel(modeloTableCliente);
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jConsultarPorNomeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

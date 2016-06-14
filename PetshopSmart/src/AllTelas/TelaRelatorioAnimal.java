@@ -47,6 +47,8 @@ public class TelaRelatorioAnimal extends javax.swing.JInternalFrame {
         jTableRelatorioAnimal = new javax.swing.JTable();
         jImprimir = new javax.swing.JButton();
         jCancelar = new javax.swing.JButton();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jLabel13 = new javax.swing.JLabel();
 
         setClosable(true);
         setMaximizable(true);
@@ -124,6 +126,11 @@ public class TelaRelatorioAnimal extends javax.swing.JInternalFrame {
         jConsultarPorNome.setText("@");
         jConsultarPorNome.setToolTipText("");
         jConsultarPorNome.setEnabled(false);
+        jConsultarPorNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jConsultarPorNomeActionPerformed(evt);
+            }
+        });
         getContentPane().add(jConsultarPorNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 140, 30, 30));
 
         groupAnimal.add(jRadioAllAnimal);
@@ -158,6 +165,16 @@ public class TelaRelatorioAnimal extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 530, 90, -1));
+
+        jDesktopPane1.setPreferredSize(new java.awt.Dimension(900, 600));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon("C:\\Users\\Felly\\Desktop\\Programas Java\\PetshopSmart\\IMG\\TelaCadastro.png")); // NOI18N
+        jLabel13.setToolTipText(""); // NOI18N
+        jLabel13.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jDesktopPane1.add(jLabel13);
+        jLabel13.setBounds(0, 0, 900, 600);
+
+        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -198,7 +215,6 @@ public class TelaRelatorioAnimal extends javax.swing.JInternalFrame {
         modelo.setColumnIdentifiers(colunas);
         jTableRelatorioAnimal.setModel(modelo);
 
-        
         String testExisteAnimal = ControladorAnimal.existeClienteAnimal(cpf);
         String testValidarCPF = ControladorCliente.validarCPF(cpf);
         if (testValidarCPF.equals("1") && testExisteAnimal.equals("1")) {
@@ -261,6 +277,7 @@ public class TelaRelatorioAnimal extends javax.swing.JInternalFrame {
             jConsultarPorNome.setEnabled(false);
             jCPFRelatorioCliente.setText("");
             jConsultarPorNome.setText("");
+            jPesquisaNomeAnimal.setText("");
         }
 
         for (int i = 0; i < BancoListAnimal.size(); i++) {
@@ -285,6 +302,30 @@ public class TelaRelatorioAnimal extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCancelarActionPerformed
 
+    private void jConsultarPorNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsultarPorNomeActionPerformed
+
+        String nomeAnimal = jPesquisaNomeAnimal.getText();
+        Object[] colunas = {"ID", "Nome", "Idade", "Cor", "Raça", "Sexo", "CPF do Dono"};
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.setColumnIdentifiers(colunas);
+        jTableRelatorioAnimal.setModel(modelo);
+
+        for (int i = 0; i < BancoListAnimal.size(); i++) {
+            Animal a = BancoListAnimal.get(i);
+            if (a.getNomeA().toLowerCase().contains(nomeAnimal.toLowerCase())) {
+                modelo.addRow(new String[]{a.getCodigoA() + "",
+                    a.getNomeA(),
+                    a.getIdade() + "",
+                    a.getCor(),
+                    a.getRaca(),
+                    a.getSexo(),
+                    a.getCpf(),});
+            }
+        }
+        jTableRelatorioAnimal.setModel(modelo);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jConsultarPorNomeActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup groupAnimal;
@@ -292,7 +333,9 @@ public class TelaRelatorioAnimal extends javax.swing.JInternalFrame {
     private javax.swing.JButton jCancelar;
     private javax.swing.JButton jConsultarPorCPFdono;
     private javax.swing.JButton jConsultarPorNome;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JButton jImprimir;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField jPesquisaNomeAnimal;
     private javax.swing.JRadioButton jRadioAllAnimal;
