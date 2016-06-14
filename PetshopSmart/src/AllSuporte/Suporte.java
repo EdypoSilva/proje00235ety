@@ -5,7 +5,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 public class Suporte {
-    public static boolean verificandoTela = false;
+    private static boolean verificandoTelaMenu;
+    private static boolean verificandoLogin = false;
 
     public static String getDateTime() {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -13,9 +14,20 @@ public class Suporte {
         return dateFormat.format(date);
     }
 
-    public static void setMudarStatus(boolean test) {
-        verificandoTela = test;
+    public static void setMudarStatusAtual(boolean statusTelaAtual) {
+        verificandoTelaMenu = statusTelaAtual;
     }
 
+    public static boolean consultarStatusTela (){
+        return verificandoTelaMenu;
+    }
+    
+    public static boolean loginRealizado(){
+        return verificandoLogin;
+    }
+    
+    public static void setMudarLogin(boolean login){
+        verificandoLogin = login;
+    }
 
 }

@@ -6,6 +6,8 @@
 package AllTelas;
 
 import AllClass.Usuario;
+import AllControlador.ControladorSuporte;
+import AllSuporte.Suporte;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.logging.Level;
@@ -13,22 +15,17 @@ import java.util.logging.Logger;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-
 /**
  *
  * @author Felly
  */
-
-
-
 public class TelaLogin extends javax.swing.JFrame {
-        
+
     PreparedStatement pst = null;
     ResultSet rs = null;
-    
-    
+
     public boolean Status;
-    
+
     /**
      * Creates new form TelaLogin
      */
@@ -36,11 +33,11 @@ public class TelaLogin extends javax.swing.JFrame {
         UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
         initComponents();
     }
+
     public boolean getStatus() {
-    return Status;
-}
-    
-    
+        return Status;
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -126,22 +123,19 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void jEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEntrarActionPerformed
 
-        
-        
         String nometest = "";
         String senhatest = "";
 
-        char [] password = jSenha.getPassword();
-        for (int x = 0; x<password.length; x++){
+        char[] password = jSenha.getPassword();
+        for (int x = 0; x < password.length; x++) {
             senhatest += password[x];
-       }
+        }
         nometest = jUsuario.getText();
-        Usuario usuario = new Usuario();
-        usuario.setUsuario(nometest, senhatest);
 
-        if (AllClass.Usuario.getStatus()){
+        if (ControladorSuporte.fazerLogin(nometest, senhatest)) {
             this.dispose();
         }
+
         //this.setEnabled(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_jEntrarActionPerformed

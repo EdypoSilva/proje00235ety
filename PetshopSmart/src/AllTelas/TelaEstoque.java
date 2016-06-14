@@ -9,7 +9,7 @@ import AllClass.Produto;
 import AllClass.Repositorio.RepositorioProduto;
 import AllControlador.ControladorEstoque;
 import AllControlador.ControladorProduto;
-import AllSuporte.Suporte;
+import AllControlador.ControladorSuporte;
 
 /**
  *
@@ -206,7 +206,7 @@ public class TelaEstoque extends javax.swing.JInternalFrame {
 
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
         
-        Suporte.setMudarStatus(false);
+        ControladorSuporte.mudarTelaStatus(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_formInternalFrameClosed
 

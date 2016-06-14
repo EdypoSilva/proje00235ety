@@ -137,7 +137,17 @@ public class ControladorProduto {
         return testValidarEstoque;
     }
 
-    
+    public static String validarCompra (int cod, int quant){
+        String testValidarCompra = "";
+        
+        if (RepositorioProduto.getValidarCompra(cod, quant)){
+            testValidarCompra = "1";
+        }else {
+            testValidarCompra = "Quantidade insuficiente no estoque!!!";
+        }
+        
+        return testValidarCompra;
+    }
     
     
     

@@ -9,7 +9,7 @@ import AllClass.Compra;
 import AllClass.Repositorio.RepositorioCompra;
 import AllControlador.ControladorCliente;
 import AllControlador.ControladorCompra;
-import AllSuporte.Suporte;
+import AllControlador.ControladorSuporte;
 import static BancoDeDados.BancoPetshop.BancoListCompra;
 import javax.swing.table.DefaultTableModel;
 
@@ -195,7 +195,7 @@ public class TelaCompraRemover extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
-        Suporte.setMudarStatus(false);
+        ControladorSuporte.mudarTelaStatus(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_formInternalFrameClosed
 

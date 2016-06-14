@@ -129,12 +129,5 @@ public class RepositorioCliente {
         //validando CPF
     }
 
-    public static boolean setLimparCPF(String cpf) {
-        if (ValidarDados.validarCpf(cpf)) {
-            return true;
-        }
-        return false;
-    }
-
     //FimClass
 }

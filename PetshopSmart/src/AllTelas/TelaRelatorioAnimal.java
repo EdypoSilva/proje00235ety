@@ -6,11 +6,9 @@
 package AllTelas;
 
 import AllClass.Animal;
-import AllClass.Repositorio.RepositorioAnimal;
-import AllClass.Repositorio.RepositorioCliente;
 import AllControlador.ControladorAnimal;
 import AllControlador.ControladorCliente;
-import AllSuporte.Suporte;
+import AllControlador.ControladorSuporte;
 import static BancoDeDados.BancoPetshop.BancoListAnimal;
 import javax.swing.table.DefaultTableModel;
 
@@ -166,7 +164,7 @@ public class TelaRelatorioAnimal extends javax.swing.JInternalFrame {
 
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
 
-        Suporte.setMudarStatus(false);
+        ControladorSuporte.mudarTelaStatus(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_formInternalFrameClosed
 

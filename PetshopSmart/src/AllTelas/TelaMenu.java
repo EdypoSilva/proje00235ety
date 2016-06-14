@@ -5,12 +5,9 @@
  */
 package AllTelas;
 
-import AllClass.Repositorio.RepositorioCliente;
-import AllClass.Repositorio.RepositorioCompra;
-import AllSuporte.Suporte;
+import AllControlador.ControladorSuporte;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import javax.swing.UnsupportedLookAndFeelException;
 
 /**
@@ -70,6 +67,11 @@ public class TelaMenu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela Inicial");
         setMaximumSize(new java.awt.Dimension(900, 600));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         TelaMenuIMG.setIcon(new javax.swing.ImageIcon("C:\\Users\\Felly\\Desktop\\Programas Java\\PetshopSmart\\IMG\\TelaMenu.jpg")); // NOI18N
@@ -272,7 +274,7 @@ public class TelaMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBloquearSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBloquearSistemaActionPerformed
-
+        ControladorSuporte.liberarTelaLogin(false);
         this.dispose();
         try {
             new TelaLogin().setVisible(true);
@@ -295,11 +297,11 @@ public class TelaMenu extends javax.swing.JFrame {
 
     private void jCProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCProdutoActionPerformed
 
-        if (!Suporte.verificandoTela) {
+        if (!ControladorSuporte.consultarStatusTelas()) {
             TelaCadastroProduto produto = new TelaCadastroProduto();
             areaPrincipal.add(produto);
             produto.setVisible(true);
-            Suporte.setMudarStatus(true);
+            ControladorSuporte.mudarTelaStatus(true);
         }
 
         // TODO add your handling code here:
@@ -307,22 +309,22 @@ public class TelaMenu extends javax.swing.JFrame {
 
     private void jCAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCAnimalActionPerformed
 
-        if (!Suporte.verificandoTela) {
+        if (!ControladorSuporte.consultarStatusTelas()) {
             TelaCadastroAnimal animal = new TelaCadastroAnimal();
             areaPrincipal.add(animal);
             animal.setVisible(true);
-            Suporte.setMudarStatus(true);
+            ControladorSuporte.mudarTelaStatus(true);
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_jCAnimalActionPerformed
 
     private void jCClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCClienteActionPerformed
 
-        if (!Suporte.verificandoTela) {
+        if (!ControladorSuporte.consultarStatusTelas()) {
             TelaCadastroCliente cliente = new TelaCadastroCliente();
             areaPrincipal.add(cliente);
             cliente.setVisible(true);
-            Suporte.setMudarStatus(true);
+            ControladorSuporte.mudarTelaStatus(true);
         }
 
         // TODO add your handling code here:
@@ -346,22 +348,22 @@ public class TelaMenu extends javax.swing.JFrame {
 
     private void RealizarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RealizarCompraActionPerformed
 
-        if (!Suporte.verificandoTela) {
+        if (!ControladorSuporte.consultarStatusTelas()) {
             TelaCompra compra = new TelaCompra();
             areaPrincipal.add(compra);
             compra.setVisible(true);
-            Suporte.setMudarStatus(true);
+            ControladorSuporte.mudarTelaStatus(true);
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_RealizarCompraActionPerformed
 
     private void jAClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAClienteActionPerformed
 
-        if (!Suporte.verificandoTela) {
+        if (!ControladorSuporte.consultarStatusTelas()) {
             TelaAlterarCliente a_cliente = new TelaAlterarCliente();
             areaPrincipal.add(a_cliente);
             a_cliente.setVisible(true);
-            Suporte.setMudarStatus(true);
+            ControladorSuporte.mudarTelaStatus(true);
         }
 
         // TODO add your handling code here:
@@ -374,11 +376,11 @@ public class TelaMenu extends javax.swing.JFrame {
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
 
-        if (!Suporte.verificandoTela) {
+        if (!ControladorSuporte.consultarStatusTelas()) {
             TelaCompraRemover removeCompra = new TelaCompraRemover();
             areaPrincipal.add(removeCompra);
             removeCompra.setVisible(true);
-            Suporte.setMudarStatus(true);
+            ControladorSuporte.mudarTelaStatus(true);
         }
 
         // TODO add your handling code here:
@@ -386,11 +388,11 @@ public class TelaMenu extends javax.swing.JFrame {
 
     private void jAtualizarEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAtualizarEstoqueActionPerformed
 
-        if (!Suporte.verificandoTela) {
+        if (!ControladorSuporte.consultarStatusTelas()) {
             TelaEstoque estoque = new TelaEstoque();
             areaPrincipal.add(estoque);
             estoque.setVisible(true);
-            Suporte.setMudarStatus(true);
+            ControladorSuporte.mudarTelaStatus(true);
         }
 
 // TODO add your handling code here:
@@ -398,11 +400,11 @@ public class TelaMenu extends javax.swing.JFrame {
 
     private void jAAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAAnimalActionPerformed
 
-        if (!Suporte.verificandoTela) {
+        if (!ControladorSuporte.consultarStatusTelas()) {
             TelaAlterarAnimal alterarAnimal = new TelaAlterarAnimal();
             areaPrincipal.add(alterarAnimal);
             alterarAnimal.setVisible(true);
-            Suporte.setMudarStatus(true);
+            ControladorSuporte.mudarTelaStatus(true);
         }
 
         // TODO add your handling code here:
@@ -410,11 +412,11 @@ public class TelaMenu extends javax.swing.JFrame {
 
     private void jAProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAProdutoActionPerformed
 
-        if (!Suporte.verificandoTela) {
+        if (!ControladorSuporte.consultarStatusTelas()) {
             TelaAlterarProduto alterarProduto = new TelaAlterarProduto();
             areaPrincipal.add(alterarProduto);
             alterarProduto.setVisible(true);
-            Suporte.setMudarStatus(true);
+            ControladorSuporte.mudarTelaStatus(true);
         }
 
         // TODO add your handling code here:
@@ -422,11 +424,11 @@ public class TelaMenu extends javax.swing.JFrame {
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
 
-        if (!Suporte.verificandoTela) {
+        if (!ControladorSuporte.consultarStatusTelas()) {
             TelaRelatorioCliente relatorioCliente = new TelaRelatorioCliente();
             areaPrincipal.add(relatorioCliente);
             relatorioCliente.setVisible(true);
-            Suporte.setMudarStatus(true);
+            ControladorSuporte.mudarTelaStatus(true);
         }
 
         // TODO add your handling code here:
@@ -434,14 +436,19 @@ public class TelaMenu extends javax.swing.JFrame {
 
     private void jLAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLAnimalActionPerformed
 
-        if (!Suporte.verificandoTela) {
+        if (!ControladorSuporte.consultarStatusTelas()) {
             TelaRelatorioAnimal relatorioAnimal = new TelaRelatorioAnimal();
             areaPrincipal.add(relatorioAnimal);
             relatorioAnimal.setVisible(true);
-            Suporte.setMudarStatus(true);
+            ControladorSuporte.mudarTelaStatus(true);
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_jLAnimalActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        ControladorSuporte.liberarTelaLogin(false);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments

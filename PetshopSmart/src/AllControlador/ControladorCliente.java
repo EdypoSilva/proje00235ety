@@ -7,11 +7,21 @@ package AllControlador;
 
 import AllClass.Cliente;
 import AllClass.Repositorio.RepositorioCliente;
+import AllSuporte.ValidarDados;
 import javax.swing.JOptionPane;
 
 public class ControladorCliente {
 
     private static String erros;
+    
+    
+    
+    public static boolean limparCPF(String cpf) {
+        if (ValidarDados.validarCpf(cpf)) {
+            return true;
+        }
+        return false;
+    }
 
     private static String validarCamposCliente(Cliente cadCliente) {
         boolean testVariaveis = true;
@@ -22,7 +32,7 @@ public class ControladorCliente {
             testVariaveis = false;
         }
 
-        if (!RepositorioCliente.setLimparCPF(cadCliente.getCpf())) {
+        if (limparCPF(cadCliente.getCpf())) {
             erros += "* CPF\n";
             testVariaveis = false;
         }
@@ -42,7 +52,7 @@ public class ControladorCliente {
         }
         return erros;
     }
-
+    
     public static String cadastroCliente(Cliente cadCliente) {
 
         String testDados = validarCamposCliente(cadCliente);
@@ -130,6 +140,7 @@ public class ControladorCliente {
         
         return testClienteExiste;
     }
+    
     
     
 

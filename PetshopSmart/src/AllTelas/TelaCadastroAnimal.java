@@ -7,10 +7,9 @@ package AllTelas;
 
 import AllClass.Animal;
 import AllClass.Cliente;
-import AllClass.Repositorio.RepositorioCliente;
 import AllControlador.ControladorAnimal;
 import AllControlador.ControladorCliente;
-import AllSuporte.Suporte;
+import AllControlador.ControladorSuporte;
 import javax.swing.JOptionPane;
 
 /**
@@ -217,7 +216,7 @@ public class TelaCadastroAnimal extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jConsultClienteActionPerformed
 
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
-        Suporte.setMudarStatus(false);
+        ControladorSuporte.mudarTelaStatus(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_formInternalFrameClosed
 

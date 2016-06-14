@@ -6,9 +6,7 @@
 package AllTelas;
 
 import AllClass.Cliente;
-import AllClass.Repositorio.RepositorioCliente;
-import AllSuporte.Suporte;
-import AllSuporte.ValidarDados;
+import AllControlador.ControladorSuporte;
 import javax.swing.JOptionPane;
 
 /**
@@ -194,7 +192,7 @@ public class TelaCadastroCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jCancelarActionPerformed
 
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
-        Suporte.setMudarStatus(false);
+        ControladorSuporte.mudarTelaStatus(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_formInternalFrameClosed
 

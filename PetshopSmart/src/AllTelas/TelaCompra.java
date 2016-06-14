@@ -8,11 +8,10 @@ package AllTelas;
 import AllClass.Cliente;
 import AllClass.Compra;
 import AllClass.Produto;
-import AllClass.Repositorio.RepositorioProduto;
 import AllControlador.ControladorCliente;
 import AllControlador.ControladorEstoque;
 import AllControlador.ControladorProduto;
-import AllSuporte.Suporte;
+import AllControlador.ControladorSuporte;
 import static BancoDeDados.BancoPetshop.BancoListCompra;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -268,11 +267,12 @@ public class TelaCompra extends javax.swing.JInternalFrame {
         String cpf = jCPFDono.getText();
         int codigoPro = Integer.parseInt(jCodigoConsultar.getText());
         quant = (Integer) jQuantCompra.getValue();
-        if (RepositorioProduto.getValidarCompra(codigoPro, quant)) {
+        String testValidarCompra = ControladorProduto.validarCompra(codigoPro, quant);
+        if (testValidarCompra.equals("1")) {
             nomeCompra = jNomeComprar.getText();
             convertValor = quant * Double.parseDouble(jValorComprar.getText());
             codigoProduto = Integer.parseInt(jCodigoConsultar.getText());
-            dataCompra = Suporte.getDateTime();
+            dataCompra = ControladorSuporte.dateTime();
             CPFCompra = jCPFDono.getText();
             String quantidade = Integer.toString(quant);
             Compra x = new Compra(nomeCompra, convertValor, codigoProduto, 0, dataCompra, CPFCompra, quant);
@@ -303,7 +303,7 @@ public class TelaCompra extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, testCompra);
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Quantidade insuficiente no estoque!!!");
+            JOptionPane.showMessageDialog(null, testValidarCompra);
         }
 
         Object[] colunas = {"ID Compra", "Nome", "Valor", "ID Produto", "Data&Hora", "Quantidade"};
@@ -333,7 +333,7 @@ public class TelaCompra extends javax.swing.JInternalFrame {
 
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
 
-        Suporte.setMudarStatus(false);
+        ControladorSuporte.mudarTelaStatus(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_formInternalFrameClosed
 

@@ -7,7 +7,7 @@ package AllTelas;
 
 import AllClass.Produto;
 import AllControlador.ControladorProduto;
-import AllSuporte.Suporte;
+import AllControlador.ControladorSuporte;
 import javax.swing.JOptionPane;
 
 /**
@@ -198,9 +198,9 @@ public class TelaAlterarProduto extends javax.swing.JInternalFrame {
 
         int cod;
         cod = Integer.parseInt(jcodigo.getText());
-        
+
         Produto exibeProduto = ControladorProduto.exibirProduto(cod);
-        if (exibeProduto!=null){
+        if (exibeProduto != null) {
             jcodigo.setEditable(false);
             jConsultAnimalAlterar.setEnabled(false);
             jNomeAlterarP.setEditable(true);
@@ -293,7 +293,7 @@ public class TelaAlterarProduto extends javax.swing.JInternalFrame {
         int codigoP;
         codigoP = Integer.parseInt(jcodigo.getText());
         String testRemover = ControladorProduto.removerProduto(codigoP);
-        if (testRemover.equals("1")){
+        if (testRemover.equals("1")) {
             jcodigo.setEditable(true);
             jcodigo.setText("");
             jConsultAnimalAlterar.setEnabled(true);
@@ -308,7 +308,7 @@ public class TelaAlterarProduto extends javax.swing.JInternalFrame {
             jValor.setText("");
             jAlterarProduto.setEnabled(false);
             jdeletProduto.setEnabled(false);
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, testRemover);
         }
 
@@ -323,7 +323,7 @@ public class TelaAlterarProduto extends javax.swing.JInternalFrame {
 
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
 
-        Suporte.setMudarStatus(false);
+        ControladorSuporte.mudarTelaStatus(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_formInternalFrameClosed
 

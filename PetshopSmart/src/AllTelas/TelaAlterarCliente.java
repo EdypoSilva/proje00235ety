@@ -7,7 +7,7 @@ package AllTelas;
 
 import AllClass.Cliente;
 import AllControlador.ControladorCliente;
-import AllSuporte.Suporte;
+import AllControlador.ControladorSuporte;
 import javax.swing.JOptionPane;
 
 /**
@@ -242,7 +242,7 @@ public class TelaAlterarCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jSexo1CActionPerformed
 
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
-        Suporte.setMudarStatus(false);
+        ControladorSuporte.mudarTelaStatus(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_formInternalFrameClosed
 
