@@ -69,4 +69,16 @@ public class RepositorioCompra {
         //Verifica se existe alguma compra do cliente (Caso deseje remover um cliente)
     }
 
+    public static boolean setPagamentoCompra(String cpf, double valor){
+        boolean testPagamento = false;
+        if (RepositorioCliente.setDebitar(cpf, valor)){
+            testPagamento = true;
+        }else {
+            testPagamento = false;
+        }
+        
+        return testPagamento;
+    }
+    
+    
 }

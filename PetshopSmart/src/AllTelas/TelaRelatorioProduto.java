@@ -34,8 +34,6 @@ public class TelaRelatorioProduto extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         buttonGroupProduto = new javax.swing.ButtonGroup();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
-        jLabel13 = new javax.swing.JLabel();
         jCancelar = new javax.swing.JButton();
         jImprimir = new javax.swing.JButton();
         jTableClientes = new javax.swing.JScrollPane();
@@ -48,14 +46,8 @@ public class TelaRelatorioProduto extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jConsultarPorNomeProduto = new javax.swing.JButton();
         jPesquisaNomeProduto = new javax.swing.JTextField();
-
-        jDesktopPane1.setPreferredSize(new java.awt.Dimension(900, 600));
-
-        jLabel13.setIcon(new javax.swing.ImageIcon("C:\\Users\\Felly\\Desktop\\Programas Java\\PetshopSmart\\IMG\\TelaCadastro.png")); // NOI18N
-        jLabel13.setToolTipText(""); // NOI18N
-        jLabel13.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jDesktopPane1.add(jLabel13);
-        jLabel13.setBounds(0, 0, 900, 600);
+        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jLabel13 = new javax.swing.JLabel();
 
         setClosable(true);
         setMaximizable(true);
@@ -97,7 +89,7 @@ public class TelaRelatorioProduto extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Código", "Nome", "Informações", "Categoria", "Quantidade", "Valor"
+                "Código", "Nome", "Informações", "Categoria", "Estoque", "Valor"
             }
         ));
         jTableClientes.setViewportView(jTableRelatorioProduto);
@@ -173,6 +165,16 @@ public class TelaRelatorioProduto extends javax.swing.JInternalFrame {
         });
         getContentPane().add(jPesquisaNomeProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 140, 140, 30));
 
+        jDesktopPane1.setPreferredSize(new java.awt.Dimension(900, 600));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon("C:\\Users\\Felly\\Desktop\\Programas Java\\PetshopSmart\\IMG\\TelaCadastro.png")); // NOI18N
+        jLabel13.setToolTipText(""); // NOI18N
+        jLabel13.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jDesktopPane1.add(jLabel13);
+        jLabel13.setBounds(0, 0, 900, 600);
+
+        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -188,7 +190,7 @@ public class TelaRelatorioProduto extends javax.swing.JInternalFrame {
 
     private void jRadioCodigoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioCodigoProdutoActionPerformed
 
-        Object[] colunas = {"Código", "Nome", "Informações", "Categoria", "Quantidade", "Valor"};
+        Object[] colunas = {"Código", "Nome", "Informações", "Categoria", "Estoque", "Valor"};
         DefaultTableModel modeloTableProduto = new DefaultTableModel();
         modeloTableProduto.setColumnIdentifiers(colunas);
         jTableRelatorioProduto.setModel(modeloTableProduto);
@@ -212,7 +214,7 @@ public class TelaRelatorioProduto extends javax.swing.JInternalFrame {
     private void jConsultarPorCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsultarPorCodigoActionPerformed
 
         int codigoProduto = Integer.parseInt(jPesquisaCodigo.getText());
-        Object[] colunas = {"Código", "Nome", "Informações", "Categoria", "Quantidade", "Valor"};
+        Object[] colunas = {"Código", "Nome", "Informações", "Categoria", "Estoque", "Valor"};
         DefaultTableModel modeloTableProduto = new DefaultTableModel();
         modeloTableProduto.setColumnIdentifiers(colunas);
         jTableRelatorioProduto.setModel(modeloTableProduto);
@@ -238,7 +240,7 @@ public class TelaRelatorioProduto extends javax.swing.JInternalFrame {
 
     private void jRadioNomeProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioNomeProdutoActionPerformed
 
-        Object[] colunas = {"Código", "Nome", "Informações", "Categoria", "Quantidade", "Valor"};
+        Object[] colunas = {"Código", "Nome", "Informações", "Categoria", "Estoque", "Valor"};
         DefaultTableModel modeloTableProduto = new DefaultTableModel();
         modeloTableProduto.setColumnIdentifiers(colunas);
         jTableRelatorioProduto.setModel(modeloTableProduto);
@@ -265,7 +267,7 @@ public class TelaRelatorioProduto extends javax.swing.JInternalFrame {
 
     private void jRadioAllProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioAllProdutoActionPerformed
 
-        Object[] colunas = {"Código", "Nome", "Informações", "Categoria", "Quantidade", "Valor"};
+        Object[] colunas = {"Código", "Nome", "Informações", "Categoria", "Estoque", "Valor"};
         DefaultTableModel modeloTableProduto = new DefaultTableModel();
         modeloTableProduto.setColumnIdentifiers(colunas);
         jTableRelatorioProduto.setModel(modeloTableProduto);
@@ -299,7 +301,7 @@ public class TelaRelatorioProduto extends javax.swing.JInternalFrame {
     private void jConsultarPorNomeProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsultarPorNomeProdutoActionPerformed
 
         String nomeAnimal = jPesquisaNomeProduto.getText();
-        Object[] colunas = {"Código", "Nome", "Informações", "Categoria", "Quantidade", "Valor"};
+        Object[] colunas = {"Código", "Nome", "Informações", "Categoria", "Estoque", "Valor"};
         DefaultTableModel modeloTableProduto = new DefaultTableModel();
         modeloTableProduto.setColumnIdentifiers(colunas);
         jTableRelatorioProduto.setModel(modeloTableProduto);

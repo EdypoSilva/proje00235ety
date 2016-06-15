@@ -34,8 +34,6 @@ public class TelaRelatorioCompra extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         buttonGroupCompra = new javax.swing.ButtonGroup();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
-        jLabel13 = new javax.swing.JLabel();
         jCancelar = new javax.swing.JButton();
         jImprimir = new javax.swing.JButton();
         jTableClientes = new javax.swing.JScrollPane();
@@ -51,14 +49,8 @@ public class TelaRelatorioCompra extends javax.swing.JInternalFrame {
         jRadioCodigoProduto = new javax.swing.JRadioButton();
         jConsultarPorCodigoProduto = new javax.swing.JButton();
         jPesquisaDataHora = new javax.swing.JTextField();
-
-        jDesktopPane1.setPreferredSize(new java.awt.Dimension(900, 600));
-
-        jLabel13.setIcon(new javax.swing.ImageIcon("C:\\Users\\Felly\\Desktop\\Programas Java\\PetshopSmart\\IMG\\TelaCadastro.png")); // NOI18N
-        jLabel13.setToolTipText(""); // NOI18N
-        jLabel13.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jDesktopPane1.add(jLabel13);
-        jLabel13.setBounds(0, 0, 900, 600);
+        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jLabel13 = new javax.swing.JLabel();
 
         setClosable(true);
         setMaximizable(true);
@@ -114,7 +106,7 @@ public class TelaRelatorioCompra extends javax.swing.JInternalFrame {
                 jRadioCpfActionPerformed(evt);
             }
         });
-        getContentPane().add(jRadioCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 50, 30));
+        getContentPane().add(jRadioCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 50, 30));
 
         try {
             jCPFRelatorioCliente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -123,7 +115,7 @@ public class TelaRelatorioCompra extends javax.swing.JInternalFrame {
         }
         jCPFRelatorioCliente.setText("");
         jCPFRelatorioCliente.setEnabled(false);
-        getContentPane().add(jCPFRelatorioCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 110, 30));
+        getContentPane().add(jCPFRelatorioCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 110, 30));
 
         jConsultarPorCPFCompra.setText("@");
         jConsultarPorCPFCompra.setToolTipText("");
@@ -133,7 +125,7 @@ public class TelaRelatorioCompra extends javax.swing.JInternalFrame {
                 jConsultarPorCPFCompraActionPerformed(evt);
             }
         });
-        getContentPane().add(jConsultarPorCPFCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 30, 30));
+        getContentPane().add(jConsultarPorCPFCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 30, 30));
 
         buttonGroupCompra.add(jRadioDataHora);
         jRadioDataHora.setText("Data/Hora:");
@@ -151,7 +143,7 @@ public class TelaRelatorioCompra extends javax.swing.JInternalFrame {
                 jPesquisaCodigoProdutoActionPerformed(evt);
             }
         });
-        getContentPane().add(jPesquisaCodigoProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, 100, 30));
+        getContentPane().add(jPesquisaCodigoProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, 100, 30));
 
         buttonGroupCompra.add(jRadioAllCompras);
         jRadioAllCompras.setText("All Compras");
@@ -160,7 +152,7 @@ public class TelaRelatorioCompra extends javax.swing.JInternalFrame {
                 jRadioAllComprasActionPerformed(evt);
             }
         });
-        getContentPane().add(jRadioAllCompras, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 140, 90, 30));
+        getContentPane().add(jRadioAllCompras, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 140, -1, 30));
 
         jLabel5.setFont(new java.awt.Font("Stencil Std", 1, 60)); // NOI18N
         jLabel5.setText("Relatório Compra");
@@ -183,7 +175,7 @@ public class TelaRelatorioCompra extends javax.swing.JInternalFrame {
                 jRadioCodigoProdutoActionPerformed(evt);
             }
         });
-        getContentPane().add(jRadioCodigoProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 120, 30));
+        getContentPane().add(jRadioCodigoProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 120, 30));
 
         jConsultarPorCodigoProduto.setText("@");
         jConsultarPorCodigoProduto.setToolTipText("");
@@ -193,7 +185,7 @@ public class TelaRelatorioCompra extends javax.swing.JInternalFrame {
                 jConsultarPorCodigoProdutoActionPerformed(evt);
             }
         });
-        getContentPane().add(jConsultarPorCodigoProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, 30, 30));
+        getContentPane().add(jConsultarPorCodigoProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 140, 30, 30));
 
         jPesquisaDataHora.setToolTipText("Digite o nome que deseja pesquisar \"Ex: Edypo Fellype\"");
         jPesquisaDataHora.setEnabled(false);
@@ -203,6 +195,16 @@ public class TelaRelatorioCompra extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jPesquisaDataHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 140, 80, 30));
+
+        jDesktopPane1.setPreferredSize(new java.awt.Dimension(900, 600));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon("C:\\Users\\Felly\\Desktop\\Programas Java\\PetshopSmart\\IMG\\TelaCadastro.png")); // NOI18N
+        jLabel13.setToolTipText(""); // NOI18N
+        jLabel13.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jDesktopPane1.add(jLabel13);
+        jLabel13.setBounds(0, 0, 900, 600);
+
+        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

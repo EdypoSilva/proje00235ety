@@ -6,7 +6,6 @@
 package AllClass.Repositorio;
 
 import AllClass.Cliente;
-import AllSuporte.ValidarDados;
 import static BancoDeDados.BancoPetshop.BancoListCliente;
 
 public class RepositorioCliente {
@@ -79,7 +78,7 @@ public class RepositorioCliente {
             testcreditar = false;
         }
         return testcreditar;
-        //Adicionar Compra
+        //Adicionar valor ao cliente
     }
 
     public static boolean setDebitar(String cpf, double valor) {
@@ -88,7 +87,7 @@ public class RepositorioCliente {
             Cliente c = new Cliente();
             for (int i = 0; i < BancoListCliente.size(); i++) {
                 c = BancoListCliente.get(i);
-                if (c.getCpf().equals(cpf)) {
+                if (c.getCpf().equals(cpf) && c.getSaldo() >= valor) {
                     c.setSaldoDebitar(valor);
                     BancoListCliente.set(i, c);
                     statusDebitar = true;
@@ -97,7 +96,7 @@ public class RepositorioCliente {
         } catch (Exception e) {
         }
         return statusDebitar;
-        //Remover Compra
+        //Remover valor do cliente
     }
 
     public static Cliente getExibirCliente(String cpf) {
@@ -122,7 +121,7 @@ public class RepositorioCliente {
                 }
             }
         } catch (Exception e) {
-            CPFativo =false;
+            CPFativo = false;
         }
 
         return CPFativo;

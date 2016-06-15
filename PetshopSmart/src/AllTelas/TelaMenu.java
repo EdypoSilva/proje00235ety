@@ -241,9 +241,14 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jFinalizar.setText("Finalizar");
+        jFinalizar.setText("Pagamento");
 
-        jFAnimal.setText("Acompanhamento Animal");
+        jFAnimal.setText("Efetuar Pagamento");
+        jFAnimal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFAnimalActionPerformed(evt);
+            }
+        });
         jFinalizar.add(jFAnimal);
 
         jMenuBar1.add(jFinalizar);
@@ -464,6 +469,17 @@ public class TelaMenu extends javax.swing.JFrame {
         ControladorSuporte.liberarTelaLogin(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowClosed
+
+    private void jFAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFAnimalActionPerformed
+
+        if (!ControladorSuporte.consultarStatusTelas()) {
+            TelaRealizarPagamento pagamento = new TelaRealizarPagamento();
+            areaPrincipal.add(pagamento);
+            pagamento.setVisible(true);
+            ControladorSuporte.mudarTelaStatus(true);
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFAnimalActionPerformed
 
     /**
      * @param args the command line arguments

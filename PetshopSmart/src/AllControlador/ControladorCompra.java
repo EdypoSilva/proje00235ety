@@ -46,17 +46,33 @@ public class ControladorCompra {
         } else {
             testCPFcompra = "Compra não Existe";
         }
-        
+
         return testCPFcompra;
     }
-    
-    public static Compra exibirCompra(String cpf, int idCompra){
-        
+
+    public static Compra exibirCompra(String cpf, int idCompra) {
+
         Compra exibirCompra = RepositorioCompra.getExisteCompra(cpf, idCompra);
 
         return exibirCompra;
     }
-    
-    
+
+    public static String pagamentoCompra(String cpf, double valor) {
+        String testpagamento = "";
+        if (valor > 0) {
+            int resp = JOptionPane.showConfirmDialog(null, "Confirma Pagamento de R$:"+ valor +" ?");
+            if (resp == 0) {
+                if (RepositorioCompra.setPagamentoCompra(cpf, valor)) {
+                    testpagamento = "1";
+                    JOptionPane.showMessageDialog(null,"Pagamento Realizado Com Sucesso!!!");
+                } else {
+                    testpagamento = "Valor Superior Ao Que o Cliente Possue";
+                }
+            }
+        }
+
+        return testpagamento;
+    }
+
 //FimClass
 }
