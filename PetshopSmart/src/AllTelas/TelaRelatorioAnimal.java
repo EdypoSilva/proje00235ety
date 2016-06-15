@@ -84,7 +84,7 @@ public class TelaRelatorioAnimal extends javax.swing.JInternalFrame {
                 jRadioCPFdonoActionPerformed(evt);
             }
         });
-        getContentPane().add(jRadioCPFdono, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 50, 30));
+        getContentPane().add(jRadioCPFdono, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, 50, 30));
 
         try {
             jCPFRelatorioCliente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -93,7 +93,7 @@ public class TelaRelatorioAnimal extends javax.swing.JInternalFrame {
         }
         jCPFRelatorioCliente.setText("");
         jCPFRelatorioCliente.setEnabled(false);
-        getContentPane().add(jCPFRelatorioCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, 120, 30));
+        getContentPane().add(jCPFRelatorioCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 120, 30));
 
         jConsultarPorCPFdono.setText("@");
         jConsultarPorCPFdono.setToolTipText("");
@@ -103,16 +103,16 @@ public class TelaRelatorioAnimal extends javax.swing.JInternalFrame {
                 jConsultarPorCPFdonoActionPerformed(evt);
             }
         });
-        getContentPane().add(jConsultarPorCPFdono, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, 30, 30));
+        getContentPane().add(jConsultarPorCPFdono, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, 30, 30));
 
         groupAnimal.add(jRadioNomeAnimal);
-        jRadioNomeAnimal.setText("Nome:");
+        jRadioNomeAnimal.setText("Nome do Animal:");
         jRadioNomeAnimal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioNomeAnimalActionPerformed(evt);
             }
         });
-        getContentPane().add(jRadioNomeAnimal, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, 60, 30));
+        getContentPane().add(jRadioNomeAnimal, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, 110, 30));
 
         jPesquisaNomeAnimal.setToolTipText("Digite o nome que deseja pesquisar \"Ex: Edypo Fellype\"");
         jPesquisaNomeAnimal.setEnabled(false);
@@ -134,13 +134,13 @@ public class TelaRelatorioAnimal extends javax.swing.JInternalFrame {
         getContentPane().add(jConsultarPorNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 140, 30, 30));
 
         groupAnimal.add(jRadioAllAnimal);
-        jRadioAllAnimal.setText("All Clientes");
+        jRadioAllAnimal.setText("All Animais");
         jRadioAllAnimal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioAllAnimalActionPerformed(evt);
             }
         });
-        getContentPane().add(jRadioAllAnimal, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 140, 90, 30));
+        getContentPane().add(jRadioAllAnimal, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 140, 90, 30));
 
         jTableRelatorioAnimal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

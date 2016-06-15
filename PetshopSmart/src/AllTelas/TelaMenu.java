@@ -339,6 +339,14 @@ public class TelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu3MouseClicked
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+
+        if (!ControladorSuporte.consultarStatusTelas()) {
+            TelaRelatorioCompra r_Compra = new TelaRelatorioCompra();
+            areaPrincipal.add(r_Compra);
+            r_Compra.setVisible(true);
+            ControladorSuporte.mudarTelaStatus(true);
+        }
+
 // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
@@ -370,6 +378,13 @@ public class TelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jAClienteActionPerformed
 
     private void jLProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLProdutoActionPerformed
+
+        if (!ControladorSuporte.consultarStatusTelas()) {
+            TelaRelatorioProduto r_Produto = new TelaRelatorioProduto();
+            areaPrincipal.add(r_Produto);
+            r_Produto.setVisible(true);
+            ControladorSuporte.mudarTelaStatus(true);
+        }
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jLProdutoActionPerformed

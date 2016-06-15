@@ -260,6 +260,7 @@ public class TelaCompra extends javax.swing.JInternalFrame {
         String nomeCompra = "";
         double valorCompra;
         int codigoProduto;
+        String nomeCliente = "";
         String dataCompra = "";
         String CPFCompra = "";
         double convertValor;
@@ -270,12 +271,13 @@ public class TelaCompra extends javax.swing.JInternalFrame {
         String testValidarCompra = ControladorProduto.validarCompra(codigoPro, quant);
         if (testValidarCompra.equals("1")) {
             nomeCompra = jNomeComprar.getText();
+            nomeCliente = jNomeCLiente.getText();
             convertValor = quant * Double.parseDouble(jValorComprar.getText());
             codigoProduto = Integer.parseInt(jCodigoConsultar.getText());
             dataCompra = ControladorSuporte.dateTime();
             CPFCompra = jCPFDono.getText();
             String quantidade = Integer.toString(quant);
-            Compra x = new Compra(nomeCompra, convertValor, codigoProduto, 0, dataCompra, CPFCompra, quant);
+            Compra x = new Compra(nomeCompra, nomeCliente, convertValor, codigoProduto, 0, dataCompra, CPFCompra, quant);
 
             String testCompra = AllControlador.ControladorCompra.comprarProduto(x);
             if (testCompra.equals("1")) {
