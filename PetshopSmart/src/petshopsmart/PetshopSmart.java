@@ -29,8 +29,8 @@ public class PetshopSmart {
         Animal b = new Animal("ABBBA", 10, "Preto", "AAAXX", "Macho", "082.660.874-40",1);
         Animal c = new Animal("CCCCC", 5, "Preto", "AAAAA", "Macho", "111.111.111-11",2);
         Animal d = new Animal("CDDDC", 5, "Preto", "AAAAA", "Macho", "111.111.111-11",3);
-        Cliente cliA = new Cliente("Edypo", "082.660.874-40", "(81)1111-1111", "Homem");
-        Cliente cliB = new Cliente("Gleyci", "111.111.111-11", "(81)1111-1111", "Mulher");
+        Cliente cliA = new Cliente("Maxuel", "222.222.222-22", "(81)2222-2222", "Homem");
+        Cliente cliB = new Cliente("Fernanda", "111.111.111-11", "(81)1111-1111", "Mulher");
         Produto proA = new Produto("Bola JX", "New Bola SUP", "Adulto", 100, 111, 10);
         
         

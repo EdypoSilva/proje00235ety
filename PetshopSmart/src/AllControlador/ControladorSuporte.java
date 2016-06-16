@@ -44,6 +44,7 @@ public class ControladorSuporte {
             ativar = true;
             liberarTelaLogin(ativar);
             statusLogin = true;
+            JOptionPane.showMessageDialog(null, "Bem Vindo!");
             new TelaMenu().setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "Login Incorreto!!!");

@@ -32,7 +32,7 @@ public class ControladorCliente {
             testVariaveis = false;
         }
 
-        if (limparCPF(cadCliente.getCpf())) {
+        if (!limparCPF(cadCliente.getCpf())) {
             erros += "* CPF\n";
             testVariaveis = false;
         }
