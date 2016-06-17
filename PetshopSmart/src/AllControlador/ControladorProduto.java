@@ -76,12 +76,15 @@ public class ControladorProduto {
     public static String editarProduto(Produto altProduto) {
         String testDados = validarProduto(altProduto);
         if (testDados.equals("1")) {
-            if (RepositorioProduto.getCODProduto(altProduto.getCodigoP())) {
-                if (RepositorioProduto.setEditarProduto(altProduto)) {
-                    JOptionPane.showMessageDialog(null, "Alterado com Sucesso!!!");
-                    testDados = "1";
-                } else {
-                    testDados = "Erro, Não Cadastrado!!!";
+            int resp = JOptionPane.showConfirmDialog(null, "Deseja Alterar o Produto?");
+            if (resp == 0) {
+                if (RepositorioProduto.getCODProduto(altProduto.getCodigoP())) {
+                    if (RepositorioProduto.setEditarProduto(altProduto)) {
+                        JOptionPane.showMessageDialog(null, "Alterado com Sucesso!!!");
+                        testDados = "1";
+                    } else {
+                        testDados = "Erro, Não Cadastrado!!!";
+                    }
                 }
             }
         }
@@ -91,14 +94,15 @@ public class ControladorProduto {
 
     public static String removerProduto(int codigo) {
         String testRemoverProduto = "1";
-
-        if (RepositorioProduto.setRemoverProduto(codigo)) {
-            testRemoverProduto = "1";
-            JOptionPane.showMessageDialog(null, "Removido com Sucesso!!!");
-        } else {
-            testRemoverProduto = "Erro, Não Removido";
+        int resp = JOptionPane.showConfirmDialog(null, "Deseja Remover o Produto?");
+        if (resp == 0) {
+            if (RepositorioProduto.setRemoverProduto(codigo)) {
+                testRemoverProduto = "1";
+                JOptionPane.showMessageDialog(null, "Removido com Sucesso!!!");
+            } else {
+                testRemoverProduto = "Erro, Não Removido";
+            }
         }
-
         return testRemoverProduto;
     }
 
@@ -127,9 +131,9 @@ public class ControladorProduto {
 
         if (RepositorioProduto.getCODProduto(codigo)) {
             Produto exibirProduto = RepositorioProduto.getExibirProduto(codigo);
-            if (exibirProduto.getQuantidade()>=1){
+            if (exibirProduto.getQuantidade() >= 1) {
                 testValidarEstoque = exibirProduto;
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Quantidade Insuficiente no Estoque!!!");
             }
         }
@@ -137,18 +141,16 @@ public class ControladorProduto {
         return testValidarEstoque;
     }
 
-    public static String validarCompra (int cod, int quant){
+    public static String validarCompra(int cod, int quant) {
         String testValidarCompra = "";
-        
-        if (RepositorioProduto.getValidarCompra(cod, quant)){
+
+        if (RepositorioProduto.getValidarCompra(cod, quant)) {
             testValidarCompra = "1";
-        }else {
+        } else {
             testValidarCompra = "Quantidade insuficiente no estoque!!!";
         }
-        
+
         return testValidarCompra;
     }
-    
-    
-    
+
 }

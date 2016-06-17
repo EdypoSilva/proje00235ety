@@ -1,5 +1,6 @@
 package BancoDeDados;
 
+import AllClass.AdquirirServico;
 import AllClass.Animal;
 import AllClass.Cliente;
 import AllClass.Compra;
@@ -20,5 +21,5 @@ public class BancoPetshop {
     
     public static ArrayList<Compra> BancoListCompra = new ArrayList();
     
-    
+    public static ArrayList<AdquirirServico> BancoListAdquirirServico = new ArrayList();
 }

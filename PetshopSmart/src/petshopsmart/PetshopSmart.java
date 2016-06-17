@@ -11,6 +11,8 @@ import AllClass.Produto;
 import AllClass.Repositorio.RepositorioAnimal;
 import AllClass.Repositorio.RepositorioCliente;
 import AllClass.Repositorio.RepositorioProduto;
+import AllClass.Repositorio.RepositorioServicoBasico;
+import AllClass.ServicoBasico;
 import AllTelas.TelaLogin;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -32,6 +34,11 @@ public class PetshopSmart {
         Cliente cliA = new Cliente("Maxuel", "222.222.222-22", "(81)2222-2222", "Homem");
         Cliente cliB = new Cliente("Fernanda", "111.111.111-11", "(81)1111-1111", "Mulher");
         Produto proA = new Produto("Bola JX", "New Bola SUP", "Adulto", 100, 111, 10);
+        ServicoBasico serv1 = new ServicoBasico("Banho", "Feito por profissionais qualificados e com produtos próprios para animais", 40, 100);
+        ServicoBasico serv2 = new ServicoBasico("Hidratação", "Manter a pelagem do seu amiguinho sempre bonita e sedosa. Feita juntamente com a devida escovação.", 30, 200);
+        ServicoBasico serv3 = new ServicoBasico("Banho + Tosa", "Todas feitas por profissionais capacitados, buscando sempre garantir o conforto e bem estar do seu amiguinho. Todas as tosas incluem o banho.", 80, 300);
+        ServicoBasico serv4 = new ServicoBasico("Banho + Hidratação", "Banho + Manter a pelagem do seu amiguinho sempre bonita e sedosa. Feita juntamente com a devida escovação.", 70, 400);
+        ServicoBasico serv5 = new ServicoBasico("Consulta Veterinário", "Oferecemos atendimento de qualidade para seu animal através de avaliação clínica completa e rigorosa.", 120, 500);
         
         
         RepositorioCliente.setCadastroCliente(cliA);
@@ -41,6 +48,10 @@ public class PetshopSmart {
         RepositorioAnimal.setCadastroAnimal(c);
         RepositorioAnimal.setCadastroAnimal(d);
         RepositorioProduto.setCadastroProduto(proA);
-        
+        RepositorioServicoBasico.setCadServico(serv1);
+        RepositorioServicoBasico.setCadServico(serv2);
+        RepositorioServicoBasico.setCadServico(serv3);
+        RepositorioServicoBasico.setCadServico(serv4);
+        RepositorioServicoBasico.setCadServico(serv5);
     }
 }

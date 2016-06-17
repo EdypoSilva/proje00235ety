@@ -12,11 +12,11 @@ public class ServicoBasico {
     double s_ValorS;
     int s_CodigoS;
 
-    public ServicoBasico(String nomeS, String inforS, String valorS, String codigoS) {
+    public ServicoBasico(String nomeS, String inforS, double valorS, int codigoS) {
         this.s_NomeS = nomeS;
         this.s_InforS = inforS;
-        this.s_ValorS = Double.parseDouble(valorS);
-        this.s_CodigoS = Integer.parseInt(codigoS);
+        this.s_ValorS = valorS;
+        this.s_CodigoS = codigoS;
     }
 
     public String getS_NomeS() {

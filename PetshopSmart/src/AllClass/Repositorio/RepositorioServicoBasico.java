@@ -10,7 +10,6 @@ import static BancoDeDados.BancoPetshop.BancoListServicoBasico;
 
 public class RepositorioServicoBasico {
 
-    public static int ContServicoBasico;
     private static boolean testServicoBasico;
 
     public static boolean setCadServico(ServicoBasico cadServico) {
@@ -23,6 +22,23 @@ public class RepositorioServicoBasico {
         }
         return testServicoBasico;
         //Cadastra servico
+    }
+
+     public static boolean setEditarServico(ServicoBasico altServico) {
+        testServicoBasico = false;
+        try {
+            for (int i = 0; i < BancoListServicoBasico.size(); i++) {
+                ServicoBasico servico = BancoListServicoBasico.get(i);
+                if (servico.getS_CodigoS() == altServico.getS_CodigoS()) {
+                    BancoListServicoBasico.set(i, altServico);
+                    testServicoBasico = true;
+                }
+            }
+        } catch (Exception e) {
+            testServicoBasico = false;
+        }
+        //Alterar Serviço
+        return testServicoBasico;
     }
 
     public static boolean setDeletarServicoBasico(int idServicoBasico) {
