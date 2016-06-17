@@ -6,11 +6,9 @@ import static BancoDeDados.BancoPetshop.BancoListCompra;
 public class RepositorioCompra {
 
     public static int codigoCompra;
-    public static boolean statusCompra = false;
-    public static boolean pesquisaCompra = false;
 
     public static boolean setCompra(Compra cadCompra) {
-        statusCompra = false;
+        boolean statusCompra = false;
         try {
             cadCompra.setCodigoCompra(codigoCompra);
             BancoListCompra.add(cadCompra);
@@ -24,7 +22,7 @@ public class RepositorioCompra {
     }
 
     public static boolean setRemoverCompra(String cpf, int id_compra) {
-        pesquisaCompra = false;
+        boolean pesquisaCompra = false;
         try {
             for (Compra comp : BancoListCompra) {
                 if (cpf.equals(comp.getCPFCompra()) && (id_compra == comp.getCodigoCompra())) {

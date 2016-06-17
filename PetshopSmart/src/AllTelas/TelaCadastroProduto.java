@@ -133,7 +133,7 @@ public class TelaCadastroProduto extends javax.swing.JInternalFrame {
         jLabel8.setText("Quantidade:");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, -1, 30));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\Felly\\Desktop\\Programas Java\\PetshopSmart\\IMG\\TelaCadastro.png")); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\Felly\\Desktop\\Programas NetBeans\\proje00235ety\\PetshopSmart\\IMG\\TelaCadastro.png")); // NOI18N
         jDesktopPane1.add(jLabel7);
         jLabel7.setBounds(0, 0, 890, 570);
 

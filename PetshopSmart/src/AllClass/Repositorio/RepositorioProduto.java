@@ -10,9 +10,7 @@ import static BancoDeDados.BancoPetshop.BancoListProduto;
 
 public class RepositorioProduto {
 
-    public static Produto exibeProduto;
     public static boolean statusProduto = false;
-    public static Produto estoqueProduto;
 
     public static boolean setCadastroProduto(Produto cadProduto) {
         statusProduto = false;

@@ -74,7 +74,7 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         getContentPane().setLayout(null);
 
-        TelaMenuIMG.setIcon(new javax.swing.ImageIcon("C:\\Users\\Felly\\Desktop\\Programas Java\\PetshopSmart\\IMG\\TelaMenu.jpg")); // NOI18N
+        TelaMenuIMG.setIcon(new javax.swing.ImageIcon("C:\\Users\\Felly\\Desktop\\Programas NetBeans\\proje00235ety\\PetshopSmart\\IMG\\TelaLogin2.jpg")); // NOI18N
         areaPrincipal.add(TelaMenuIMG);
         TelaMenuIMG.setBounds(0, 0, 900, 600);
 

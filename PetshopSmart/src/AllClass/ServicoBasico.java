@@ -1,6 +1,5 @@
 package AllClass;
 
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,27 +17,39 @@ public class ServicoBasico {
         this.s_InforS = inforS;
         this.s_ValorS = Double.parseDouble(valorS);
         this.s_CodigoS = Integer.parseInt(codigoS);
-        JOptionPane.showMessageDialog(null, "Nome: " + this.s_NomeS + "\nInformações: " + this.s_InforS + "\nValor: " + this.s_ValorS + "\nCodigo: " + this.s_CodigoS);
     }
 
-    public String getNome() {
+    public String getS_NomeS() {
         return s_NomeS;
     }
 
-    public String getInforP() {
+    public void setS_NomeS(String s_NomeS) {
+        this.s_NomeS = s_NomeS;
+    }
+
+    public String getS_InforS() {
         return s_InforS;
     }
 
-    public double getValorP() {
+    public void setS_InforS(String s_InforS) {
+        this.s_InforS = s_InforS;
+    }
+
+    public double getS_ValorS() {
         return s_ValorS;
     }
 
-    public int CodigoP() {
+    public void setS_ValorS(double s_ValorS) {
+        this.s_ValorS = s_ValorS;
+    }
+
+    public int getS_CodigoS() {
         return s_CodigoS;
     }
 
-    public void setCodigo(int codigoP) {
-        this.s_CodigoS = codigoP;
+    public void setS_CodigoS(int s_CodigoS) {
+        this.s_CodigoS = s_CodigoS;
     }
 
+   
 }

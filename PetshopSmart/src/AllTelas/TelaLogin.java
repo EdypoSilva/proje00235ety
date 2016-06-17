@@ -98,11 +98,10 @@ public class TelaLogin extends javax.swing.JFrame {
         });
         jTelaLoginImg.add(jEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 310, 94, -1));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Felly\\Desktop\\Programas Java\\PetshopSmart\\IMG\\login.png")); // NOI18N
         jLabel3.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jTelaLoginImg.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 250, 190));
 
-        JImagemTelaLogin.setIcon(new javax.swing.ImageIcon("C:\\Users\\Felly\\Desktop\\Programas Java\\PetshopSmart\\IMG\\TelaLogin2.jpg")); // NOI18N
+        JImagemTelaLogin.setIcon(new javax.swing.ImageIcon("C:\\Users\\Felly\\Desktop\\Programas NetBeans\\proje00235ety\\PetshopSmart\\IMG\\TelaLogin2.jpg")); // NOI18N
         jTelaLoginImg.add(JImagemTelaLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 600));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -16,7 +16,7 @@ public class BancoPetshop {
     
     public static ArrayList<Produto> BancoListProduto = new ArrayList();
     
-    public static ServicoBasico[] BancoServicoBasico = new ServicoBasico[100];
+    public static ArrayList<ServicoBasico> BancoListServicoBasico = new ArrayList<>();
     
     public static ArrayList<Compra> BancoListCompra = new ArrayList();
     

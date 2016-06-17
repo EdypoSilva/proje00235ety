@@ -57,7 +57,6 @@ public class TelaAlterarProduto extends javax.swing.JInternalFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
-        jDesktopPane2 = new javax.swing.JDesktopPane();
         jLabel3 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(900, 600));
@@ -178,16 +177,11 @@ public class TelaAlterarProduto extends javax.swing.JInternalFrame {
 
         jDesktopPane1.setPreferredSize(new java.awt.Dimension(900, 600));
 
-        jDesktopPane2.setPreferredSize(new java.awt.Dimension(900, 600));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Felly\\Desktop\\Programas Java\\PetshopSmart\\IMG\\TelaCadastro.png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Felly\\Desktop\\Programas NetBeans\\proje00235ety\\PetshopSmart\\IMG\\TelaCadastro.png")); // NOI18N
         jLabel3.setToolTipText(""); // NOI18N
         jLabel3.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jDesktopPane2.add(jLabel3);
-        jLabel3.setBounds(0, 0, 900, 600);
-
-        jDesktopPane1.add(jDesktopPane2);
-        jDesktopPane2.setBounds(0, 0, 900, 600);
+        jDesktopPane1.add(jLabel3);
+        jLabel3.setBounds(0, 0, 900, 570);
 
         getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -335,7 +329,6 @@ public class TelaAlterarProduto extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton jButtonInfantil;
     private javax.swing.JButton jConsultAnimalAlterar;
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JTextArea jInformacoes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;

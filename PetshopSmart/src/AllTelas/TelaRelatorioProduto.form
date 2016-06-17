@@ -228,14 +228,14 @@
         <Component class="javax.swing.JLabel" name="jLabel13">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Felly\Desktop\Programas Java\PetshopSmart\IMG\TelaCadastro.png"/>
+              <Image iconType="2" name="C:\Users\Felly\Desktop\Programas NetBeans\proje00235ety\PetshopSmart\IMG\TelaCadastro.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="" noResource="true"/>
             <Property name="verticalAlignment" type="int" value="1"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="0" width="-1" height="-1"/>
+              <AbsoluteConstraints x="0" y="0" width="900" height="580"/>
             </Constraint>
           </Constraints>
         </Component>

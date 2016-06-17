@@ -57,7 +57,6 @@ public class TelaEstoque extends javax.swing.JInternalFrame {
         jRemover = new javax.swing.JRadioButton();
         jAdd = new javax.swing.JRadioButton();
         jDesktopPane1 = new javax.swing.JDesktopPane();
-        jDesktopPane2 = new javax.swing.JDesktopPane();
         jLabel8 = new javax.swing.JLabel();
 
         setClosable(true);
@@ -192,12 +191,9 @@ public class TelaEstoque extends javax.swing.JInternalFrame {
 
         jDesktopPane1.setMinimumSize(new java.awt.Dimension(900, 600));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\Felly\\Desktop\\Programas Java\\PetshopSmart\\IMG\\TelaCadastro22.png")); // NOI18N
-        jDesktopPane2.add(jLabel8);
+        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\Felly\\Desktop\\Programas NetBeans\\proje00235ety\\PetshopSmart\\IMG\\TelaCadastro22.png")); // NOI18N
+        jDesktopPane1.add(jLabel8);
         jLabel8.setBounds(0, 0, 900, 600);
-
-        jDesktopPane1.add(jDesktopPane2);
-        jDesktopPane2.setBounds(0, 0, 900, 600);
 
         getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 600));
 
@@ -248,19 +244,22 @@ public class TelaEstoque extends javax.swing.JInternalFrame {
         
         String testADDEstoque = ControladorEstoque.addEstoque(codigo, quantMais, valor);
         if (testADDEstoque.equals("1")) {
-            jNomeProduto.setText(RepositorioProduto.estoqueProduto.getNome());
-            jQuantidade.setText(Integer.toString(RepositorioProduto.estoqueProduto.getQuantidade()));
-            jValorAtual.setText(Double.toString(RepositorioProduto.estoqueProduto.getValorP()));
-            jNovoValor.setText(Double.toString(RepositorioProduto.estoqueProduto.getValorP()));
+            Produto exibirProduto = ControladorProduto.exibirProduto(codigo);
+            jNomeProduto.setText(exibirProduto.getNome());
+            jQuantidade.setText(Integer.toString(exibirProduto.getQuantidade()));
+            jValorAtual.setText(Double.toString(exibirProduto.getValorP()));
+            jNovoValor.setText(Double.toString(exibirProduto.getValorP()));
         }
         
         String testRemoveEstoque = ControladorEstoque.removeEstoque(codigo, quantMenos, valor);
-        if ((quantMenos > 0) && (quantMenos <= RepositorioProduto.estoqueProduto.getQuantidade())) {
+        Produto exibirProduto = ControladorProduto.exibirProduto(codigo);
+        if ((quantMenos > 0) && (quantMenos <= exibirProduto.getQuantidade())) {
             if (testRemoveEstoque.equals("1")) {
-                jNomeProduto.setText(RepositorioProduto.estoqueProduto.getNome());
-                jQuantidade.setText(Integer.toString(RepositorioProduto.estoqueProduto.getQuantidade()));
-                jValorAtual.setText(Double.toString(RepositorioProduto.estoqueProduto.getValorP()));
-                jNovoValor.setText(Double.toString(RepositorioProduto.estoqueProduto.getValorP()));
+                Produto novoProduto = ControladorProduto.exibirProduto(codigo);
+                jNomeProduto.setText(novoProduto.getNome());
+                jQuantidade.setText(Integer.toString(novoProduto.getQuantidade()));
+                jValorAtual.setText(Double.toString(novoProduto.getValorP()));
+                jNovoValor.setText(Double.toString(novoProduto.getValorP()));
             }
         }
 
@@ -296,7 +295,6 @@ public class TelaEstoque extends javax.swing.JInternalFrame {
     private javax.swing.JButton jCancelarExit;
     private javax.swing.JTextField jCodigoProduto;
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

@@ -142,9 +142,6 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Felly\Desktop\Programas Java\PetshopSmart\IMG\login.png"/>
-            </Property>
             <Property name="verticalAlignment" type="int" value="1"/>
           </Properties>
           <Constraints>
@@ -156,7 +153,7 @@
         <Component class="javax.swing.JLabel" name="JImagemTelaLogin">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Felly\Desktop\Programas Java\PetshopSmart\IMG\TelaLogin2.jpg"/>
+              <Image iconType="2" name="C:\Users\Felly\Desktop\Programas NetBeans\proje00235ety\PetshopSmart\IMG\TelaLogin2.jpg"/>
             </Property>
           </Properties>
           <Constraints>

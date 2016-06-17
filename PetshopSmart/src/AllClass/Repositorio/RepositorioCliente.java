@@ -10,10 +10,6 @@ import static BancoDeDados.BancoPetshop.BancoListCliente;
 
 public class RepositorioCliente {
 
-    public static boolean CPFativo = false;
-    public static boolean clienteAlterado = false;
-    private static boolean statusDebitar;
-
     public static boolean setCadastroCliente(Cliente c) {
         boolean result = false;
         try {
@@ -27,7 +23,7 @@ public class RepositorioCliente {
     }
 
     public static boolean setAlterarCliente(Cliente c) {
-        clienteAlterado = false;
+        boolean clienteAlterado = false;
         Cliente clienteX;
         try {
             for (int i = 0; i < BancoListCliente.size(); i++) {
@@ -82,7 +78,7 @@ public class RepositorioCliente {
     }
 
     public static boolean setDebitar(String cpf, double valor) {
-        statusDebitar = false;
+        boolean statusDebitar = false;
         try {
             Cliente c = new Cliente();
             for (int i = 0; i < BancoListCliente.size(); i++) {
@@ -111,7 +107,7 @@ public class RepositorioCliente {
     }
 
     public static boolean setValidarCPF(String cpf) {
-        CPFativo = false;
+        boolean CPFativo = false;
         Cliente c = new Cliente();
         try {
             for (int i = 0; i < BancoListCliente.size(); i++) {
